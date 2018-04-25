@@ -1,0 +1,25 @@
+{
+  "name": "sos-redacao",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "angular-ui-router": "^1.0.3",
+    "express": "^4.16.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ManuelNeto/SOS-Redacao_FrontEnd.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ManuelNeto/SOS-Redacao_FrontEnd/issues"
+  },
+  "homepage": "https://github.com/ManuelNeto/SOS-Redacao_FrontEnd#readme"
+}
