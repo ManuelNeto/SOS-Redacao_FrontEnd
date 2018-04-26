@@ -1,4 +1,4 @@
-let app = angular.module('sos-redacao', ['ui.router']);
+let app = angular.module('sos-redacao', ['ngMaterial','ui.router','ngMessages']);
 
 app.run(function ($rootScope, $state, $transitions) {
 
