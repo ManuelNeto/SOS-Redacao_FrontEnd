@@ -27,7 +27,7 @@
 
       <md-input-container class="md-block" style="text-align: center">
         <h5>Título</h5>
-        <input type="email" name="clientEmail" ng-model="essay.title">
+        <input type="text" name="clientEmail" ng-model="essay.title">
       </md-input-container>
 
       <md-input-container class="md-block" style="text-align: center">
@@ -35,7 +35,7 @@
       </md-input-container>
 
       <div style="text-align: right">
-        <md-button type="submit" value="enviar" class="md-raised md-primary" > Enviar </md-button>
+        <md-button type="submit" value="enviar" class="md-raised md-primary" ng-click="addEssay(essay)"> Enviar </md-button>
       </div>
 
     </form>
