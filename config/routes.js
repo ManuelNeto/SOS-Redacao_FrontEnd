@@ -1,43 +1,59 @@
 angular.module('sos-redacao').config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.when("", "/home");
-    $urlRouterProvider.when("/", "/home");
+    $urlRouterProvider.when("", "/login");
+    $urlRouterProvider.when("/", "/login");
 
-    $urlRouterProvider.otherwise("/home");
+    $urlRouterProvider.otherwise("/login");
 
     $stateProvider
+
         .state('home', {
             url: '/home',
             templateUrl: '../components/home/home.html',
-            controller: 'HomeController as ctrl'
+            controller: 'HomeController'
+        })
+
+        .state('register', {
+            url: '/register',
+            templateUrl: 'components/register/register.html',
+            controller: 'RegisterController'
+        })
+
+        .state('login', {
+            url: '/login',
+            templateUrl: 'components/login/login.html',
+            controller: 'LoginController'
         })
 
         .state('create_essay', {
             url: '/create_essay',
             templateUrl: '../components/essay/create_essay/create_essay.html',
-            controller: 'CreateEssayController as ctrl'
+            controller: 'CreateEssayController'
         })
 }]);
 
-angular.module('sos-redacao').run(function($rootScope, $location, authentication, $http, $state, $timeout) {
 
-    $rootScope.$on('$stateChangeStart', function (event, nextRoute, currentRoute) {
-
-        $http.defaults.headers.common.Authorization =  authentication.getToken();
-
-
-        if ($location.path() !== '/login') {
-            if (!authentication.isLoggedIn()){
-                $timeout(function(){$state.go('login');});
-            }
-        }
-
-        // if ($location.path() === '/login') {
-        //     if (authentication.isLoggedIn()){
-        //         $timeout(function(){$state.go('listing-things');});
-        //     }
-        // }
-
-
-    });
-});
+// angular.module('sos-redacao').run(function($rootScope, $location, authentication, $http, $state, $timeout) {
+//
+//     $rootScope.$on('$stateChangeStart', function (event, nextRoute, currentRoute) {
+//
+//         console.log(authentication.getToken());
+//
+//         $http.defaults.headers.common.Authorization =  authentication.getToken();
+//
+//
+//         if ($location.path() !== '/login') {
+//             if (!authentication.isLoggedIn()){
+//                 $timeout(function(){$state.go('login');});
+//             }
+//         }
+//
+//         // if ($location.path() === '/login') {
+//         //     if (authentication.isLoggedIn()){
+//         //         $timeout(function(){$state.go('listing-things');});
+//         //     }
+//         // }
+//
+//
+//     });
+// });
