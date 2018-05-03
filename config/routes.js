@@ -30,6 +30,13 @@ angular.module('sos-redacao').config(['$stateProvider', '$urlRouterProvider', fu
             templateUrl: '../components/essay/create_essay/create_essay.html',
             controller: 'CreateEssayController'
         })
+
+        .state('user', {
+           url: '/user',
+           templateUrl: '../components/user/profile.html',
+           controller: 'UserController as ctrl'
+       });
+
 }]);
 
 
