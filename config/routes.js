@@ -11,5 +11,10 @@ angular.module('sos-redacao').config(['$stateProvider', '$urlRouterProvider', fu
             templateUrl: '../components/home/home.html',
             controller: 'HomeController as ctrl'
         })
+        .state('user', {
+            url: '/user',
+            templateUrl: '../components/user/profile.html',
+            controller: 'UserController as ctrl'
+        })
 }])
     
