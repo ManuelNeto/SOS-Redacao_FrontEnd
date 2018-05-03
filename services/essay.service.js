@@ -65,22 +65,22 @@ angular.module('sos-redacao').factory('EssayFactory', function ($window, $http, 
 
         addEssay: function (essay) {
 
-          console.log(essay);
-
             var req = {
                 method: 'POST',
                 url: myIp + '/essay',
                 data: Object.assign(essay, {user: '5ae0eb4289bc014d66bd83ad'}),
                 headers: {
                     'Access-Control-Allow-Origin': '*',
-                    'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhZTBlYjQyODliYzAxNGQ2NmJkODNhZCIsImlhdCI6MTUyNTEyMTI3MCwiZXhwIjoxNTI1MjA3NjcwfQ.I_Hnfs6iw7LjJciYPS5cwHtQEvWZWhEOTHJ6D5Tm4ps'
+                    'Content-Type': undefined,
+                    //'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhZTBlYjQyODliYzAxNGQ2NmJkODNhZCIsImlhdCI6MTUyNTEyMTI3MCwiZXhwIjoxNTI1MjA3NjcwfQ.I_Hnfs6iw7LjJciYPS5cwHtQEvWZWhEOTHJ6D5Tm4ps'
                 }
-            }
+            };
 
             return $http(req).then(function (response) {
+                console.log(req.headers);
                 return response.data;
             }, function errorCallback(response) {
-
+                console.log(req.headers);
             });
         },
 

@@ -17,4 +17,27 @@ angular.module('sos-redacao').config(['$stateProvider', '$urlRouterProvider', fu
             templateUrl: '../components/essay/create_essay/create_essay.html',
             controller: 'CreateEssayController as ctrl'
         })
-}])
+}]);
+
+angular.module('sos-redacao').run(function($rootScope, $location, authentication, $http, $state, $timeout) {
+
+    $rootScope.$on('$stateChangeStart', function (event, nextRoute, currentRoute) {
+
+        $http.defaults.headers.common.Authorization =  authentication.getToken();
+
+
+        if ($location.path() !== '/login') {
+            if (!authentication.isLoggedIn()){
+                $timeout(function(){$state.go('login');});
+            }
+        }
+
+        // if ($location.path() === '/login') {
+        //     if (authentication.isLoggedIn()){
+        //         $timeout(function(){$state.go('listing-things');});
+        //     }
+        // }
+
+
+    });
+});
