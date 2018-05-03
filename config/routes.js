@@ -34,33 +34,7 @@ angular.module('sos-redacao').config(['$stateProvider', '$urlRouterProvider', fu
         .state('user', {
            url: '/user',
            templateUrl: '../components/user/profile.html',
-           controller: 'UserController as ctrl'
+           controller: 'UserController'
        });
 
 }]);
-
-
-// angular.module('sos-redacao').run(function($rootScope, $location, authentication, $http, $state, $timeout) {
-//
-//     $rootScope.$on('$stateChangeStart', function (event, nextRoute, currentRoute) {
-//
-//         console.log(authentication.getToken());
-//
-//         $http.defaults.headers.common.Authorization =  authentication.getToken();
-//
-//
-//         if ($location.path() !== '/login') {
-//             if (!authentication.isLoggedIn()){
-//                 $timeout(function(){$state.go('login');});
-//             }
-//         }
-//
-//         // if ($location.path() === '/login') {
-//         //     if (authentication.isLoggedIn()){
-//         //         $timeout(function(){$state.go('listing-things');});
-//         //     }
-//         // }
-//
-//
-//     });
-// });
