@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>SOS Redacao</title>
-    	<link rel="shortcut icon" href="">
+    <link rel="shortcut icon" href="">
 
 		<!-- Materializa -->
 		<!--Import Google Icon Font-->
@@ -31,7 +31,13 @@
         <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
 	</head>
 
+
+
+
+	</head>
 	<body ng-app="sos-redacao">
+
+
 
 		<!-- angularjs libraries -->
 		<script src="node_modules/angular/angular.js"></script>
@@ -48,7 +54,12 @@
 
 		<!-- controllers -->
 		<script src="/components/home/home-controller.js"></script>
+		<script src="/components/login/login-controller.js"></script>
+		<script src="/components/register/register-controller.js"></script>
 		<script src="/components/user/user-controller.js"></script>
+
+		<!-- services -->
+		<script src="/components/services/authentication.js"></script>
 
 		<ui-view></ui-view>
 	</body>
