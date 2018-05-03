@@ -54,7 +54,10 @@
                 return {
                     email : payload.email,
                     name : payload.name,
-                    userName : payload.userName
+                    userName : payload.userName,
+                    userKind: payload.userKind,
+                    token: payload.token,
+                    userId: payload._id
                 };
             }
         };

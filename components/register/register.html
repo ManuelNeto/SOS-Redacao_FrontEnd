@@ -2,15 +2,11 @@
 
 <div class="container">
     <div class="col-md-6">
-        <md-content ng-controller="RegisterController as ctrl"layout-padding>
+        <md-content>
             <md-card layout-padding>
                 <div class="md-toolbar-tools blue">
                     <h2>Cadastro</h2>
                 </div>
-                    <p class="lead">Already a member? Please
-                        <md-button class="md-primary" href ng-click="goLogin()">log in</md-button>
-                        instead.
-                    </p>
                     <form>
                         <div layout-gt-sm="row">
                             <md-input-container flex-gt-sm="">
@@ -24,14 +20,13 @@
                                 <label>Username</label>
                                 <input type="text" class="form-control" id="username" ng-model="credentials.userName">
                             </md-input-container>
-
                             <md-input-container flex="20">
                                 <label>Sexo</label>
                                 <md-select name="sexo" ng-model="credentials.gender">
-                                    <md-option ng-repeat="genero in generos" id="{{genero}}" value="{{genero}}">{{genero}}</md-option>
+                                  <md-option value="Masculino">Masculino</md-option>
+                                  <md-option value="Feminino">Feminino</md-option>
                                 </md-select>
                             </md-input-container>
-
                         </div>
 
                         <div layout-gt-sm="row">
@@ -50,14 +45,18 @@
                             <md-input-container flex-gt-sm="">
                                 <label>Grau de Escolaridade</label>
                                 <md-select name="grauDeEscolaridade" ng-model="credentials.degreeOfSchooling">
-                                    <md-option ng-repeat="grau in escolaridades" id="{{grau}}" value="{{grau}}">{{grau}}</md-option>
+                                  <md-option value="Funcamental">Funcamental</md-option>
+                                  <md-option value="Médio">Médio</md-option>
+                                  <md-option value="Superior">Superior</md-option>
+                                  <md-option value="Pós-graduação">Pós-graduação</md-option>
                                 </md-select>
                             </md-input-container>
 
                             <md-input-container flex-gt-sm="">
                                 <label>Tipo de Usuário</label>
                                 <md-select name="tipoDeUsuario" ng-model="credentials.userKind">
-                                    <md-option ng-repeat="tipo in usuario" id="{{tipo}}" value="{{tipo}}">{{tipo}}</md-option>
+                                  <md-option value="Redator">Redator</md-option>
+                                  <md-option value="Corretor">Corretor</md-option>
                                 </md-select>
                             </md-input-container>
                         </div>
@@ -65,17 +64,18 @@
                         <div layout-gt-sm="row" ng-show="credentials.userKind == 'Corretor'">
                             <md-input-container flex-gt-sm="">
                                 <label>Tipo de Corretor</label>
-                                <md-select name="tipoDeCorretor" ng-model="credentials.correctorKind">
-                                    <md-option ng-repeat="tipoCorretor in corretor" id="{{tipoCorretor}}" value="{{tipoCorretor}}">{{tipoCorretor}}</md-option>
+                                <md-select name="type" ng-model="credentials.correctorKind" required>
+                                   <md-option value="Enem">Enem</md-option>
+                                   <md-option value="Vestibular">Vestibular</md-option>
+                                   <md-option value="Concurso">Concurso</md-option>
                                 </md-select>
                             </md-input-container>
-
                         </div>
 
                         <div layout-gt-sm="row">
                             <md-input-container flex-gt-sm="">
                                 <label>Email</label>
-                                <input type="text" id="email" ng-model="credentials.email">
+                                <input type="email" id="email" ng-model="credentials.email">
                             </md-input-container>
 
                         </div>
@@ -83,19 +83,19 @@
                         <div layout-gt-sm="row">
                             <md-input-container flex-gt-sm="">
                                 <label>Senha</label>
-                                <input type="text" id="senha" ng-model="credentials.password">
+                                <input type="password" id="senha" ng-model="credentials.password">
                             </md-input-container>
 
                             <md-input-container flex-gt-sm="">
                                 <label>Confirmar Senha</label>
-                                <input type="text" id="confirmar_senha">
+                                <input type="password" id="confirmar_senha">
                             </md-input-container>
 
                         </div>
 
-                        <div layout-gt-sm="row">
+                        <div layout-gt-sm="row" style="text-align: left">
                             <md-button class="md-primary" value="cancelar"> <a href ng-click="goLogin()">Cancelar</a></md-button>
-                            <md-button type="submit" value="confirmar" class="md-raised md-primary" ng-click="onSubmit()"> Confirmar </md-button>
+                            <md-button type="submit" value="confirmar" class="md-raised md-primary" ng-click="cadastrarUsuario(credentials)"> Confirmar </md-button>
                         </div>
                     </form>
                 </div>
