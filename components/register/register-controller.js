@@ -1,4 +1,4 @@
-angular.module('sos-redacao').controller('RegisterController', function ($scope, $location, authentication, $state) {
+angular.module('sos-redacao').controller('RegisterController', function ($scope, $location, authentication, $state, RegisterService) {
 
     var myScope = $scope;
 
@@ -17,7 +17,18 @@ angular.module('sos-redacao').controller('RegisterController', function ($scope,
     };
 
     myScope.cadastrarUsuario = function(credentials){
-      console.log(credentials);
+
+        var success = function (response) {
+            if(response.status === 200){
+                $state.go('login');
+            }
+        };
+
+        var error = function (err) {
+            console.log(err);
+        };
+
+        RegisterService.createUser(credentials).then(success, error);
     };
 
     myScope.goLogin = function () {

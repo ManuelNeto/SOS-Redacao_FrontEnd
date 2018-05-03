@@ -10,7 +10,7 @@ angular.module('sos-redacao').config(['$stateProvider', '$urlRouterProvider', fu
         .state('home', {
             url: '/home',
             templateUrl: '../components/home/home.html',
-            controller: 'HomeController as ctrl'
+            controller: 'HomeController'
         })
 
         .state('register', {
@@ -23,6 +23,18 @@ angular.module('sos-redacao').config(['$stateProvider', '$urlRouterProvider', fu
             url: '/login',
             templateUrl: 'components/login/login.html',
             controller: 'LoginController'
-        });
+        })
+
+        .state('create_essay', {
+            url: '/create_essay',
+            templateUrl: '../components/essay/create_essay/create_essay.html',
+            controller: 'CreateEssayController'
+        })
+
+        .state('user', {
+           url: '/user',
+           templateUrl: '../components/user/profile.html',
+           controller: 'UserController'
+       });
+
 }]);
-    
