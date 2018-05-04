@@ -9,7 +9,7 @@ function AuthInterceptor ($location, $q) {
       console.log(config);
       config.headers = config.headers || {};
 
-      config.headers['Authorization'] = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhZTBlYjQyODliYzAxNGQ2NmJkODNhZCIsImlhdCI6MTUyNTM2ODc3MSwiZXhwIjoxNTI1NDU1MTcxfQ.fCoLz9_HrSOCXWteTVFPgKrdNjsZOGJ9v5RZlFm7NXc";
+      config.headers['Authorization'] = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhZTBlYjQyODliYzAxNGQ2NmJkODNhZCIsImlhdCI6MTUyNTQ1NTMxMCwiZXhwIjoxNTI1NTQxNzEwfQ.tK_Y12tpsc_r2jOfHlJGn_V49jOOtX-kGkbz10hYbaM";
 
       return config;
     }
