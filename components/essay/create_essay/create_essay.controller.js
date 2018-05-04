@@ -1,7 +1,9 @@
-angular.module('sos-redacao').controller('CreateEssayController', function($state, $scope, EssayFactory, $stateParams){
+angular.module('sos-redacao').controller('CreateEssayController', function($state, $scope, EssayFactory, $stateParams, $mdSidenav){
 	var self = this;
 
 	$scope.themes = ['Tema 1', 'Tema 2', 'Tema 3', 'Tema 4', 'Tema 5', 'Tema 6'];
+
+	$scope.toggleSidenav = buildToggler('closeEventsDisabled');
 
 	$scope.essay = {};
 
@@ -22,6 +24,18 @@ angular.module('sos-redacao').controller('CreateEssayController', function($stat
             console.log("Error");
     	});
 	}
+
+	$scope.showComments = function(){
+		$scope.toggleSidenav('right');
+	}
+
+
+
+  function buildToggler(componentId) {
+      return function() {
+        $mdSidenav(componentId).toggle();
+      };
+  }
 
 	init = function(){
 		if($stateParams.id){
