@@ -7,7 +7,7 @@ angular.module('sos-redacao').factory('EssayFactory', function ($window, $http, 
         },
 
         getEssay: function (id) {
-            return $http.get(consts.api_url + '/essay' + id);
+            return $http.get(consts.api_url + '/essay/' + id);
         },
 
         editEssay: function (essay) {

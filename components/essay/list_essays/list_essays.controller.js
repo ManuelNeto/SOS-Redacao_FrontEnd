@@ -11,7 +11,15 @@ angular.module('sos-redacao').controller('ListEssaysController', function($state
     });
 	}
 
-  getEssays();
+  init = function(){
+    getEssays();
+  }
 
+  $scope.showEssay = function(id){
+		$state.go('show_essay',  { "id": id});
+	}
+
+
+  init();
 
 });

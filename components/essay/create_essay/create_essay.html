@@ -1,7 +1,9 @@
 <div layout="column" ng-cloak>
 
   <md-content layout-padding>
-    <h1>Cadastrar Redação</h1>
+    <h3 ng-if="!essay._id">Cadastrar Redação</h3>
+    <h3 ng-if="essay._id">Minha redação</h3>
+
     <form name="esssayForm">
       <div layout="row">
         <md-input-container flex="50">

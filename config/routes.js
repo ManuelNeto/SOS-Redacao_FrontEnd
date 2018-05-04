@@ -31,6 +31,12 @@ angular.module('sos-redacao').config(['$stateProvider', '$urlRouterProvider', fu
             controller: 'CreateEssayController'
         })
 
+        .state('show_essay', {
+            url: '/show_essay/:id',
+            templateUrl: '../components/essay/create_essay/create_essay.html',
+            controller: 'CreateEssayController'
+        })
+
         .state('list_essays', {
             url: '/list_essays',
             templateUrl: '../components/essay/list_essays/list_essays.html',
