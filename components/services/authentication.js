@@ -55,7 +55,7 @@
                     userName : payload.userName,
                     userKind: payload.userKind,
                     token: payload.token,
-                    userId: payload._id
+                    userId: payload.id
                 };
             }
         };
