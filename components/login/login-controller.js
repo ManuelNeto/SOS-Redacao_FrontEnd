@@ -14,8 +14,9 @@ angular.module('sos-redacao').controller('LoginController', function($scope, $lo
         authentication
             .login(myScope.credentials)
             .then(function(data){
-                authentication.saveToken(data.data.token);
+                authentication.saveToken(data.data.data.token);
                 $state.go('home');
+                console.log(authentication.getToken());
             }, function(error){
                 alert(error.data.message);
             });
