@@ -19,7 +19,8 @@ angular.module('sos-redacao').controller('RegisterController', function ($scope,
     myScope.cadastrarUsuario = function(credentials){
 
         var success = function (response) {
-            if(response.status === 200){
+            console.log(response);
+            if(response.status === 201){
                 $state.go('login');
             }
         };

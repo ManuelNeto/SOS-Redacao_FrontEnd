@@ -1,14 +1,12 @@
 (function () {
 
-    var myIp = 'http://localhost:8081';
-
     angular
         .module('sos-redacao')
         .service('authentication', authentication);
 
-    authentication.$inject = ['$http', '$window'];
+    authentication.$inject = ['$http', '$window', 'consts'];
 
-    function authentication ($http, $window) {
+    function authentication ($http, $window, consts) {
 
         var saveToken = function (token) {
             $window.localStorage['mean-token'] = token;
@@ -24,11 +22,11 @@
         };
 
         register = function(user) {
-            return $http.post(myIp + '/register', user);
+            return $http.post(consts.api_url + '/register', user);
         };
 
         login = function(user) {
-            return $http.post(myIp + '/login', user);
+            return $http.post(consts.api_url + '/login', user);
         };
 
         var isLoggedIn = function() {
