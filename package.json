@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
+    "@uirouter/angularjs": "^1.0.3",
     "angular": "^1.6.9",
     "angular-animate": "^1.6.10",
     "angular-aria": "^1.6.10",
@@ -11,7 +12,6 @@
     "angular-material": "^1.1.8",
     "angular-messages": "^1.6.10",
     "angular-sanitize": "^1.6.10",
-    "angular-ui-router": "^1.0.3",
     "express": "^4.16.3",
     "materialize": "^1.0.0",
     "materialize-css": "^0.100.2",
