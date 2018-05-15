@@ -37,8 +37,8 @@ angular.module('sos-redacao').config(['$stateProvider', '$urlRouterProvider', fu
             controller: 'ListEssaysController'
         })
 
-        .state('user', {
-           url: '/user',
+        .state('my_data', {
+           url: '/my_data',
            templateUrl: '../components/user/profile.html',
            controller: 'UserController'
        });

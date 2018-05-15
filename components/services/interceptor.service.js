@@ -3,14 +3,12 @@ angular.module('sos-redacao').factory('AuthInterceptor', AuthInterceptor)
     $httpProvider.interceptors.push('AuthInterceptor');
   });
 
-function AuthInterceptor ($location, $q) {
+function AuthInterceptor ($location, $q, $injector) {
   return {
     request: function(config) {
-      console.log(config);
       config.headers = config.headers || {};
-
-      config.headers['Authorization'] = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhZTBlYjQyODliYzAxNGQ2NmJkODNhZCIsImlhdCI6MTUyNTQ1NTMxMCwiZXhwIjoxNTI1NTQxNzEwfQ.tK_Y12tpsc_r2jOfHlJGn_V49jOOtX-kGkbz10hYbaM";
-
+      authentication = $injector.get('authentication');
+      config.headers['Authorization'] = authentication.getToken();
       return config;
     }
   }
