@@ -1,7 +1,5 @@
 <div id="ESSAYS" ng-cloak md-scroll-y class="partial-margin">
   <md-content layout-padding>
-    <h3 class="md-no-sticky">Minhas Redações</h2>
-
     <md-list>
         <md-list-item class="small-font-medium topic" >
           <div flex="25">
@@ -11,7 +9,7 @@
             <p class="theme"><strong> Tema </strong></p>
           </div>
           <div flex="10">
-            <p class="type"><strong> Type </strong></p>
+            <p class="type"><strong> Tipo </strong></p>
           </div>
           <div flex="10">
             <p class="nota"><strong> Nota </strong></p>
@@ -34,10 +32,10 @@
                 <p class="type">{{essay.type}}</p>
               </div>
               <div flex="10">
-                <p class="nota"> nota </p>
+                <p class="nota"> {{essay.scores[-1]}} </p>
               </div>
-              <div flex="20">
-                <p class="status"> status </p>
+              <div flex="20s">
+                <p class="status"> {{essay.status}} </p>
               </div>
               <md-button type="submit" value="visualizar" class="md-raised md-primary" ng-click="showEssay(essay._id)"> Visualizar </md-button>
         </md-list-item>
