@@ -1,21 +1,21 @@
 <div layout="column" ng-cloak>
 
   <md-content layout-padding>
-    <h3 ng-if="!essay._id">Cadastrar Redação</h3>
-    <h3 ng-if="essay._id">Minha redação</h3>
+    <h3 ng-if="!enable">Cadastrar Redação</h3>
+    <h3 ng-if="enable">Minha redação</h3>
 
     <form name="esssayForm">
       <div layout="row">
         <md-input-container flex="50">
           <h5>Tema</h5>
-          <md-select name="type" ng-model="essay.theme" required>
+          <md-select name="type" ng-model="essay.theme" required ng-disabled="enable">
               <md-option ng-value="theme" ng-repeat="theme in themes">{{ theme }}</md-option>
           </md-select>
         </md-input-container>
 
         <md-input-container flex="50">
           <h5>Tipo de redação</h5>
-          <md-select name="type" ng-model="essay.type" required>
+          <md-select name="type" ng-model="essay.type" required ng-disabled="enable">
             <md-option value="Enem">Enem</md-option>
             <md-option value="Vestibular">Vestibular</md-option>
             <md-option value="Concurso">Concurso</md-option>
@@ -23,18 +23,40 @@
         </md-input-container>
       </div>
 
-      <div style="text-align: right">
+      <div style="text-align: right" ng-show="!enable">
         <md-button type="submit" class="md-raised md-primary" > Download Modelo  </md-button>
         <md-button type="submit" class="md-raised md-primary" > Anexar Redação </md-button>
       </div>
 
       <md-input-container class="md-block" style="text-align: center">
         <h5>Título</h5>
-        <input type="text" name="clientEmail" ng-model="essay.title">
+        <input type="text" name="clientEmail" ng-model="essay.title" ng-disabled="enable">
       </md-input-container>
 
+      <div style="text-align: center" ng-show="enable && essay.type == 'Enem'">
+        <md-button type="submit" class="md-raised md-primary" ng-click=showAbilitys($event)> Visualizar Habilidades  </md-button>
+        <table style="width:100%">
+          <tr>
+            <th>Competência 1</th>
+            <th>Competência 2</th>
+            <th>Competência 3</th>
+            <th>Competência 4</th>
+            <th>Competência 5</th>
+            <th>Nota</th>
+          </tr>
+          <tr>
+            <td>{{essay.scores[0]}}</td>
+            <td>{{essay.scores[1]}}</td>
+            <td>{{essay.scores[2]}}</td>
+            <td>{{essay.scores[3]}}</td>
+            <td>{{essay.scores[4]}}</td>
+            <td>{{essay.scores[0] + essay.scores[1] + essay.scores[2] + essay.scores[3] + essay.scores[4]}}</td>
+          </tr>
+        </table>
+      </div>
+
       <md-input-container class="md-block" style="text-align: center">
-        <textarea type="text" id="text" name="text" ng-model="essay.text" cols="10" rows="20" required></textarea>
+        <textarea type="text" id="text" name="text" ng-model="essay.text" cols="10" rows="20" required ng-disabled="enable"></textarea>
       </md-input-container>
 
       <div style="text-align: right">

@@ -1,11 +1,15 @@
-angular.module('sos-redacao').controller('CreateEssayController', function($state, $scope, EssayFactory, $stateParams, $mdSidenav){
+angular.module('sos-redacao').controller('CreateEssayController', function($state, $scope, EssayFactory, $stateParams, $mdSidenav, $mdDialog){
 	var self = this;
 
 	$scope.themes = ['Tema 1', 'Tema 2', 'Tema 3', 'Tema 4', 'Tema 5', 'Tema 6'];
 
 	$scope.toggleSidenav = buildToggler('closeEventsDisabled');
 
+	$scope.enable;
+
 	$scope.essay = {};
+
+	$scope.customFullscreen = false;
 
 	self.title = 'CreateEssayController';
 
@@ -37,9 +41,27 @@ angular.module('sos-redacao').controller('CreateEssayController', function($stat
       };
   }
 
+	$scope.showAbilitys = function(ev) {
+    $mdDialog.show({
+      templateUrl: './../abilitys/abilitys.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+    })
+    .then(function(answer) {
+      $scope.status = 'You said the information was "' + answer + '".';
+    }, function() {
+      $scope.status = 'You cancelled the dialog.';
+    });
+  };
+
 	init = function(){
 		if($stateParams.id){
+			$scope.enable = true;
 			getEssay($stateParams.id);
+		}else{
+			$scope.enable = false;
 		}
 
 	}
