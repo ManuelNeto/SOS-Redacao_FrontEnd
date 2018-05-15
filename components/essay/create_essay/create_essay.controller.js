@@ -70,8 +70,14 @@ angular.module('sos-redacao').controller('CreateEssayController', function($stat
 
 	$scope.sendMessage = function(text){
 		var newMessage = {email: "manuel@ccc.cg", timestamp: dateFormat() , text: text};
-		$scope.messages.push(newMessage);
+		$scope.essay.messages.push(newMessage);
 		$scope.newMessage = {};
+		EssayFactory.editEssay($scope.essay).then(function(result){
+            console.log(result);
+        }).catch(function(result){
+            console.log("Error");
+    });
+
 	}
 
 	dateFormat = function(){
