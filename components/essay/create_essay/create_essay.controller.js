@@ -11,6 +11,18 @@ angular.module('sos-redacao').controller('CreateEssayController', function($stat
 
 	$scope.customFullscreen = false;
 
+	$scope.messages = [
+		{email: 'manuel.neto@ccc.ufcg.edu.br', timestamp: '25/12/1996', text: 'mensagem 1'},
+		{email: 'manuel.neto@ccc.ufcg.edu.br', timestamp: '25/12/1996', text: 'mensagem 2'},
+		{email: 'ze@ccc.ufcg.edu.br', timestamp: '25/12/1996', text: 'mensagem 3'},
+		{email: 'caio@ccc.ufcg.edu.br', timestamp: '25/12/1996', text: 'mensagem 4'},
+		{email: 'manuel.neto@ccc.ufcg.edu.br', timestamp: '25/12/1996', text: 'mensagem 5ukgggggggggggggggggggggggj rlgjrwheotiuoerwiutoeriut oeritoireuotuie erwouitoerwiutoerwiut oiuertouieouti'},
+		{email: 'fabio@ccc.ufcg.edu.br', timestamp: '25/12/1996', text: 'mensagem 6'},
+		{email: 'manuel.neto@ccc.ufcg.edu.br', timestamp: '25/12/1996', text: 'mensagem 7'},
+		{email: 'manuel.neto@ccc.ufcg.edu.br', timestamp: '25/12/1996', text: 'mensagem 8'},
+		{email: 'manuel.neto@ccc.ufcg.edu.br', timestamp: '25/12/1996', text: 'mensagem 9'},
+	];
+
 	self.title = 'CreateEssayController';
 
 	$scope.addEssay = function(essay){
@@ -43,7 +55,7 @@ angular.module('sos-redacao').controller('CreateEssayController', function($stat
 
 	$scope.showAbilitys = function(ev) {
     $mdDialog.show({
-      templateUrl: './../abilitys/abilitys.html',
+      templateUrl: './abilitys.html',
       parent: angular.element(document.body),
       targetEvent: ev,
       clickOutsideToClose:true,
@@ -55,6 +67,24 @@ angular.module('sos-redacao').controller('CreateEssayController', function($stat
       $scope.status = 'You cancelled the dialog.';
     });
   };
+
+	$scope.sendMessage = function(text){
+		var newMessage = {email: "manuel@ccc.cg", timestamp: dateFormat() , text: text};
+		$scope.messages.push(newMessage);
+		$scope.newMessage = {};
+	}
+
+	dateFormat = function(){
+
+		var monName = ["janeiro", "fevereiro", "março", "abril", "Maio", "junho", 'julho', "agosto", 'setembro', "outubro", "novembro", "dezembro"];
+
+		var newDate = new Date();
+		var dia = newDate.getDate();
+		var mes = newDate.getMonth();
+		var ano = newDate.getFullYear();
+
+		return dia + ' ' + monName[mes] + ', ' + ano;
+	}
 
 	init = function(){
 		if($stateParams.id){

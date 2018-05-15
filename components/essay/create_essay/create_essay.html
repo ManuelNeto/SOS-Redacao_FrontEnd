@@ -45,12 +45,18 @@
             <th>Nota</th>
           </tr>
           <tr>
-            <td>{{essay.scores[0]}}</td>
+            <td><input type="number" name="competencia1" ng-model="essay.scores[0]"></td>
+            <td><input type="number" name="competencia1" ng-model="essay.scores[1]"></td>
+            <td><input type="number" name="competencia1" ng-model="essay.scores[2]"></td>
+            <td><input type="number" name="competencia1" ng-model="essay.scores[3]"></td>
+            <td><input type="number" name="competencia1" ng-model="essay.scores[4]"></td>
+            <td><input type="number" name="competencia1" ng-model="essay.scores[5]"></td>
+            <!-- <td>{{essay.scores[0]}}</td>
             <td>{{essay.scores[1]}}</td>
             <td>{{essay.scores[2]}}</td>
             <td>{{essay.scores[3]}}</td>
             <td>{{essay.scores[4]}}</td>
-            <td>{{essay.scores[0] + essay.scores[1] + essay.scores[2] + essay.scores[3] + essay.scores[4]}}</td>
+            <td>{{essay.scores[0] + essay.scores[1] + essay.scores[2] + essay.scores[3] + essay.scores[4]}}</td> -->
           </tr>
         </table>
       </div>
@@ -73,16 +79,42 @@
 <md-sidenav class="md-sidenav-right" md-component-id="closeEventsDisabled" md-whiteframe="4" md-disable-close-events>
 
         <md-toolbar class="md-theme-indigo">
-          <h1 class="md-toolbar-tools">Comentários</h1>
+          <div layout="row">
+            <h1 class="md-toolbar-tools" flex="50">Comentários</h1>
+            <i class="material-icons" ng-click="toggleSidenav()" flex="50">clear</i>
+          </div>
         </md-toolbar>
 
         <md-content layout-margin>
-          <p>
-            Melhorar conclusão
-          </p>
-          <md-button ng-click="toggleSidenav()" class="md-accent">
-            Close this Sidenav
-          </md-button>
+          <div class="rightbar-itens">
+              <md-list>
+                <md-list-item class="contest md-2-line" ng-repeat="message in messages">
+                    <!-- <img ng-src="{{getImage('/user/image/' + message.email)}}" class="md-avatar" alt=""> -->
+                    <div class="md-list-item-text">
+                        <p>{{message.email}}</p>
+                        <p>{{message.timestamp}}</p>
+                        <p >{{message.text}}</p>
+                        <md-divider></md-divider>
+                    </div>
+                </md-list-item>
+                <md-list-item >
+                    <form name="newMessage">
+                        <div  layout="column">
+                            <div class="contest-message-internal">
+                                <p class="small-font-medium">Escrever nova mensagem</p>
+                                <md-input-container class="md-block" flex-gt-sm="">
+                                    <label>Insira uma mensagem</label>
+                                    <textarea ng-model="newMessage.text" id="yourid" ng-minlength="10" ng-maxlength="500" id="newMessage" name="newMessage" required></textarea>
+                                </md-input-container>
+                            </div>
+                        </div>
+                        <div class="send-button">
+                            <md-button type="submit" class="md-raised md-primary" id="saveNewMessage" ng-click="sendMessage(newMessage.text)">ENVIAR RESPOSTA</md-button>
+                        </div>
+                    </form>
+                </md-list-item>
+              </md-list>
+          </div>
         </md-content>
 
 </md-sidenav>
