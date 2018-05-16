@@ -3,10 +3,17 @@
           <md-card>
               <p flex-offset="40"> {{ profile.userName }} </p>
           </md-card>
-          <md-list ng-repeat="action in data.sidenav.actions">
+          <md-list ng-show="profile.userKind == 'Redator'" ng-repeat="action in data.sidenav.redator_actions">
               <md-icon> {{action.icon}} </md-icon>
               <md-button class="md-primary" ng-click="setRoute(action.link)"> {{action.name}} </md-button>
               <md-divider></md-divider>
+          </md-list>
+
+          <md-list ng-show="profile.userKind == 'Corretor'" ng-repeat="action in data.sidenav.corretor_actions">
+              <md-icon> {{action.icon}} </md-icon>
+              <md-button class="md-primary" ng-click="setRoute(action.link)"> {{action.name}} </md-button>
+              <md-divider></md-divider>
+
           </md-list>
 
       </md-content>

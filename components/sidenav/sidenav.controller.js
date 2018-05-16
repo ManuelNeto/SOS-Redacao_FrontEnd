@@ -26,7 +26,7 @@ angular.module('sos-redacao').controller('sidenavController', function($scope, $
 	myScope.data = {
 
             sidenav: {
-                actions: [
+               redator_actions: [
 
                     {
                         name: 'Escrever Redação',
@@ -69,8 +69,57 @@ angular.module('sos-redacao').controller('sidenavController', function($scope, $
                          icon: 'exit_to_app',
                          link: 'sair'
                                         }
-                ]
+                ],
 
+                corretor_actions: [
+                    {
+                        name: 'Corrigir Redação',
+                        icon: 'create',
+                        link: ''
+                    },
+
+                    {
+                        name: 'Redações Corrigidas',
+                        icon: '',
+                        link: ''
+                    },
+
+                    {
+                        name: 'Propor Tema',
+                        icon: '',
+                        link: ''
+                    },
+
+                    {
+                        name: 'Meus Temas',
+                        icon: '',
+                        link: ''
+                    },
+
+                    {
+                        name: 'Temas',
+                        icon: '',
+                        link: ''
+                    },
+
+                    {
+                        name: 'Notificações',
+                        icon: 'notifications',
+                        link: 'notifications'
+                    },
+
+                    {
+                        name: 'Meus Dados',
+                        icon: 'person',
+                        link: 'my_data'
+                    },
+
+                    {
+                        name: 'Sair',
+                        icon: 'exit_to_app',
+                        link: 'sair'
+                    }
+                ]
             }
         };
 
