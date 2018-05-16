@@ -1,8 +1,6 @@
 
 angular.module('sos-redacao').controller('LoginController', function($scope, $location, authentication, $state) {
 
-    var self = this;
-    self.title = 'Home';
     var myScope = $scope;
 
     myScope.credentials = {
