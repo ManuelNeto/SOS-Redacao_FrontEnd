@@ -1,6 +1,8 @@
-angular.module('sos-redacao').controller('sidenavController', function($scope, $mdSidenav, $location, authentication, $state){
+angular.module('sos-redacao').controller('sidenavController', function($scope, $mdSidenav, UserService, $location, authentication, $state){
 
 	var myScope = $scope;
+
+	myScope.profile = {};
 
 	myScope.setRoute = function (route) {
 	    if (route == 'sair') {
@@ -35,7 +37,7 @@ angular.module('sos-redacao').controller('sidenavController', function($scope, $
                     {
                         name: 'Minhas Redações',
                         icon: 'description',
-                        link: 'my-essays'
+                        link: 'show_essay'
                     },
 
                     {
@@ -74,7 +76,20 @@ angular.module('sos-redacao').controller('sidenavController', function($scope, $
 
         myScope.getClass = function (path) {
                 return ($location.path().substr(1, path.length) === path) ? 'blue' : 'grey-A100';
-            }
+            };
+
+        myScope.getUsuario = function(){
+                   UserService.getUser(authentication.currentUser().userId).then(function(response){
+                      $scope.profile = response.data.data;
+                   });
+            };
+
+        init = function () {
+            myScope.getUsuario();
+        }
+
+        init();
+
 
 
 });
