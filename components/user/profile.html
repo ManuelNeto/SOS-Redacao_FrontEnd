@@ -1,100 +1,109 @@
-<md-content>
+<div layout="row">
+    <sidenav></sidenav>
+
+    <div class="form" flex layout="column" ng-cloak>
+        <md-content>
             <md-card layout-padding>
-                <div class="md-toolbar-tools blue">
-                    <h2>Meus Dados</h2>
-                </div>
-                    <form>
-                      <i class="material-icons" style="text-align: rigth" ng-click="setEnable()">create</i>
-                        <div layout-gt-sm="row">
-                            <md-input-container flex-gt-sm="">
-                                <label>Nome Completo</label>
-                                <input type="text" class="form-control" id="nome" ng-model="profile.name" ng-disabled="enableForm">
-                            </md-input-container>
-                        </div>
+                <md-toolbar>
+                    <div layout=row class="md-toolbar-tools">
+                        <h1> Meus Dados </h1>
+                    </div>
+                </md-toolbar>
+                <form>
+                    <i class="material-icons" style="text-align: rigth" ng-click="setEnable()">create</i>
+                    <div layout-gt-sm="row">
+                        <md-input-container flex-gt-sm="">
+                            <label>Nome Completo</label>
+                            <input type="text" class="form-control" id="nome" ng-model="profile.name" ng-disabled="enableForm">
+                        </md-input-container>
+                    </div>
 
-                        <div layout-gt-sm="row">
-                            <md-input-container flex-gt-sm="">
-                                <label>Username</label>
-                                <input type="text" class="form-control" id="username" ng-model="profile.userName" ng-disabled="enableForm">
-                            </md-input-container>
-                            <md-input-container flex="20">
-                                <label>Sexo</label>
-                                <md-select name="sexo" ng-model="profile.gender" ng-disabled="enableForm">
-                                  <md-option value="Masculino">Masculino</md-option>
-                                  <md-option value="Feminino">Feminino</md-option>
-                                </md-select>
-                            </md-input-container>
-                        </div>
+                    <div layout-gt-sm="row">
+                        <md-input-container flex-gt-sm="">
+                            <label>Username</label>
+                            <input type="text" class="form-control" id="username" ng-model="profile.userName" ng-disabled="enableForm">
+                        </md-input-container>
+                        <md-input-container flex="20">
+                            <label>Sexo</label>
+                            <md-select name="sexo" ng-model="profile.gender" ng-disabled="enableForm">
+                                <md-option value="Masculino">Masculino</md-option>
+                                <md-option value="Feminino">Feminino</md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
 
-                        <div layout-gt-sm="row">
-                            <md-input-container flex-gt-sm="">
-                                <label>Data de Nascimento</label>
-                                <input type="date" id="dtn" ng-model="profile.birthdate" ng-disabled="enableForm">
-                            </md-input-container>
+                    <div layout-gt-sm="row">
+                        <md-input-container flex-gt-sm="">
+                            <label>Data de Nascimento</label>
+                            <input type="date" id="dtn" ng-model="profile.birthdate" ng-disabled="enableForm">
+                        </md-input-container>
 
-                            <md-input-container flex-gt-sm="">
-                                <label>Escola</label>
-                                <input type="text" id="escola" ng-model="profile.school" ng-disabled="enableForm">
-                            </md-input-container>
-                        </div>
+                        <md-input-container flex-gt-sm="">
+                            <label>Escola</label>
+                            <input type="text" id="escola" ng-model="profile.school" ng-disabled="enableForm">
+                        </md-input-container>
+                    </div>
 
-                        <div layout-gt-sm="row">
-                            <md-input-container flex-gt-sm="">
-                                <label>Grau de Escolaridade</label>
-                                <md-select name="grauDeEscolaridade" ng-model="profile.degreeOfSchooling" ng-disabled="enableForm">
-                                  <md-option value="Fundamental">Fundamental</md-option>
-                                  <md-option value="Médio">Médio</md-option>
-                                  <md-option value="Superior">Superior</md-option>
-                                  <md-option value="Pós-graduação">Pós-graduação</md-option>
-                                </md-select>
-                            </md-input-container>
+                    <div layout-gt-sm="row">
+                        <md-input-container flex-gt-sm="">
+                            <label>Grau de Escolaridade</label>
+                            <md-select name="grauDeEscolaridade" ng-model="profile.degreeOfSchooling" ng-disabled="enableForm">
+                                <md-option value="Fundamental">Fundamental</md-option>
+                                <md-option value="Médio">Médio</md-option>
+                                <md-option value="Superior">Superior</md-option>
+                                <md-option value="Pós-graduação">Pós-graduação</md-option>
+                            </md-select>
+                        </md-input-container>
 
-                            <md-input-container flex-gt-sm="">
-                                <label>Tipo de Usuário</label>
-                                <md-select name="tipoDeUsuario" ng-model="profile.userKind" ng-disabled="enableForm">
-                                  <md-option value="Redator">Redator</md-option>
-                                  <md-option value="Corretor">Corretor</md-option>
-                                </md-select>
-                            </md-input-container>
-                        </div>
+                        <md-input-container flex-gt-sm="">
+                            <label>Tipo de Usuário</label>
+                            <md-select name="tipoDeUsuario" ng-model="profile.userKind" ng-disabled="enableForm">
+                                <md-option value="Redator">Redator</md-option>
+                                <md-option value="Corretor">Corretor</md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
 
-                        <div layout-gt-sm="row" ng-show="profile.userKind == 'Corretor'">
-                            <md-input-container flex-gt-sm="">
-                                <label>Tipo de Corretor</label>
-                                <md-select name="type" ng-model="profile.correctorKind" required ng-disabled="enableForm">
-                                   <md-option value="Enem">Enem</md-option>
-                                   <md-option value="Vestibular">Vestibular</md-option>
-                                   <md-option value="Concurso">Concurso</md-option>
-                                </md-select>
-                            </md-input-container>
-                        </div>
+                    <div layout-gt-sm="row" ng-show="profile.userKind == 'Corretor'">
+                        <md-input-container flex-gt-sm="">
+                            <label>Tipo de Corretor</label>
+                            <md-select name="type" ng-model="profile.correctorKind" required ng-disabled="enableForm">
+                                <md-option value="Enem">Enem</md-option>
+                                <md-option value="Vestibular">Vestibular</md-option>
+                                <md-option value="Concurso">Concurso</md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
 
-                        <div layout-gt-sm="row">
-                            <md-input-container flex-gt-sm="">
-                                <label>Email</label>
-                                <input type="email" id="email" ng-model="profile.email" ng-disabled="enableForm">
-                            </md-input-container>
+                    <div layout-gt-sm="row">
+                        <md-input-container flex-gt-sm="">
+                            <label>Email</label>
+                            <input type="email" id="email" ng-model="profile.email" ng-disabled="enableForm">
+                        </md-input-container>
 
-                        </div>
+                    </div>
 
-                        <div layout-gt-sm="row">
-                            <md-input-container flex-gt-sm="">
-                                <label>Senha</label>
-                                <input type="password" id="senha" ng-model="profile.password" ng-disabled="enableForm">
-                            </md-input-container>
+                    <div layout-gt-sm="row">
+                        <md-input-container flex-gt-sm="">
+                            <label>Senha</label>
+                            <input type="password" id="senha" ng-model="profile.password" ng-disabled="enableForm">
+                        </md-input-container>
 
-                            <md-input-container flex-gt-sm="">
-                                <label>Confirmar Senha</label>
-                                <input type="password" id="confirmar_senha">
-                            </md-input-container>
+                        <md-input-container flex-gt-sm="">
+                            <label>Confirmar Senha</label>
+                            <input type="password" id="confirmar_senha">
+                        </md-input-container>
 
-                        </div>
+                    </div>
 
-                        <div layout-gt-sm="row" style="text-align: rigth">
-                            <md-button type="submit" value="confirmar" class="md-raised md-primary" ng-click="showConfirm($event)" ng-disabled="enableForm"> Editar </md-button>
-                        </div>
-                    </form>
-                </div>
+                    <div layout-gt-sm="row" style="text-align: rigth">
+                        <md-button type="submit" value="confirmar" class="md-raised md-primary" ng-click="showConfirm($event)" ng-disabled="enableForm"> Editar </md-button>
+                    </div>
+                </form>
 
             </md-card>
-</md-content>
+        </md-content>
+    </div>
+
+</div>
+

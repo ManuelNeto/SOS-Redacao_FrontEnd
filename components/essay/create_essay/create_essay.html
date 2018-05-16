@@ -1,45 +1,49 @@
-<div layout="column" ng-cloak>
+<div layout="row">
 
-  <md-content layout-padding>
-    <h1>Cadastrar Redação</h1>
-    <form name="esssayForm">
-      <div layout="row">
-        <md-input-container flex="50">
-          <h5>Tema</h5>
-          <md-select name="type" ng-model="essay.theme" required>
-              <md-option ng-value="theme" ng-repeat="theme in themes">{{ theme }}</md-option>
-          </md-select>
-        </md-input-container>
+    <sidenav></sidenav>
+    <div layout="column" flex-gt-xs ng-cloak>
+        <md-content layout-padding>
+            <h3 ng-if="!enable">Cadastrar Redação</h3>
+            <h3 ng-if="enable">Minha redação</h3>
 
-        <md-input-container flex="50">
-          <h5>Tipo de redação</h5>
-          <md-select name="type" ng-model="essay.type" required>
-            <md-option value="Enem">Enem</md-option>
-            <md-option value="Vestibular">Vestibular</md-option>
-            <md-option value="Concurso">Concurso</md-option>
-          </md-select>
-        </md-input-container>
-      </div>
+            <form name="esssayForm">
+                <div layout="row">
+                    <md-input-container flex="50">
+                        <h5>Tema</h5>
+                        <md-select name="type" ng-model="essay.theme" required>
+                            <md-option ng-value="theme" ng-repeat="theme in themes">{{ theme }}</md-option>
+                        </md-select>
+                    </md-input-container>
 
-      <div style="text-align: right">
-        <md-button type="submit" class="md-raised md-primary" > Download Modelo  </md-button>
-        <md-button type="submit" class="md-raised md-primary" > Anexar Redação </md-button>
-      </div>
+                    <md-input-container flex="50">
+                        <h5>Tipo de redação</h5>
+                        <md-select name="type" ng-model="essay.type" required>
+                            <md-option value="Enem">Enem</md-option>
+                            <md-option value="Vestibular">Vestibular</md-option>
+                            <md-option value="Concurso">Concurso</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
 
-      <md-input-container class="md-block" style="text-align: center">
-        <h5>Título</h5>
-        <input type="text" name="clientEmail" ng-model="essay.title">
-      </md-input-container>
+                <div style="text-align: right">
+                    <md-button class="md-raised md-primary" ng-click="downloadEssayModel()"> Download Modelo  </md-button>
+                    <md-button type="submit" class="md-raised md-primary" > Anexar Redação </md-button>
+                </div>
 
-      <md-input-container class="md-block" style="text-align: center">
-        <textarea type="text" id="text" name="text" ng-model="essay.text" cols="10" rows="20" required></textarea>
-      </md-input-container>
+                <md-input-container class="md-block" style="text-align: center">
+                    <h5>Título</h5>
+                    <input type="text" name="clientEmail" ng-model="essay.title">
+                </md-input-container>
 
-      <div style="text-align: right">
-        <md-button type="submit" value="enviar" class="md-raised md-primary" ng-click="addEssay(essay)"> Enviar </md-button>
-      </div>
+                <md-input-container class="md-block" style="text-align: center">
+                    <textarea type="text" id="text" name="text" ng-model="essay.text" cols="10" rows="20" required></textarea>
+                </md-input-container>
 
-    </form>
-  </md-content>
+                <div style="text-align: right">
+                    <md-button ng-if="!essay._id" class="md-raised md-primary" ng-click="addEssay(essay)"> Enviar </md-button>
+                </div>
 
+            </form>
+        </md-content>
+    </div>
 </div>

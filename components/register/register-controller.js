@@ -2,6 +2,8 @@ angular.module('sos-redacao').controller('RegisterController', function ($scope,
 
     var myScope = $scope;
 
+    myScope.confirm_password;
+
     myScope.credentials = {
         name: "",
         userName:"",
