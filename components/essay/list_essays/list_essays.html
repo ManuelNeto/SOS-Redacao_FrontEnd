@@ -1,0 +1,44 @@
+<div id="ESSAYS" ng-cloak md-scroll-y class="partial-margin">
+  <md-content layout-padding>
+    <md-list>
+        <md-list-item class="small-font-medium topic" >
+          <div flex="25">
+            <p class="title"><strong> Título </strong></p>
+          </div>
+          <div flex="25">
+            <p class="theme"><strong> Tema </strong></p>
+          </div>
+          <div flex="10">
+            <p class="type"><strong> Tipo </strong></p>
+          </div>
+          <div flex="10">
+            <p class="nota"><strong> Nota </strong></p>
+          </div>
+          <div flex="25">
+            <p class="status"><strong> Status </strong></p>
+          </div>
+        </md-list-item>
+        <br>
+        <md-divider></md-divider>
+        <br>
+        <md-list-item class="base-font-regular" ng-repeat="essay in essays " layout="row" layout-wrap>
+              <div flex="25">
+                <p class="title">{{essay.title}}</p>
+              </div>
+              <div flex="25">
+                <p class="theme">{{essay.theme}}</p>
+              </div>
+              <div flex="10">
+                <p class="type">{{essay.type}}</p>
+              </div>
+              <div flex="10">
+                <p class="nota"> {{essay.scores[-1]}} </p>
+              </div>
+              <div flex="20s">
+                <p class="status"> {{essay.status}} </p>
+              </div>
+              <md-button type="submit" value="visualizar" class="md-raised md-primary" ng-click="viewEssay(essay)"> Visualizar </md-button>
+        </md-list-item>
+    </md-list>
+  </md-content>
+</div>
