@@ -5,9 +5,17 @@ angular.module('sos-redacao').controller('CreateEssayController', function($stat
 
 	$scope.addEssay = function(essay){
 		EssayFactory.addEssay(essay).then(function(result){
-            console.log(result);
+
         }).catch(function(result){
             console.log("Error");
     	});
+	}
+
+	$scope.downloadEssayModel = function(){
+		EssayFactory.downloadEssayModel().then(function(result){
+						
+				}).catch(function(result){
+						console.log("Error");
+			});
 	}
 });

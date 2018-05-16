@@ -20,6 +20,11 @@ angular.module('sos-redacao').factory('EssayFactory', function ($window, $http, 
 
         deleteEssay: function (id) {
             return $http.delete(consts.api_url + '/essay' + id);
+        },
+
+        downloadEssayModel: function() {
+           //window.open(consts.api_url + '/util');
+           return $http.get(consts.api_url + '/util');
         }
 
     }

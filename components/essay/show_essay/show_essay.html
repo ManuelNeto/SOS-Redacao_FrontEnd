@@ -6,14 +6,13 @@
     <form name="esssayForm">
       <div layout="row">
         <md-input-container flex="50">
-          <h5>Tema</h5>
+          <h5> Tema </h5>
           <md-select name="type" ng-model="essay.theme" required disabled>
               <md-option ng-value="theme" ng-repeat="theme in themes">{{ theme }}</md-option>
           </md-select>
         </md-input-container>
-
         <md-input-container flex="50">
-          <h5>Tipo de redação</h5>
+          <h5> Tipo de redação </h5>
           <md-select name="type" ng-model="essay.type" required disabled>
             <md-option value="Enem">Enem</md-option>
             <md-option value="Vestibular">Vestibular</md-option>
@@ -22,13 +21,14 @@
         </md-input-container>
       </div>
 
-      <md-input-container class="md-block" style="text-align: center">
-        <h5>Título</h5>
-        <input type="text" name="clientEmail" ng-model="essay.title" disabled>
+      <md-input-container class="md-block" required disabled>
+        <h5> Status </h5>
+        <input type="text" name="status" ng-model="essay.status" disabled>
       </md-input-container>
 
       <div style="text-align: center" ng-show="enable && essay.type == 'Enem'">
         <md-button type="submit" class="md-raised md-primary" ng-click=showAbilitys($event)> Visualizar Habilidades  </md-button>
+        <md-button ng-if="essay._id"class="md-raised md-primary" ng-click="toggleSidenav()"> Visualizar Comentários </md-button>
         <table style="width:100%">
           <tr>
             <th>Competência 1</th>
@@ -50,13 +50,12 @@
       </div>
 
       <md-input-container class="md-block" style="text-align: center">
+        <h5>Título</h5>
+        <input type="text" name="title" ng-model="essay.title" disabled>
+      </md-input-container>
+      <md-input-container class="md-block" style="text-align: center">
         <textarea type="text" id="text" name="text" ng-model="essay.text" cols="10" rows="20" required disabled></textarea>
       </md-input-container>
-
-      <div style="text-align: right">
-        <md-button ng-if="essay._id"class="md-raised md-primary" ng-click="toggleSidenav()"> Visualizar Comentários </md-button>
-      </div>
-
     </form>
   </md-content>
 
