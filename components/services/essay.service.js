@@ -1,4 +1,4 @@
-angular.module('sos-redacao').factory('EssayFactory', function ($window, $http, $state, consts) {
+angular.module('sos-redacao').factory('EssayFactory', function ($window, $http, $state, consts, authentication) {
 
     return {
 
@@ -15,7 +15,7 @@ angular.module('sos-redacao').factory('EssayFactory', function ($window, $http, 
         },
 
         addEssay: function (essay) {
-            return $http.post(consts.api_url + '/essay', Object.assign(essay, {user: '5ae0eb4289bc014d66bd83ad'}));
+            return $http.post(consts.api_url + '/essay', Object.assign(essay, {user: authentication.currentUser().id}));
         },
 
         deleteEssay: function (id) {

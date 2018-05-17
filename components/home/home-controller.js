@@ -3,5 +3,5 @@ angular.module('sos-redacao').controller('HomeController', function($scope, $loc
 	var self = this;
 
 	self.title = 'Home';
-
+	console.log(authentication.currentUser());
 });
