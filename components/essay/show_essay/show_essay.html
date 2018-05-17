@@ -57,12 +57,15 @@
                     <input type="text" name="title" ng-model="essay.title" disabled>
                 </md-input-container>
                 <md-input-container class="md-block" style="text-align: center">
-                    <textarea type="text" id="text" name="text" ng-model="essay.text" cols="10" rows="20" required disabled></textarea>
+                    <textarea ng-show="!essay.essayImage" type="text" id="text" name="text" ng-model="essay.text" cols="10" rows="20" required disabled></textarea>
+
                 </md-input-container>
             </form>
+            <img style="width: 100%" ng-show="essay.essayImage" src="{{essay.essayImage}}">
         </md-content>
-
     </div>
+
+
 
     <!-- ==== RIGHT_BAR ==== -->
     <md-sidenav class="md-sidenav-right" md-component-id="closeEventsDisabled" md-whiteframe="4" md-disable-close-events>

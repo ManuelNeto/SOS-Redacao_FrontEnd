@@ -1,4 +1,4 @@
-let app = angular.module('sos-redacao', ['ngMaterial','ui.router','ngMessages']);
+let app = angular.module('sos-redacao', ['ngMaterial','ui.router','ngMessages', 'ngFileUpload']);
 
 app.run(function ($rootScope, $state, $transitions) {
 
