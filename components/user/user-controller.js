@@ -44,6 +44,7 @@ angular.module('sos-redacao').controller('UserController', function ($scope, Use
 
     $mdDialog.show(confirm).then(function() {
       $scope.editarUsuario($scope.profile);
+      $scope.setEnable();
     }, function() {
        $state.go('user');
     });
@@ -54,10 +55,4 @@ angular.module('sos-redacao').controller('UserController', function ($scope, Use
     }
 
     init();
-
-
-
-
-
-
 });

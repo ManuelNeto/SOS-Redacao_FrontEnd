@@ -1,0 +1,18 @@
+ <md-sidenav class="md-sidenav" role="sidenav" md-component-id="sidenav" md-is-locked-open="$mdMedia('gt-md')" md-swipe-left="toggleSidenav('sidenav')">
+      <md-content role="navigation">
+          <md-card>
+              <p flex-offset="40"> {{ profile.userName }} </p>
+          </md-card>
+          <md-list ng-show="profile.userKind == 'Redator'" ng-repeat="action in data.sidenav.redator_actions">
+              <md-icon> {{action.icon}} </md-icon>
+              <md-button class="md-primary" ng-click="setRoute(action.link)"> {{action.name}} </md-button>
+              <md-divider></md-divider>
+          </md-list>
+
+          <md-list ng-show="profile.userKind == 'Corretor'" ng-repeat="action in data.sidenav.corretor_actions">
+              <md-icon> {{action.icon}} </md-icon>
+              <md-button class="md-primary" ng-click="setRoute(action.link)"> {{action.name}} </md-button>
+              <md-divider></md-divider>
+          </md-list>
+      </md-content>
+  </md-sidenav>

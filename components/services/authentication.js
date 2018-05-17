@@ -50,12 +50,16 @@
                 payload = $window.atob(payload);
                 payload = JSON.parse(payload);
                 return {
-                    email : payload.email,
-                    name : payload.name,
-                    userName : payload.userName,
+                    id: payload.id,
+                    name: payload.name,
+                    userName: payload.userName,
+                    gender: payload.gender,
+                    birthdate: payload.birthdate,
+                    school: payload.school,
+                    degreeOfSchooling: payload.degreeOfSchooling,
                     userKind: payload.userKind,
-                    token: payload.token,
-                    userId: payload.id
+                    correctorKind: payload.correctorKind,
+                    email: payload.email
                 };
             }
         };

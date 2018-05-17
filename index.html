@@ -47,6 +47,7 @@
         <script src="node_modules/angular-aria/angular-aria.js"></script>
         <script src="node_modules/angular-messages/angular-messages.js"></script>
         <script src="node_modules/angular-sanitize/angular-sanitize.js"></script>
+		<script src="node_modules/ng-file-upload/dist/ng-file-upload.min.js"></script>
 
 		<!-- app script -->
 		<script src="/config/app.js"></script>
@@ -55,9 +56,13 @@
 		<!-- controllers -->
 		<script src="/components/home/home-controller.js"></script>
 		<script src="/components/essay/create_essay/create_essay.controller.js"></script>
+		<script src="/components/essay/show_essay/show_essay.controller.js"></script>
+		<script src="/components/essay/list_essays/list_essays.controller.js"></script>
 		<script src="/components/login/login-controller.js"></script>
 		<script src="/components/register/register-controller.js"></script>
 		<script src="/components/user/user-controller.js"></script>
+		<script src="/components/sidenav/sidenav.controller.js"></script>
+
 
 		<!-- services -->
 		<script src="/components/services/essay.service.js"></script>
@@ -65,7 +70,15 @@
 		<script src="/components/services/authentication.js"></script>
 		<script src="/components/services/register.service.js"></script>
 		<script src="/components/services/user.service.js"></script>
-		<script src="components/shared/Consts.js"></script>
+		<script src="/components/shared/Consts.js"></script>
+
+
+		<!-- Directives -->
+		<script src="/components/sidenav/sidenav.directive.js"></script>
+
+		<!-- css -->
+		<link rel="stylesheet" href="/components/sidenav/sidenav.css">
+
 
 
 		<ui-view></ui-view>

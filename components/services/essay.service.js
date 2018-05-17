@@ -7,7 +7,7 @@ angular.module('sos-redacao').factory('EssayFactory', function ($window, $http, 
         },
 
         getEssay: function (id) {
-            return $http.get(consts.api_url + '/essay' + id);
+            return $http.get(consts.api_url + '/essay/' + id);
         },
 
         editEssay: function (essay) {
@@ -15,11 +15,16 @@ angular.module('sos-redacao').factory('EssayFactory', function ($window, $http, 
         },
 
         addEssay: function (essay) {
-            return $http.post(consts.api_url + '/essay', Object.assign(essay, {user: '5ae0eb4289bc014d66bd83ad'}));
+            return $http.post(consts.api_url + '/essay', essay);
         },
 
         deleteEssay: function (id) {
             return $http.delete(consts.api_url + '/essay' + id);
+        },
+
+        downloadEssayModel: function() {
+           //window.open(consts.api_url + '/util');
+           return $http.get(consts.api_url + '/util');
         }
 
     }

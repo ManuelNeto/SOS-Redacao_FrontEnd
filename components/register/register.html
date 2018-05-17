@@ -4,60 +4,83 @@
     <div class="col-md-6">
         <md-content>
             <md-card layout-padding>
-                <div class="md-toolbar-tools blue">
-                    <h2>Cadastro</h2>
-                </div>
-                    <form>
+                <md-toolbar>
+                    <div class="md-toolbar-tools">
+                        <h2>Cadastro</h2>
+                    </div>
+                </md-toolbar>
+                    <form name="registerForm">
                         <div layout-gt-sm="row">
                             <md-input-container flex-gt-sm="">
                                 <label>Nome Completo</label>
-                                <input type="text" class="form-control" id="nome" ng-model="credentials.name">
+                                <input type="text" class="form-control" name="nome" ng-model="credentials.name" required>
+                                <div ng-messages="registerForm.nome.$error">
+                                    <div ng-message="required"> Digite seu nome! </div>
+                                </div>
                             </md-input-container>
                         </div>
 
                         <div layout-gt-sm="row">
                             <md-input-container flex-gt-sm="">
                                 <label>Username</label>
-                                <input type="text" class="form-control" id="username" ng-model="credentials.userName">
+                                <input type="text" class="form-control" name="username" ng-model="credentials.userName" required>
+                                <div ng-messages="registerForm.username.$error">
+                                    <div ng-message="required"> Digite seu username! </div>
+                                </div>
                             </md-input-container>
                             <md-input-container flex="20">
                                 <label>Sexo</label>
-                                <md-select name="sexo" ng-model="credentials.gender">
+                                <md-select name="sexo" ng-model="credentials.gender" required>
                                   <md-option value="Masculino">Masculino</md-option>
                                   <md-option value="Feminino">Feminino</md-option>
                                 </md-select>
+                                <div ng-messages="registerForm.sexo.$error">
+                                    <div ng-message="required"> Escolha seu gênero! </div>
+                                </div>
                             </md-input-container>
                         </div>
 
                         <div layout-gt-sm="row">
                             <md-input-container flex-gt-sm="">
                                 <label>Data de Nascimento</label>
-                                <input type="date" id="dtn" ng-model="credentials.birthdate">
+                                <input type="date" name="dtn" ng-model="credentials.birthdate" required>
+                                <div ng-messages="registerForm.dtn.$error">
+                                    <div ng-message="required"> Insira a sua data de nascimento! </div>
+                                </div>
                             </md-input-container>
 
                             <md-input-container flex-gt-sm="">
                                 <label>Escola</label>
-                                <input type="text" id="escola" ng-model="credentials.school">
+                                <input type="text" name="escola" ng-model="credentials.school" required>
+                                <div ng-messages="registerForm.escola.$error">
+                                    <div ng-message="required"> Digite o nome da sua escola! </div>
+                                </div>
                             </md-input-container>
                         </div>
 
                         <div layout-gt-sm="row">
                             <md-input-container flex-gt-sm="">
                                 <label>Grau de Escolaridade</label>
-                                <md-select name="grauDeEscolaridade" ng-model="credentials.degreeOfSchooling">
+                                <md-select name="grauDeEscolaridade" ng-model="credentials.degreeOfSchooling" required>
                                   <md-option value="Fundamental">Fundamental</md-option>
                                   <md-option value="Médio">Médio</md-option>
                                   <md-option value="Superior">Superior</md-option>
                                   <md-option value="Pós-graduação">Pós-graduação</md-option>
                                 </md-select>
+                                <div ng-messages="registerForm.grauDeEscolaridade.$error">
+                                    <div ng-message="required"> Escolha seu grau de escolaridade! </div>
+                                </div>
                             </md-input-container>
 
                             <md-input-container flex-gt-sm="">
                                 <label>Tipo de Usuário</label>
-                                <md-select name="tipoDeUsuario" ng-model="credentials.userKind">
+                                <md-select name="tipoDeUsuario" ng-model="credentials.userKind" required>
                                   <md-option value="Redator">Redator</md-option>
                                   <md-option value="Corretor">Corretor</md-option>
                                 </md-select>
+                                <div ng-messages="registerForm.tipoDeUsuario.$error">
+                                    <div ng-message="required"> Escolha o tipo de usuário! </div>
+                                </div>
                             </md-input-container>
                         </div>
 
@@ -69,13 +92,19 @@
                                    <md-option value="Vestibular">Vestibular</md-option>
                                    <md-option value="Concurso">Concurso</md-option>
                                 </md-select>
+                                <div ng-messages="registerForm.type.$error">
+                                    <div ng-message="required"> Escolha o tipo de corretor! </div>
+                                </div>
                             </md-input-container>
                         </div>
 
                         <div layout-gt-sm="row">
                             <md-input-container flex-gt-sm="">
                                 <label>Email</label>
-                                <input type="email" id="email" ng-model="credentials.email">
+                                <input type="email" name="email" ng-model="credentials.email" required>
+                                <div ng-messages="registerForm.email.$error">
+                                    <div ng-message="required"> Digite o seu email! </div>
+                                </div>
                             </md-input-container>
 
                         </div>
@@ -83,18 +112,21 @@
                         <div layout-gt-sm="row">
                             <md-input-container flex-gt-sm="">
                                 <label>Senha</label>
-                                <input type="password" id="senha" ng-model="credentials.password">
+                                <input type="password" name="senha" ng-model="credentials.password" required>
+                                <div ng-messages="registerForm.senha.$error">
+                                    <div ng-message="required"> Digite sua senha! </div>
+                                </div>
                             </md-input-container>
 
                             <md-input-container flex-gt-sm="">
                                 <label>Confirmar Senha</label>
-                                <input type="password" id="confirmar_senha">
+                                <input type="password" id="confirmar_senha" ng-model="confirm_password" ng-pattern="credentials.password">
                             </md-input-container>
 
                         </div>
 
-                        <div layout-gt-sm="row" style="text-align: left">
-                            <md-button class="md-primary" value="cancelar"> <a href ng-click="goLogin()">Cancelar</a></md-button>
+                        <div class="md-block" flex-gt-xs style="text-align: right">
+                            <a class="md-primary" value="cancelar"> <a href ng-click="goLogin()">Cancelar</a></a>
                             <md-button type="submit" value="confirmar" class="md-raised md-primary" ng-click="cadastrarUsuario(credentials)"> Confirmar </md-button>
                         </div>
                     </form>
