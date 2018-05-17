@@ -3,6 +3,8 @@ angular.module('sos-redacao').controller('LoginController', function($scope, $lo
 
     var myScope = $scope;
 
+    $scope.$parent.disableToolbar = true;
+
     myScope.credentials = {
         email : "",
         password : ""

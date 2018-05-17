@@ -3,6 +3,9 @@ angular.module('sos-redacao').controller('ListEssaysController', function($state
 
   $scope.essays = [];
 
+    $scope.$parent.title = "Minhas Redações";
+
+
   getEssays = function(){
     EssayFactory.getEssays().then(function(result){
             $scope.essays = result.data.data;

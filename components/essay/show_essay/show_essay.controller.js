@@ -8,6 +8,8 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
 
 	$scope.customFullscreen = false;
 
+	$scope.$parent.title = "Visualizar Redação";
+
 
 	getEssay = function(id){
 		EssayFactory.getEssay(id).then(function(result){
