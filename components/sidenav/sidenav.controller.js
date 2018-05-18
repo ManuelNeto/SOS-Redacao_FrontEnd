@@ -80,25 +80,25 @@ angular.module('sos-redacao').controller('sidenavController', function($scope, $
 
                     {
                         name: 'Redações Corrigidas',
-                        icon: '',
+                        icon: 'done',
                         link: ''
                     },
 
                     {
                         name: 'Propor Tema',
-                        icon: '',
+                        icon: 'chat',
                         link: ''
                     },
 
                     {
                         name: 'Meus Temas',
-                        icon: '',
+                        icon: 'notes',
                         link: ''
                     },
 
                     {
                         name: 'Temas',
-                        icon: '',
+                        icon: 'format_align_justify',
                         link: ''
                     },
 
