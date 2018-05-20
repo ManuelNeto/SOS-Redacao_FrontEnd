@@ -31,7 +31,7 @@
 
                 <div style="text-align: center" ng-show="enable && essay.type == 'Enem'">
                     <md-button type="submit" class="md-raised md-primary" ng-click=showAbilitys($event)> Visualizar Habilidades  </md-button>
-                    <md-button ng-if="essay._id"class="md-raised md-primary" ng-click="toggleSidenav()"> Visualizar Comentários </md-button>
+                    <md-button ng-if="essay._id"class="md-raised md-primary" ng-click="toggleRight()"> Visualizar Comentários </md-button>
                     <table style="width:100%">
                         <tr>
                             <th>Competência 1</th>
@@ -68,12 +68,12 @@
 
 
     <!-- ==== RIGHT_BAR ==== -->
-    <md-sidenav class="md-sidenav-right" md-component-id="closeEventsDisabled" md-whiteframe="4" md-disable-close-events>
+    <md-sidenav class="md-sidenav-right" md-component-id="right" md-whiteframe="4" md-disable-close-events>
 
         <md-toolbar class="md-theme-indigo">
             <div layout="row">
                 <h1 class="md-toolbar-tools" flex="50">Comentários</h1>
-                <i class="material-icons" ng-click="toggleSidenav()" style="text-align: right" flex="50">clear</i>
+                <i class="material-icons" ng-click="toggleRight()" style="text-align: right" flex="50">clear</i>
             </div>
         </md-toolbar>
 

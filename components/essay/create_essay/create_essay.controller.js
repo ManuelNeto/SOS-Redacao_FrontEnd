@@ -32,12 +32,11 @@ angular.module('sos-redacao').controller('CreateEssayController', function($stat
 		$scope.essayImageUrl = e.target.result;
 	};
 
-
 	$scope.downloadEssayModel = function(){
 		EssayFactory.downloadEssayModel().then(function(result){
-
+				console.log('download');
 				}).catch(function(result){
 						console.log("Error");
 			});
-	}
+	};
 });

@@ -1,8 +1,8 @@
-angular.module('sos-redacao').controller('ShowEssayController', function($state, $scope, EssayFactory, $stateParams, $mdSidenav, $mdDialog){
+angular.module('sos-redacao').controller('ShowEssayController', function($state, $scope, EssayFactory, $stateParams, $mdSidenav, $mdDialog, authentication){
 	var self = this;
 
 
-	$scope.toggleSidenav = buildToggler('closeEventsDisabled');
+	$scope.toggleRight = buildToggler('right');
 
 	$scope.essay = {};
 
@@ -19,11 +19,11 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
     	});
 	}
 
-	$scope.showComments = function(){
-		$scope.toggleSidenav('right');
-	}
+	// $scope.showComments = function(){
+	// 	$scope.toggleSidenav('right');
+	// }
 
-  function buildToggler(componentId) {
+	function buildToggler(componentId) {
       return function() {
         $mdSidenav(componentId).toggle();
       };
@@ -50,10 +50,11 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
   };
 
 	$scope.sendMessage = function(text){
-		var newMessage = {email: "manuel@ccc.cg", timestamp: dateFormat() , text: text};
+		console.log(text);
+		var newMessage = {email: $scope.currentUser.email, timestamp: dateFormat() , text: text};
 		$scope.essay.messages.push(newMessage);
-		$scope.newMessage = {};
 		EssayFactory.editEssay($scope.essay).then(function(result){
+						$scope.newMessage = {};
             console.log(result);
         }).catch(function(result){
             console.log("Error");
@@ -77,6 +78,7 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
 		if($stateParams.id){
 			$scope.enable = true;
 			getEssay($stateParams.id);
+			$scope.currentUser = authentication.currentUser();
 		}else{
 			$scope.enable = false;
 		}
