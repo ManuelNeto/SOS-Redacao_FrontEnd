@@ -23,8 +23,8 @@ angular.module('sos-redacao').factory('EssayFactory', function ($window, $http, 
         },
 
         downloadEssayModel: function() {
-           //window.open(consts.api_url + '/util');
-           return $http.get(consts.api_url + '/util');
+           window.open(consts.api_url + '/util');
+           //return $http.get(consts.api_url + '/util');
         }
 
     }

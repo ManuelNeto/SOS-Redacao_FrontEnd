@@ -33,10 +33,6 @@ angular.module('sos-redacao').controller('CreateEssayController', function($stat
 	};
 
 	$scope.downloadEssayModel = function(){
-		EssayFactory.downloadEssayModel().then(function(result){
-				console.log('download');
-				}).catch(function(result){
-						console.log("Error");
-			});
+		EssayFactory.downloadEssayModel();
 	};
 });
