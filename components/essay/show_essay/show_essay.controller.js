@@ -6,10 +6,11 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
 
 	$scope.essay = {};
 
+
+
 	$scope.customFullscreen = false;
 
 	$scope.$parent.title = "Visualizar Redação";
-
 
 	getEssay = function(id){
 		EssayFactory.getEssay(id).then(function(result){
@@ -64,6 +65,7 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
 	$scope.saveComment = function(){
 		EssayFactory.editEssay($scope.essay).then(function(result){
 						$scope.essay.comment = {};
+						$state.go('home');
             console.log(result);
         }).catch(function(result){
             console.log("Error");
@@ -80,6 +82,10 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
 		var ano = newDate.getFullYear();
 
 		return dia + ' ' + monName[mes] + ', ' + ano;
+	}
+
+	$scope.sumScores = function(){
+		$scope.essay.scores[5] = $scope.essay.scores[0] + $scope.essay.scores[1] + $scope.essay.scores[2] + $scope.essay.scores[3] + $scope.essay.scores[4];
 	}
 
 	init = function(){
