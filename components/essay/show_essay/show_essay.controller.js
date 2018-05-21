@@ -50,7 +50,6 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
   };
 
 	$scope.sendMessage = function(text){
-		console.log(text);
 		var newMessage = {email: $scope.currentUser.email, timestamp: dateFormat() , text: text};
 		$scope.essay.messages.push(newMessage);
 		EssayFactory.editEssay($scope.essay).then(function(result){
@@ -60,6 +59,15 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
             console.log("Error");
     });
 
+	}
+
+	$scope.saveComment = function(){
+		EssayFactory.editEssay($scope.essay).then(function(result){
+						$scope.essay.comment = {};
+            console.log(result);
+        }).catch(function(result){
+            console.log("Error");
+    });
 	}
 
 	dateFormat = function(){

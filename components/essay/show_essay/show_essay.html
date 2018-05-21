@@ -78,6 +78,16 @@
         </md-toolbar>
 
         <md-content layout-margin>
+
+            <md-card>
+              <md-input-container class="md-block">
+                  <label>Comentário</label>
+                  <textarea type="text" id="comment" name="comment" ng-model="essay.comment" ng-minlength="10" ng-maxlength="200"></textarea>
+              </md-input-container>
+              <div class="send-button" style="text-align: right" ng-show="!essay.comment">
+                  <md-button  class="md-raised md-primary" id="saveComment" ng-click="saveComment()"> Salvar Comentário </md-button>
+              </div>
+            </md-card>
             <div class="rightbar-itens">
                 <md-list>
                     <md-list-item class="contest md-2-line" ng-repeat="message in essay.messages">
@@ -89,23 +99,23 @@
                             <md-divider></md-divider>
                         </div>
                     </md-list-item>
-                    <md-list-item >
-                        <form name="newMessage">
-                            <div  layout="column">
-                                <div class="contest-message-internal">
-                                    <p class="small-font-medium">Escrever nova mensagem</p>
-                                    <md-input-container class="md-block" flex-gt-sm="">
-                                        <label>Insira uma mensagem</label>
-                                        <textarea ng-model="newMessage.text" id="yourid" ng-minlength="10" ng-maxlength="500" id="newMessage" name="newMessage" required></textarea>
-                                    </md-input-container>
-                                </div>
-                            </div>
-                            <div class="send-button">
-                                <md-button type="submit" class="md-raised md-primary" id="saveNewMessage" ng-click="sendMessage(newMessage.text)">ENVIAR RESPOSTA</md-button>
-                            </div>
-                        </form>
-                    </md-list-item>
                 </md-list>
+                <md-card>
+                    <form name="newMessage">
+                        <div  layout="column">
+                            <div class="contest-message-internal">
+                                <p class="small-font-medium">Escrever nova mensagem</p>
+                                <md-input-container class="md-block" flex-gt-sm="">
+                                    <label>Insira uma mensagem</label>
+                                    <textarea ng-model="newMessage.text" ng-minlength="10" ng-maxlength="500" id="newMessage" name="newMessage" required></textarea>
+                                </md-input-container>
+                            </div>
+                        </div>
+                        <div class="send-button" style="text-align: right">
+                            <md-button type="submit" class="md-raised md-primary" id="saveNewMessage" ng-click="sendMessage(newMessage.text)">ENVIAR RESPOSTA</md-button>
+                        </div>
+                    </form>
+                </md-card>
             </div>
         </md-content>
 
