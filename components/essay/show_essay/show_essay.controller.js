@@ -65,7 +65,7 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
 	$scope.saveComment = function(){
 		EssayFactory.editEssay($scope.essay).then(function(result){
 						$scope.essay.comment = {};
-						$state.go('home');
+						$state.go('list_essays');
             console.log(result);
         }).catch(function(result){
             console.log("Error");

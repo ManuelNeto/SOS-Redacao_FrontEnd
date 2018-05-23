@@ -80,7 +80,7 @@
             <md-card>
               <md-input-container class="md-block" >
                   <label>Comentário</label>
-                  <textarea type="text" id="comment" ng-disabled="essay.comment" name="comment" ng-model="essay.comment" ng-minlength="10" ng-maxlength="200"></textarea>
+                  <textarea type="text" id="comment" ng-disabled="essay.comment && currentUser.userKind == 'Redator'" name="comment" ng-model="essay.comment" ng-minlength="10" ng-maxlength="200"></textarea>
               </md-input-container>
               <div class="send-button" style="text-align: right" ng-show="!essay.comment && currentUser.userKind == 'Corretor'">
                   <md-button  class="md-raised md-primary" id="saveComment" ng-click="saveComment()"> Salvar Comentário </md-button>
