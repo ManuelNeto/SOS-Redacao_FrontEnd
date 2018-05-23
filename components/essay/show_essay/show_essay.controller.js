@@ -36,7 +36,7 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
                     $mdDialog.hide();
                 }
       }],
-      templateUrl: '/abilitys/abilitys.html',
+      templateUrl: '/components/essay/abilitys/abilitys.html',
       parent: angular.element(document.body),
       targetEvent: ev,
       clickOutsideToClose:true,
