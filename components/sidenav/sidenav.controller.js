@@ -37,7 +37,7 @@ angular.module('sos-redacao').controller('sidenavController', function($scope, $
                     {
                         name: 'Minhas Redações',
                         icon: 'description',
-                        link: 'list_essays'
+                        link: 'list_my_essays'
                     },
 
                     {
@@ -75,7 +75,7 @@ angular.module('sos-redacao').controller('sidenavController', function($scope, $
                     {
                         name: 'Corrigir Redação',
                         icon: 'create',
-                        link: ''
+                        link: 'list_essays'
                     },
 
                     {

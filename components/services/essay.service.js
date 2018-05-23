@@ -14,6 +14,10 @@ angular.module('sos-redacao').factory('EssayFactory', function ($window, $http, 
             return $http.put(consts.api_url + '/essay', essay);
         },
 
+        essaysToCorect: function () {
+            return $http.get(consts.api_url + '/essay/' + 'toCorect');
+        },
+
         addEssay: function (essay) {
             return $http.post(consts.api_url + '/essay', essay);
         },

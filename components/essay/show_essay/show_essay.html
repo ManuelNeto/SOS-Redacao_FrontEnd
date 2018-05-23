@@ -2,15 +2,12 @@
     <sidenav></sidenav>
 
     <div layout="column" ng-cloak>
-
         <md-content layout-padding>
-            <h3>Minha redação</h3>
-
             <form name="esssayForm">
                 <div layout="row">
                     <md-input-container flex="50">
                         <h5> Tema </h5>
-                        <md-select name="type" ng-model="essay.theme" required disabled>
+                        <md-select name="theme" ng-model="essay.theme" required disabled>
                             <md-option ng-value="theme" ng-repeat="theme in themes">{{ theme }}</md-option>
                         </md-select>
                     </md-input-container>
@@ -29,8 +26,9 @@
                     <input type="text" name="status" ng-model="essay.status" disabled>
                 </md-input-container>
 
+                <!-- ENEM -->
                 <div style="text-align: center" ng-show="enable && essay.type == 'Enem'">
-                    <md-button type="submit" class="md-raised md-primary" ng-click=showAbilitys($event)> Visualizar Habilidades  </md-button>
+                    <md-button type="submit" ng-show="currentUser.userKind === 'Redator'" class="md-raised md-primary" ng-click=showAbilitys($event)> Visualizar Habilidades  </md-button>
                     <md-button ng-if="essay._id"class="md-raised md-primary" ng-click="toggleRight()"> Visualizar Comentários </md-button>
                     <table style="width:100%">
                         <tr>
@@ -42,15 +40,17 @@
                             <th>Nota</th>
                         </tr>
                         <tr>
-                            <td><input type="number" name="competencia1" ng-model="essay.scores[0]" ng-disabled="enable"></td>
-                            <td><input type="number" name="competencia1" ng-model="essay.scores[1]" ng-disabled="enable"></td>
-                            <td><input type="number" name="competencia1" ng-model="essay.scores[2]" ng-disabled="enable"></td>
-                            <td><input type="number" name="competencia1" ng-model="essay.scores[3]" ng-disabled="enable"></td>
-                            <td><input type="number" name="competencia1" ng-model="essay.scores[4]" ng-disabled="enable"></td>
-                            <td><input type="number" name="competencia1" ng-model="essay.scores[5]" ng-disabled="enable"></td>
+                            <td><input type="number" min="0" max="200" name="competencia1" ng-model="essay.scores[0]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                            <td><input type="number" min="0" max="200" name="competencia1" ng-model="essay.scores[1]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                            <td><input type="number" min="0" max="200" name="competencia1" ng-model="essay.scores[2]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                            <td><input type="number" min="0" max="200" name="competencia1" ng-model="essay.scores[3]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                            <td><input type="number" min="0" max="200" name="competencia1" ng-model="essay.scores[4]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                            <td><input type="number" min="0" max="1000" name="competencia1" ng-model="essay.scores[5]" disabled required></td>
                         </tr>
                     </table>
                 </div>
+
+                <!--Enem-->
 
                 <md-input-container class="md-block" style="text-align: center">
                     <h5>Título</h5>
@@ -58,7 +58,6 @@
                 </md-input-container>
                 <md-input-container class="md-block" style="text-align: center">
                     <textarea ng-show="!essay.essayImage" type="text" id="text" name="text" ng-model="essay.text" cols="10" rows="20" required disabled></textarea>
-
                 </md-input-container>
             </form>
             <img style="width: 100%" ng-show="essay.essayImage" src="{{essay.essayImage}}">
@@ -78,7 +77,16 @@
         </md-toolbar>
 
         <md-content layout-margin>
-            <div class="rightbar-itens">
+            <md-card>
+              <md-input-container class="md-block" >
+                  <label>Comentário</label>
+                  <textarea type="text" id="comment" ng-disabled="essay.comment && currentUser.userKind == 'Redator'" name="comment" ng-model="essay.comment" ng-minlength="10" ng-maxlength="200"></textarea>
+              </md-input-container>
+              <div class="send-button" style="text-align: right" ng-show="currentUser.userKind == 'Corretor'">
+                  <md-button  class="md-raised md-primary" id="saveComment" ng-click="saveComment()"> Salvar Comentário </md-button>
+              </div>
+            </md-card>
+            <div class="rightbar-itens" ng-disabled="!essay.comment">
                 <md-list>
                     <md-list-item class="contest md-2-line" ng-repeat="message in essay.messages">
                         <!-- <img ng-src="{{getImage('/user/image/' + message.email)}}" class="md-avatar" alt=""> -->
@@ -89,24 +97,24 @@
                             <md-divider></md-divider>
                         </div>
                     </md-list-item>
-                    <md-list-item >
-                        <form name="newMessage">
-                            <div  layout="column">
-                                <div class="contest-message-internal">
-                                    <p class="small-font-medium">Escrever nova mensagem</p>
-                                    <md-input-container class="md-block" flex-gt-sm="">
-                                        <label>Insira uma mensagem</label>
-                                        <textarea ng-model="newMessage.text" id="yourid" ng-minlength="10" ng-maxlength="500" id="newMessage" name="newMessage" required></textarea>
-                                    </md-input-container>
-                                </div>
-                            </div>
-                            <div class="send-button">
-                                <md-button type="submit" class="md-raised md-primary" id="saveNewMessage" ng-click="sendMessage(newMessage.text)">ENVIAR RESPOSTA</md-button>
-                            </div>
-                        </form>
-                    </md-list-item>
                 </md-list>
             </div>
+            <md-card ng-disabled="!essay.comment">
+                <form name="newMessage">
+                    <div  layout="column">
+                        <div class="contest-message-internal">
+                            <p class="small-font-medium">Escrever nova mensagem</p>
+                            <md-input-container class="md-block" flex-gt-sm="">
+                                <label>Insira uma mensagem</label>
+                                <textarea ng-model="newMessage.text" ng-minlength="10" ng-maxlength="500" id="newMessage" name="newMessage" required></textarea>
+                            </md-input-container>
+                        </div>
+                    </div>
+                    <div class="send-button" style="text-align: right">
+                        <md-button type="submit" class="md-raised md-primary" id="saveNewMessage" ng-click="sendMessage(newMessage.text)">ENVIAR RESPOSTA</md-button>
+                    </div>
+                </form>
+            </md-card>
         </md-content>
 
     </md-sidenav>
