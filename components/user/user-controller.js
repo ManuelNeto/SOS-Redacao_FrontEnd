@@ -1,4 +1,4 @@
-angular.module('sos-redacao').controller('UserController', function ($scope, UserService, authentication, $mdDialog) {
+angular.module('sos-redacao').controller('UserController', function ($scope, UserService, authentication, $mdDialog, toastService) {
     var self = this;
 
     self.title = "Perfil";
@@ -46,6 +46,7 @@ angular.module('sos-redacao').controller('UserController', function ($scope, Use
     $mdDialog.show(confirm).then(function() {
       $scope.editarUsuario($scope.profile);
       $scope.setEnable();
+        toastService.showMessage('Perfil atualizado!');
     }, function() {
        $state.go('user');
     });
