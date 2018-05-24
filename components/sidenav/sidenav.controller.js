@@ -81,7 +81,7 @@ angular.module('sos-redacao').controller('sidenavController', function($scope, $
                     {
                         name: 'Redações Corrigidas',
                         icon: 'done',
-                        link: ''
+                        link: 'list_my_essays'
                     },
 
                     {
