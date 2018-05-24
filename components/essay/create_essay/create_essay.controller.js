@@ -9,7 +9,7 @@ angular.module('sos-redacao').controller('CreateEssayController', function($stat
 		essay.essayImage = $scope.essayImageUrl;
 		var concatEssay = Object.assign(essay, {user: authentication.currentUser().id});
 		EssayFactory.addEssay(concatEssay).then(function(result){
-				$state.go('list_essays');
+				$state.go('list_my_essays');
         }).catch(function(result){
             console.log("Error");
     	});

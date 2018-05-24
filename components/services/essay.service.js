@@ -6,6 +6,10 @@ angular.module('sos-redacao').factory('EssayFactory', function ($window, $http, 
             return $http.get(consts.api_url + '/essay');
         },
 
+        getMyEssays: function (id) {
+            return $http.get(consts.api_url + '/essay/' + 'myEssays/' + id);
+        },
+
         getEssay: function (id) {
             return $http.get(consts.api_url + '/essay/' + id);
         },

@@ -1,12 +1,12 @@
-angular.module('sos-redacao').controller('ListEssaysController', function($state, $scope, EssayFactory){
+angular.module('sos-redacao').controller('ListMyEssaysController', function($state, $scope, EssayFactory){
 
 
   $scope.essays = [];
-  $scope.$parent.title = "Redações disponíveis";
+  $scope.$parent.title = "Minhas Redações";
 
 
   getEssays = function(){
-    EssayFactory.getEssays().then(function(result){
+    EssayFactory.getMyEssays(authentication.currentUser().id).then(function(result){
             $scope.essays = result.data.data;
         }).catch(function(result){
             console.log("Error");
