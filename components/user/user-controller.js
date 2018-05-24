@@ -31,6 +31,7 @@ angular.module('sos-redacao').controller('UserController', function ($scope, Use
     $scope.getUsuario = function(){
        UserService.getUser(authentication.currentUser().userId).then(function(response){
           $scope.profile = response.data.data;
+          $scope.profile.birthdate = new Date(response.data.data.birthdate);
        });
     };
 
