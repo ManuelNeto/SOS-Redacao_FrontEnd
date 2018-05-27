@@ -4,7 +4,7 @@
     <md-content layout-padding>
       <md-list>
           <md-list-item class="small-font-medium topic" >
-            <div flex="25">
+            <div flex="85">
               <p class="title"><strong> Materiais </strong></p>
             </div>
           </md-list-item>
@@ -12,7 +12,7 @@
           <md-divider></md-divider>
           <br>
           <md-list-item class="base-font-regular" ng-repeat="studyMaterial in StudyMaterials " layout="row" layout-wrap>
-                <div flex="25">
+                <div flex="85">
                   <p class="title">{{studyMaterial.name}}</p>
                 </div>
                 <md-button class="md-raised md-primary" ng-click="downloadStudyMaterial(studyMaterial.fileName)"> Download </md-button>
