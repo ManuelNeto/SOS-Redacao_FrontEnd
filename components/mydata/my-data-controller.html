@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+
+	<body>
+    <form name="formulario" id="formulario" method="post" action="">
+  <input name="botao" type="image" src="imagem.gif" width="100" height="20">
+    </form>
+		<div class="panel-body">
+			<form class="navbar-form navbar-left" action="{{ url_for('cadastro') }}" method="POST">
+				<table>
+						<tr>
+							<td>Nome Completo</td>
+							<td><input type="text" class="form-control" name="nome"></td>
+						</tr>
+						<tr>
+							<td>USERNAME</td>
+							<td><input type="text" class="form-control" name="username"></td>
+						</tr>
+						<tr>
+							<td>Sexo</td>
+							<td><input type="text" class="form-control" name="sexo"></td>
+						</tr>
+						<tr>
+							<td>Data de Nascimento</td>
+							<td><input type="text" class="form-control" name="data_nascimento"></td>
+						</tr>
+						<tr>
+							<td>Tipo de Usuário</td>
+							<td><input type="text" class="form-control" name="tipo_usuario"></td>
+						</tr>
+						<tr>
+							<td>Grau de Escolaridade</td>
+							<td><input type="text" class="form-control" name="grau"></td>
+						</tr>
+						<tr>
+							<td>Tipo Corretor</td>
+							<td><input type="text" class="form-control" name="tipo_corretor"></td>
+						</tr>
+						<tr>
+							<td>Email</td>
+							<td><input type="text" class="form-control" name="email"></td>
+						</tr>
+						<tr>
+							<td>Senha</td>
+							<td><input type="text" class="form-control" name="seha"></td>
+						</tr>
+            <tr>
+              <td>Confirmar Senha</td>
+              <td><input type="text" class="form-control" name="confirmar_senha"></td>
+            </tr>
+					</table><br>
+					<input type="submit" class="btn btn-primary btn-lg" value="Salvar"/>
+					<a href="{{ url_for('home') }}" ><input type="button" class="btn btn-primary btn-lg" value="Voltar"></a>
+			</form>
+		</div>
+	</body>
+</html>
