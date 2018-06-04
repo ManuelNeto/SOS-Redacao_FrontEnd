@@ -47,9 +47,9 @@ angular.module('sos-redacao').controller('sidenavController', function($scope, $
                     },
 
                     {
-                        name: 'Material de Apoio',
+                        name: 'Material de Estudo',
                         icon: 'folder',
-                        link: 'support-material'
+                        link: 'study_materials'
                     },
 
                     {
