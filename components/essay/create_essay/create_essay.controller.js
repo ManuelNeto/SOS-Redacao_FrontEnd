@@ -1,4 +1,4 @@
-angular.module('sos-redacao').controller('CreateEssayController', function($state, $scope, EssayFactory, $stateParams, $mdSidenav, $mdDialog, authentication){
+angular.module('sos-redacao').controller('CreateEssayController', function($state, $scope, EssayFactory, $stateParams, $mdSidenav, $mdDialog, authentication, toastService){
 
 	$scope.themes = ['Tema 1', 'Tema 2', 'Tema 3', 'Tema 4', 'Tema 5', 'Tema 6'];
 	$scope.essay = {};
@@ -11,7 +11,7 @@ angular.module('sos-redacao').controller('CreateEssayController', function($stat
 		EssayFactory.addEssay(concatEssay).then(function(result){
 				$state.go('list_my_essays');
         }).catch(function(result){
-            console.log("Error");
+			toastService.showMessage(result.data.message);
     	});
 	}
 

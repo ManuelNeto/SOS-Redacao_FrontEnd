@@ -1,5 +1,5 @@
 
-angular.module('sos-redacao').controller('LoginController', function($scope, $location, authentication, $state) {
+angular.module('sos-redacao').controller('LoginController', function($scope, $location, authentication, $state, toastService) {
 
     var myScope = $scope;
 
@@ -18,7 +18,7 @@ angular.module('sos-redacao').controller('LoginController', function($scope, $lo
                 $state.go('home');
                 console.log(authentication.getToken());
             }, function(error){
-                alert(error.data.message);
+                toastService.showMessage('Email e/ou senha incorretos!');
             });
     };
 

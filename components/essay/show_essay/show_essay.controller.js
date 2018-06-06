@@ -1,4 +1,4 @@
-angular.module('sos-redacao').controller('ShowEssayController', function($state, $scope, EssayFactory, $stateParams, $mdSidenav, $mdDialog, authentication){
+angular.module('sos-redacao').controller('ShowEssayController', function($state, $scope, EssayFactory, $stateParams, $mdSidenav, $mdDialog, authentication, toastService){
 	var self = this;
 
 
@@ -18,7 +18,7 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
 		EssayFactory.getEssay(id).then(function(result){
             $scope.essay = result.data.data;
         }).catch(function(result){
-            console.log("Error");
+			toastService(result.data.message);
     	});
 	}
 
@@ -59,7 +59,7 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
 						$scope.newMessage = {};
             console.log(result);
         }).catch(function(result){
-            console.log("Error");
+			toastService(result.data.message);
     });
 
 	}
@@ -72,7 +72,7 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
 						$state.go('list_essays');
             console.log(result);
         }).catch(function(result){
-            console.log("Error");
+			toastService(result.data.message);
     });
 	}
 
