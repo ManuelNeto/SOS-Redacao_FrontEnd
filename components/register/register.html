@@ -11,6 +11,12 @@
                 </md-toolbar>
                     <form name="registerForm">
                         <div layout-gt-sm="row">
+                            <md-button class="button md-raised md-primary" ngf-select ng-model="profilePhoto" name="file" ngf-pattern="'image/*'"
+                                       ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"
+                                       ngf-resize="{width: 100, height: 100}"> Adicionar foto </md-button>
+                        </div>
+                        <img style="width: 40%, height:40%" src="{{profilePhotoUrl}}" ng-show="profilePhoto">
+                        <div layout-gt-sm="row">
                             <md-input-container flex-gt-sm="">
                                 <label>Nome Completo</label>
                                 <input type="text" class="form-control" name="nome" ng-model="credentials.name" required>

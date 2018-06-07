@@ -1,4 +1,4 @@
-angular.module('sos-redacao').controller('ListMyEssaysController', function($state, $scope, EssayFactory){
+angular.module('sos-redacao').controller('ListMyEssaysController', function($state, $scope, EssayFactory, toastService){
 
 
   $scope.essays = [];
@@ -9,7 +9,7 @@ angular.module('sos-redacao').controller('ListMyEssaysController', function($sta
     EssayFactory.getMyEssays(authentication.currentUser().id).then(function(result){
             $scope.essays = result.data.data;
         }).catch(function(result){
-            console.log("Error");
+        toastService.showMessage(result.data.message);
     });
 	}
 

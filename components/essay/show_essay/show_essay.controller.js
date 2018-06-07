@@ -1,4 +1,4 @@
-angular.module('sos-redacao').controller('ShowEssayController', function($state, $scope, EssayFactory, $stateParams, $mdSidenav, $mdDialog, authentication){
+angular.module('sos-redacao').controller('ShowEssayController', function($state, $scope, EssayFactory, $stateParams, $mdSidenav, $mdDialog, authentication, toastService, UserService){
 	var self = this;
 
 
@@ -6,8 +6,8 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
 
 	$scope.essay = {};
 
+	$scope.newMessage = '';
 	$scope.themes = ['Tema 1', 'Tema 2', 'Tema 3', 'Tema 4', 'Tema 5', 'Tema 6'];
-
 
 
 	$scope.customFullscreen = false;
@@ -17,8 +17,9 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
 	getEssay = function(id){
 		EssayFactory.getEssay(id).then(function(result){
             $scope.essay = result.data.data;
+			console.log($scope.essay);
         }).catch(function(result){
-            console.log("Error");
+			toastService.showMessage(result.data.message);
     	});
 	}
 
@@ -53,13 +54,12 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
   };
 
 	$scope.sendMessage = function(text){
-		var newMessage = {email: $scope.currentUser.email, timestamp: dateFormat() , text: text};
+		var newMessage = {email: $scope.currentUser.email, timestamp: dateFormat() , text: text, photo: $scope.currentUser.photo};
 		$scope.essay.messages.push(newMessage);
 		EssayFactory.editEssay($scope.essay).then(function(result){
-						$scope.newMessage = {};
-            console.log(result);
+						$scope.essayMessage = "";
         }).catch(function(result){
-            console.log("Error");
+			toastService.showMessage(result.data.message);
     });
 
 	}
@@ -72,7 +72,7 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
 						$state.go('list_essays');
             console.log(result);
         }).catch(function(result){
-            console.log("Error");
+			toastService.showMessage(result.data.message);
     });
 	}
 
@@ -96,7 +96,9 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
 		if($stateParams.id){
 			$scope.enable = true;
 			getEssay($stateParams.id);
-			$scope.currentUser = authentication.currentUser();
+			UserService.getUser(authentication.currentUser().userId).then(function(response){
+				$scope.currentUser = response.data.data;
+			});
 		}else{
 			$scope.enable = false;
 		}

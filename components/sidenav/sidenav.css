@@ -33,10 +33,11 @@
       text-align: center;
 }
 
-.virtus-badge{
-      align-content: center;
-      width: 25px;
-      height: 25px;
-      border-radius: 50%;
-      background-color: #212121;
-      color: #FFFFFF;
+.virtus-badge {
+    align-content: center;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #212121;
+    color: #FFFFFF;
+}
