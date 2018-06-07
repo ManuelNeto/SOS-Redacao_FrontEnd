@@ -9,8 +9,15 @@
                          <i class="material-icons" ng-click="setEnable()">create</i>
                       </div>
                         <div layout-gt-sm="row" layout-align="center">
-                            <img style="width: 40%, height:40%" src="{{profile.photo}}">
+                            <img style="width: 10%; height:10%" src="{{newImage ? newImage : profile.photo}}">
+
                         </div>
+                        <div layout-gt-sm="row" layout-align="center">
+                            <md-button ng-show="!enableForm" class="button md-raised md-primary" ngf-select ng-model="profilePhoto" name="file" ngf-pattern="'image/*'"
+                                       ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"
+                                       ngf-resize="{width: 100, height: 100}"> Alterar Imagem </md-button>
+                        </div>
+
                         <div layout-gt-sm="row">
                             <md-input-container flex-gt-sm="">
                                 <label>Nome Completo</label>

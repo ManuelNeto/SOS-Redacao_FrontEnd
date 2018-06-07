@@ -11,14 +11,33 @@ angular.module('sos-redacao').controller('UserController', function ($state, $sc
     $scope.setEnable = function(){
       console.log(!($scope.enableForm));
       $scope.enableForm = !($scope.enableForm);
+        $scope.newImage = undefined;
       $scope.editPass = false;
-    }
+    };
 
     $scope.getNewPass = function() {
       $scope.editPass = !($scope.editPass);
-    }
+    };
+
+    $scope.$watch('profilePhoto', function () {
+        $scope.imageUpload($scope.profilePhoto);
+    });
+
+    $scope.imageUpload = function (profileImage) {
+        if(!profileImage) return;
+
+        var reader = new FileReader();
+        reader.onload = $scope.imageIsLoaded;
+        reader.readAsDataURL(profileImage);
+
+    };
+
+    $scope.imageIsLoaded = function(e){
+        $scope.newImage = e.target.result;
+    };
 
     $scope.editarUsuario = function(profile){
+        profile.photo = $scope.newImage ? $scope.newImage : profile.photo;
 
         var success = function (response) {
             console.log(response);
