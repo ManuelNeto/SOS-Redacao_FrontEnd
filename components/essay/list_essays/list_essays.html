@@ -1,14 +1,14 @@
-<div class="container">
-    <div layout="row">
-        <sidenav></sidenav>
+<div layout="row">
+    <sidenav></sidenav>
+    <div class="container">
         <div layout="column" flex ng-cloak>
             <md-content layout-padding>
                 <md-list>
                     <md-list-item class="small-font-medium topic" >
-                        <div flex="35">
+                        <div flex="30">
                             <p class="title"><strong> Título </strong></p>
                         </div>
-                        <div flex="35">
+                        <div flex="30">
                             <p class="theme"><strong> Tema </strong></p>
                         </div>
                         <div flex="10">
@@ -19,10 +19,10 @@
                     <md-divider></md-divider>
                     <br>
                     <md-list-item class="base-font-regular" ng-repeat="essay in essays " layout="row" layout-wrap>
-                        <div flex="35">
+                        <div flex="30">
                             <p class="title">{{essay.title}}</p>
                         </div>
-                        <div flex="35">
+                        <div flex="30">
                             <p class="theme">{{essay.theme}}</p>
                         </div>
                         <div flex="10">

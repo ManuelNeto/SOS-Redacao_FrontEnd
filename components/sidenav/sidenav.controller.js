@@ -43,7 +43,7 @@ angular.module('sos-redacao').controller('sidenavController', function($scope, $
                     {
                         name: 'Temas',
                         icon: 'list',
-                        link: 'themes'
+                        link: 'list_themes'
                     },
 
                     {
@@ -98,7 +98,7 @@ angular.module('sos-redacao').controller('sidenavController', function($scope, $
 
                     {
                         name: 'Temas',
-                        icon: 'format_align_justify',
+                        icon: 'list',
                         link: 'list_themes'
                     },
 

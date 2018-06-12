@@ -1,6 +1,6 @@
 angular.module('sos-redacao').controller('ListThemesController', function($state, $scope, EssayFactory, toastService){
 
-    $scope.themes = []
+    $scope.themes = {};
 
     getThemes = function(){
         ThemeFactory.getThemes().then(function(result){
