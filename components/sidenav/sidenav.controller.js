@@ -87,19 +87,19 @@ angular.module('sos-redacao').controller('sidenavController', function($scope, $
                     {
                         name: 'Propor Tema',
                         icon: 'chat',
-                        link: ''
+                        link: 'create_theme'
                     },
 
                     {
                         name: 'Meus Temas',
                         icon: 'notes',
-                        link: ''
+                        link: 'list_my_themes'
                     },
 
                     {
                         name: 'Temas',
                         icon: 'format_align_justify',
-                        link: ''
+                        link: 'list_themes'
                     },
 
                     {

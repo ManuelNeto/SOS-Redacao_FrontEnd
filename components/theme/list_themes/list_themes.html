@@ -1,0 +1,41 @@
+<div class="container">
+    <div layout="row">
+        <sidenav></sidenav>
+
+        <div layout="column" flex ng-cloak>
+            <md-content layout padding>
+                <md-list>
+                    <md-list-item class="small-font-medium topic">
+                        <div flex="20">
+                            <p class="theme"><strong>Tema</strong></p>
+                        </div>
+                        <div flex="30">
+                            <p class="text"><strong> Texto Motivador 1 </strong></p>
+                        </div>
+                        <div flex="30">
+                            <p class="text"><strong> Texto Motivador 2 </strong></p>
+                        </div>
+                        <div flex="30">
+                            <p class="text"><strong> Texto Motivador 3 </strong></p>
+                        </div>
+
+                    </md-list-item>
+                    <md-divider></md-divider>
+                    <md-list-itens>
+                        <md-list-item class="base-font-regular" ng-repeat="theme in themes " layout="row" layout-wrap>
+                            <div flex="35">
+                                <p class="title">{{theme.theme}}</p>
+                            </div>
+                            <md-list-item ng-repeat="texto in theme.supporting_texts" layout="row" layout-wrap>
+                                <div flex="35">
+                                    <p class="theme">{{texto}}</p>
+                                </div>
+                            </md-list-item>
+                        </md-list-item>
+                    </md-list-itens>
+                </md-list>
+            </md-content>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+<div class="container">
+    <div layout="row">
+        <sidenav></sidenav>
+        <div layout="column" flex ng-cloak>
+            <md-content layout-padding>
+                <form name="themeForm">
+                    <div layout="row">
+                        <md-input-container class="md-block" flex>
+                            <p><strong> Tema: </strong>  </p>
+                            <input type="text" name="theme" ng-model="theme.theme">
+                        </md-input-container>
+
+                        <md-input-container class="md-block">
+                            <md-button class="button md-raised md-primary" ng-click="addTheme(theme)"> Propor Tema </md-button>
+                        </md-input-container>
+                    </div>
+
+                    <div layout="row">
+                        <md-input-container class="md-block" flex>
+                            <p><strong> Texto Motivador 1 </strong>
+                                <md-button class="button md-raised md-primary" ngf-select ng-model="supporting_text1.image" name="file" ngf-pattern="'image/*'"
+                                           ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"
+                                           ngf-resize="{width: 100, height: 100}"> Adicionar foto </md-button> </p>
+                            <textarea type="text" name="textomotivador1" cols="10" rows="10" ng-model="supporting_text1.text"></textarea>
+                            <md-button class="button md-raised md-primary" ng-click="confirmText()">Confirmar Texto</md-button>
+                        </md-input-container>
+                    </div>
+
+                    <div layout="row">
+                        <md-input-container class="md-block" flex>
+                            <p><strong> Texto Motivador 2 </strong>
+                            <md-button class="button md-raised md-primary" ngf-select ng-model="textomotivador2.image" name="file" ngf-pattern="'image/*'"
+                                       ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"
+                                       ngf-resize="{width: 100, height: 100}"> Adicionar foto </md-button> </p>
+                            <textarea type="text" name="txtMotivador2" cols="10" rows="10" ng-model="textomotivador2.text"></textarea>
+                            <md-button class="button md-raised md-primary" ng-click="confirmText()">Confirmar Texto</md-button>
+                        </md-input-container>
+                    </div>
+
+                    <div layout="row">
+                        <md-input-container class="md-block" flex>
+                            <p><strong> Texto Motivador 3 </strong>
+                                <md-button class="button md-raised md-primary" ngf-select ng-model="textomotivador3.imagem" name="file" ngf-pattern="'image/*'"
+                                           ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"
+                                           ngf-resize="{width: 100, height: 100}"> Adicionar foto </md-button> </p>
+                            <textarea type="text" name="txtMotivador3" cols="10" rows="10" ng-model="textomotivador3.texto"></textarea>
+                            <md-button class="button md-raised md-primary" ng-click="confirmText()">Confirmar Texto</md-button>
+                        </md-input-container>
+                    </div>
+                </form>
+            </md-content>
+        </div>
+    </div>
+</div>
