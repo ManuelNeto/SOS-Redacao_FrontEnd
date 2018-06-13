@@ -1,116 +1,119 @@
-<div layout="row">
-    <sidenav></sidenav>
+<div class="container">
+    <div layout="row">
+        <sidenav></sidenav>
 
-    <div layout="column" ng-cloak>
-        <md-content layout-padding>
-            <form name="esssayForm">
+        <div layout="column" ng-cloak>
+            <md-content layout-padding>
+                <form name="esssayForm">
+                    <div layout="row">
+                        <md-input-container flex="50">
+                            <h5> Tema </h5>
+                            <md-select name="type" ng-model="essay.theme" required disabled>
+                                <md-option ng-value="theme" ng-repeat="theme in themes">{{ theme }}</md-option>
+                            </md-select>
+                        </md-input-container>
+                        <md-input-container flex="50">
+                            <h5> Tipo de redação </h5>
+                            <md-select name="type" ng-model="essay.type" required disabled>
+                                <md-option value="Enem">Enem</md-option>
+                                <md-option value="Vestibular">Vestibular</md-option>
+                                <md-option value="Concurso">Concurso</md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+
+                    <md-input-container class="md-block" required disabled>
+                        <h5> Status </h5>
+                        <input type="text" name="status" ng-model="essay.status" disabled>
+                    </md-input-container>
+
+                    <!-- ENEM -->
+                    <div style="text-align: center" ng-show="enable && essay.type == 'Enem'">
+                        <md-button type="submit" ng-show="currentUser.userKind === 'Redator'" class="md-raised md-primary" ng-click=showAbilitys($event)> Visualizar Habilidades  </md-button>
+                        <md-button ng-if="essay._id"class="md-raised md-primary" ng-click="toggleRight()"> Visualizar Comentários </md-button>
+                        <table style="width:100%">
+                            <tr>
+                                <th>Competência 1</th>
+                                <th>Competência 2</th>
+                                <th>Competência 3</th>
+                                <th>Competência 4</th>
+                                <th>Competência 5</th>
+                                <th>Nota</th>
+                            </tr>
+                            <tr>
+                                <td><input type="number" min="0" max="200" name="competencia1" ng-model="essay.scores[0]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                                <td><input type="number" min="0" max="200" name="competencia1" ng-model="essay.scores[1]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                                <td><input type="number" min="0" max="200" name="competencia1" ng-model="essay.scores[2]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                                <td><input type="number" min="0" max="200" name="competencia1" ng-model="essay.scores[3]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                                <td><input type="number" min="0" max="200" name="competencia1" ng-model="essay.scores[4]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                                <td><input type="number" min="0" max="1000" name="competencia1" ng-model="essay.scores[5]" disabled required></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!--Enem-->
+
+                    <md-input-container class="md-block" style="text-align: center">
+                        <h5>Título</h5>
+                        <input type="text" name="title" ng-model="essay.title" disabled>
+                    </md-input-container>
+                    <md-input-container class="md-block" style="text-align: center">
+                        <textarea ng-show="!essay.essayImage" type="text" id="text" name="text" ng-model="essay.text" cols="10" rows="20" required disabled></textarea>
+                    </md-input-container>
+                </form>
+                <img style="width: 100%" ng-show="essay.essayImage" src="{{essay.essayImage}}">
+            </md-content>
+        </div>
+
+
+
+        <!-- ==== RIGHT_BAR ==== -->
+        <md-sidenav class="md-sidenav-right" md-component-id="right" md-whiteframe="4" md-disable-close-events>
+
+            <md-toolbar class="md-theme-indigo">
                 <div layout="row">
-                    <md-input-container flex="50">
-                        <h5> Tema </h5>
-                        <md-select name="type" ng-model="essay.theme" required disabled>
-                            <md-option ng-value="theme" ng-repeat="theme in themes">{{ theme }}</md-option>
-                        </md-select>
-                    </md-input-container>
-                    <md-input-container flex="50">
-                        <h5> Tipo de redação </h5>
-                        <md-select name="type" ng-model="essay.type" required disabled>
-                            <md-option value="Enem">Enem</md-option>
-                            <md-option value="Vestibular">Vestibular</md-option>
-                            <md-option value="Concurso">Concurso</md-option>
-                        </md-select>
-                    </md-input-container>
+                    <h1 class="md-toolbar-tools" flex="50">Comentários</h1>
+                    <i class="material-icons" ng-click="toggleRight()" style="text-align: right" flex="50">clear</i>
                 </div>
+            </md-toolbar>
 
-                <md-input-container class="md-block" required disabled>
-                    <h5> Status </h5>
-                    <input type="text" name="status" ng-model="essay.status" disabled>
-                </md-input-container>
-
-                <!-- ENEM -->
-                <div style="text-align: center" ng-show="enable && essay.type == 'Enem'">
-                    <md-button type="submit" ng-show="currentUser.userKind === 'Redator'" class="md-raised md-primary" ng-click=showAbilitys($event)> Visualizar Habilidades  </md-button>
-                    <md-button ng-if="essay._id"class="md-raised md-primary" ng-click="toggleRight()"> Visualizar Comentários </md-button>
-                    <table style="width:100%">
-                        <tr>
-                            <th>Competência 1</th>
-                            <th>Competência 2</th>
-                            <th>Competência 3</th>
-                            <th>Competência 4</th>
-                            <th>Competência 5</th>
-                            <th>Nota</th>
-                        </tr>
-                        <tr>
-                            <td><input type="number" min="0" max="200" name="competencia1" ng-model="essay.scores[0]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                            <td><input type="number" min="0" max="200" name="competencia1" ng-model="essay.scores[1]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                            <td><input type="number" min="0" max="200" name="competencia1" ng-model="essay.scores[2]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                            <td><input type="number" min="0" max="200" name="competencia1" ng-model="essay.scores[3]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                            <td><input type="number" min="0" max="200" name="competencia1" ng-model="essay.scores[4]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                            <td><input type="number" min="0" max="1000" name="competencia1" ng-model="essay.scores[5]" disabled required></td>
-                        </tr>
-                    </table>
+            <md-content layout-margin>
+                <md-card>
+                    <md-input-container class="md-block" >
+                        <label>Comentário</label>
+                        <textarea type="text" id="comment" ng-disabled="essay.comment && currentUser.userKind == 'Redator'" name="comment" ng-model="essay.comment" ng-minlength="10" ng-maxlength="200"></textarea>
+                    </md-input-container>
+                    <div class="send-button" style="text-align: right" ng-show="currentUser.userKind == 'Corretor'">
+                        <md-button  class="md-raised md-primary" id="saveComment" ng-click="saveComment()"> Salvar Comentário </md-button>
+                    </div>
+                </md-card>
+                <div class="rightbar-itens" ng-disabled="!essay.comment">
+                    <md-list>
+                        <md-list-item class="contest md-2-line" ng-repeat="message in essay.messages">
+                            <!-- <img ng-src="{{getImage('/user/image/' + message.email)}}" class="md-avatar" alt=""> -->
+                            <div class="md-list-item-text">
+                                <p><img height="20px" width="20px" src="{{message.photo}}"></p>
+                                <p>{{message.email}}</p>
+                                <p>{{message.timestamp}}</p>
+                                <p >{{message.text}}</p>
+                                <md-divider></md-divider>
+                            </div>
+                        </md-list-item>
+                    </md-list>
                 </div>
+                <md-card ng-disabled="!essay.comment">
+                    <md-input-container class="md-block" flex-gt-sm="">
+                        <label>Insira uma mensagem</label>
+                        <textarea ng-model="essayMessage" id="newMessage" required></textarea>
+                    </md-input-container>
+                    <div class="send-button" style="text-align: right">
+                        <md-button type="submit" class="md-raised md-primary" id="saveNewMessage" ng-click="sendMessage(essayMessage)">ENVIAR RESPOSTA</md-button>
+                    </div>
+                </md-card>
+            </md-content>
 
-                <!--Enem-->
-
-                <md-input-container class="md-block" style="text-align: center">
-                    <h5>Título</h5>
-                    <input type="text" name="title" ng-model="essay.title" disabled>
-                </md-input-container>
-                <md-input-container class="md-block" style="text-align: center">
-                    <textarea ng-show="!essay.essayImage" type="text" id="text" name="text" ng-model="essay.text" cols="10" rows="20" required disabled></textarea>
-                </md-input-container>
-            </form>
-            <img style="width: 100%" ng-show="essay.essayImage" src="{{essay.essayImage}}">
-        </md-content>
+        </md-sidenav>
+        <!-- ==== /RIGHT_BAR ==== -->
     </div>
 
-
-
-    <!-- ==== RIGHT_BAR ==== -->
-    <md-sidenav class="md-sidenav-right" md-component-id="right" md-whiteframe="4" md-disable-close-events>
-
-        <md-toolbar class="md-theme-indigo">
-            <div layout="row">
-                <h1 class="md-toolbar-tools" flex="50">Comentários</h1>
-                <i class="material-icons" ng-click="toggleRight()" style="text-align: right" flex="50">clear</i>
-            </div>
-        </md-toolbar>
-
-        <md-content layout-margin>
-            <md-card>
-              <md-input-container class="md-block" >
-                  <label>Comentário</label>
-                  <textarea type="text" id="comment" ng-disabled="essay.comment && currentUser.userKind == 'Redator'" name="comment" ng-model="essay.comment" ng-minlength="10" ng-maxlength="200"></textarea>
-              </md-input-container>
-              <div class="send-button" style="text-align: right" ng-show="currentUser.userKind == 'Corretor'">
-                  <md-button  class="md-raised md-primary" id="saveComment" ng-click="saveComment()"> Salvar Comentário </md-button>
-              </div>
-            </md-card>
-            <div class="rightbar-itens" ng-disabled="!essay.comment">
-                <md-list>
-                    <md-list-item class="contest md-2-line" ng-repeat="message in essay.messages">
-                        <!-- <img ng-src="{{getImage('/user/image/' + message.email)}}" class="md-avatar" alt=""> -->
-                        <div class="md-list-item-text">
-                            <p><img height="20px" width="20px" src="{{message.photo}}"></p>
-                            <p>{{message.email}}</p>
-                            <p>{{message.timestamp}}</p>
-                            <p >{{message.text}}</p>
-                            <md-divider></md-divider>
-                        </div>
-                    </md-list-item>
-                </md-list>
-            </div>
-            <md-card ng-disabled="!essay.comment">
-                <md-input-container class="md-block" flex-gt-sm="">
-                    <label>Insira uma mensagem</label>
-                    <textarea ng-model="essayMessage" id="newMessage" required></textarea>
-                </md-input-container>
-                <div class="send-button" style="text-align: right">
-                    <md-button type="submit" class="md-raised md-primary" id="saveNewMessage" ng-click="sendMessage(essayMessage)">ENVIAR RESPOSTA</md-button>
-                </div>
-            </md-card>
-        </md-content>
-
-    </md-sidenav>
-    <!-- ==== /RIGHT_BAR ==== -->
 </div>
