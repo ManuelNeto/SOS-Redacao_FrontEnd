@@ -1,13 +1,14 @@
-angular.module('sos-redacao').factory('ThemeFactory', function ($window, $http, $state, consts) {
+angular.module('sos-redacao').factory('ThemeService', function ($window, $http, $state, consts) {
 
     return {
 
-        addTheme: function (theme) {
-            return $http.post(consts.api_url + '/theme', theme);
+        propose_theme: function (data) {
+            return $http.post(consts.api_url + '/theme', data);
         },
 
-        getThemes: function (id) {
+        getThemes: function () {
             return $http.get(consts.api_url + '/theme')
         }
+
     }
 });

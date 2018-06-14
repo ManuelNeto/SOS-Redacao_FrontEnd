@@ -61,11 +61,11 @@ angular.module('sos-redacao').config(['$stateProvider', '$urlRouterProvider', fu
           controller: 'StudyMaterialController'
       })
 
-      .state('create_theme', {
-           url: '/create_theme',
-           templateUrl: '../components/theme/create_theme/create_theme.html',
-           controller: 'CreateThemeController'
-      })
+      .state('propose_theme', {
+            url: '/propose_theme',
+            templateUrl: '../components/theme/propose_theme.html',
+            controller: 'ThemeController'
+        })
 
       .state('list_themes', {
            url: '/list_themes',

@@ -1,17 +1,21 @@
-angular.module('sos-redacao').controller('ListThemesController', function($state, $scope, EssayFactory, toastService){
+angular.module('sos-redacao').controller('ListThemesController', function($state, $scope, EssayFactory, toastService, ThemeService){
 
     $scope.themes = [];
 
-    getThemes = function(){
-        ThemeFactory.getThemes().then(function(result){
+    var getThemes = function(){
+        console.log("aquii");
+        ThemeService.getThemes().then(function(result){
                 $scope.themes = result.data.data;
             }).catch(function(result){
             toastService.showMessage(result.data.message);
         });
-    	}
+    }
 
-      init = function(){
+      var init = function(){
         getThemes();
-      }
+      };
+
+
+      init();
 
 });

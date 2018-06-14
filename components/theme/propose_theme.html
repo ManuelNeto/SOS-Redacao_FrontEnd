@@ -1,0 +1,73 @@
+<div layout="row">
+    <sidenav></sidenav>
+    <div layout="column" flex ng-cloak>
+        <div class="container">
+            <!--<div></div></di>-->
+            <md-input-container class="md-block" style="text-align: center">
+                <h5>Tema</h5>
+                <input type="text" ng-model="theme.theme">
+            </md-input-container>
+
+            <!--<hr>-->
+
+
+            <md-input-container class="md-block" ng-show="current_st === 1">
+                <div layout="row" style="height: 100%; width: 100%">
+                    <div style="width: 70%">
+                        <h5>Texto Motivador 1</h5>
+                        <textarea style="height: 500px" ng-model="supporting_texts[0].text"></textarea>
+                    </div>
+                    <div layout="column" style="padding-left: 10%; height: 100%">
+                        <img style="padding-left: 3%; width: 70%; height:70%;" src="{{supporting_texts[0].image ? supporting_texts[0].image : defaultImg}}">
+                        <md-button style="width: 70%" class="button md-raised md-primary" ngf-select ng-model="stImage1" name="file" ngf-pattern="'image/*'"
+                                   ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"
+                        > Alterar Imagem </md-button>
+                    </div>
+                </div>
+            </md-input-container>
+
+            <md-input-container class="md-block" ng-show="current_st === 2">
+                <div layout="row" style="height: 100%; width: 100%">
+                    <div style="width: 70%">
+                        <h5>Texto Motivador 2</h5>
+                        <textarea style="height: 500px" ng-model="supporting_texts[1].text"></textarea>
+                    </div>
+                    <div layout="column" style="padding-left: 10%; height: 100%">
+                        <img style="padding-left: 3%; width: 70%; height:70%;" src="{{supporting_texts[1].image ? supporting_texts[1].image : defaultImg}}">
+                        <md-button style="width: 70%" class="button md-raised md-primary" ngf-select ng-model="stImage2" name="file" ngf-pattern="'image/*'"
+                                   ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"
+                        > Alterar Imagem </md-button>
+                    </div>
+                </div>
+            </md-input-container>
+
+            <md-input-container class="md-block" ng-show="current_st === 3">
+                <div layout="row" style="height: 100%; width: 100%">
+                    <div style="width: 70%">
+                        <h5>Texto Motivador 3</h5>
+                        <textarea style="height: 500px" ng-model="supporting_texts[2].text"></textarea>
+                    </div>
+                    <div layout="column" style="padding-left: 10%; height: 100%">
+                        <img style="padding-left: 3%; width: 70%; height:70%;" src="{{supporting_texts[2].image ? supporting_texts[2].image : defaultImg}}">
+                        <md-button style="width: 70%" class="button md-raised md-primary" ngf-select ng-model="stImage3" name="file" ngf-pattern="'image/*'"
+                                   ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"
+                        > Alterar Imagem </md-button>
+                    </div>
+                </div>
+            </md-input-container>
+
+            <div style="width: 100%; align-items: center">
+                <i class="material-icons" ng-click="move_st_back()">
+                    arrow_back_ios
+                </i>
+                <i class="material-icons" ng-click="move_st_forward()">
+                    arrow_forward_ios
+                </i>
+            </div>
+
+            <!--<md-button ng-click="teste()">odood</md-button>-->
+
+            <md-button style="width: 100%; background-color: black" class="md-raised md-primary" ng-click="propose_theme()">Propôr Tema</md-button>
+        </div>
+    </div>
+</div>

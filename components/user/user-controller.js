@@ -69,10 +69,11 @@ angular.module('sos-redacao').controller('UserController', function ($state, $sc
     };
 
     function validUpdate(profile) {
-      if (profile.pass != profile.cpass) return 'Senhas não conferem.';
-      if ($scope.editPass && profile.npass != profile.cnpass) return 'Nova senha não confere.'
-      if ($scope.editPass && !profile.npass) return 'Nova senha não pode ser vazia.'
-      return 'Sucesso';
+        if ($scope.editPass) {
+            if (profile.password != profile.cpassword) return 'Nova Senha não confere.';
+            if ($scope.editPass && !profile.password) return 'Nova senha não pode ser vazia.'
+        }
+        return 'Sucesso';
     }
 
     $scope.showConfirm = function(ev) {
