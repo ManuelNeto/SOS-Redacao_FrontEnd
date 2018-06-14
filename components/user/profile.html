@@ -1,13 +1,12 @@
 <div layout="row">
     <sidenav></sidenav>
-
     <div class="form" flex layout="column" ng-cloak>
-        <md-content>
-            <md-card layout-padding>
+            <md-content>
+                <md-card layout-padding>
                     <form>
-                      <div style="text-align: right">
-                         <i class="material-icons" ng-click="setEnable()">create</i>
-                      </div>
+                        <div style="text-align: right">
+                            <i class="material-icons" ng-click="setEnable()">create</i>
+                        </div>
                         <div layout-gt-sm="row" layout-align="center">
                             <img style="width: 10%; height:10%" src="{{newImage ? newImage : profile.photo}}">
 
@@ -33,8 +32,8 @@
                             <md-input-container flex="20">
                                 <label>Sexo</label>
                                 <md-select name="sexo" ng-model="profile.gender" ng-disabled="enableForm">
-                                  <md-option value="Masculino">Masculino</md-option>
-                                  <md-option value="Feminino">Feminino</md-option>
+                                    <md-option value="Masculino">Masculino</md-option>
+                                    <md-option value="Feminino">Feminino</md-option>
                                 </md-select>
                             </md-input-container>
                         </div>
@@ -55,18 +54,18 @@
                             <md-input-container flex-gt-sm="">
                                 <label>Grau de Escolaridade</label>
                                 <md-select name="grauDeEscolaridade" ng-model="profile.degreeOfSchooling" ng-disabled="enableForm">
-                                  <md-option value="Fundamental">Fundamental</md-option>
-                                  <md-option value="Médio">Médio</md-option>
-                                  <md-option value="Superior">Superior</md-option>
-                                  <md-option value="Pós-graduação">Pós-graduação</md-option>
+                                    <md-option value="Fundamental">Fundamental</md-option>
+                                    <md-option value="Médio">Médio</md-option>
+                                    <md-option value="Superior">Superior</md-option>
+                                    <md-option value="Pós-graduação">Pós-graduação</md-option>
                                 </md-select>
                             </md-input-container>
 
                             <md-input-container flex-gt-sm="">
                                 <label>Tipo de Usuário</label>
                                 <md-select name="tipoDeUsuario" ng-model="profile.userKind" ng-disabled="enableForm">
-                                  <md-option value="Redator">Redator</md-option>
-                                  <md-option value="Corretor">Corretor</md-option>
+                                    <md-option value="Redator">Redator</md-option>
+                                    <md-option value="Corretor">Corretor</md-option>
                                 </md-select>
                             </md-input-container>
                         </div>
@@ -75,9 +74,9 @@
                             <md-input-container flex-gt-sm="">
                                 <label>Tipo de Corretor</label>
                                 <md-select name="type" ng-model="profile.correctorKind" required ng-disabled="enableForm">
-                                   <md-option value="Enem">Enem</md-option>
-                                   <md-option value="Vestibular">Vestibular</md-option>
-                                   <md-option value="Concurso">Concurso</md-option>
+                                    <md-option value="Enem">Enem</md-option>
+                                    <md-option value="Vestibular">Vestibular</md-option>
+                                    <md-option value="Concurso">Concurso</md-option>
                                 </md-select>
                             </md-input-container>
                         </div>
@@ -90,32 +89,17 @@
 
                         </div>
 
-                        <div layout-gt-sm="row">
-                            <md-input-container flex-gt-sm="">
-                                <label>Senha</label>
-                                <input type="password" id="senha" ng-model="profile.pass" ng-disabled="enableForm">
-                            </md-input-container>
-
-                            <md-input-container flex-gt-sm="">
-                                <label>Confirmar Senha</label>
-                                <input type="password" id="confirmar_senha" ng-model="profile.cpass" ng-disabled="enableForm">
-                            </md-input-container>
-                        </div>
-
-                        <a ng-style="{
-                          'text-decoration' : 'underline',
-                          'color' : editPass? 'red' : 'blue'
-                        }" ng-click="getNewPass()" ng-show="!enableForm">Alterar Senha</a>
+                        <md-button ng-disabled="editPass" style="margin:auto" class="button md-raised md-primary" ng-click="getNewPass()" ng-show="!enableForm">Alterar Senha</md-button>
 
                         <div layout-gt-sm="row" ng-show="!enableForm && editPass">
                             <md-input-container flex-gt-sm="">
                                 <label>Nova Senha</label>
-                                <input type="password" id="nova_senha" ng-model="profile.npass">
+                                <input type="password" id="nova_senha" ng-model="profile.password">
                             </md-input-container>
 
                             <md-input-container flex-gt-sm="">
                                 <label>Confirmar Nova Senha</label>
-                                <input type="password" id="conf_nova_senha" ng-model="profile.cnpass">
+                                <input type="password" id="conf_nova_senha" ng-model="profile.cpassword">
                             </md-input-container>
 
                         </div>
@@ -124,10 +108,12 @@
                             <md-button type="submit" value="confirmar" class="md-raised md-primary" ng-click="showConfirm($event)" ng-disabled="enableForm"> SALVAR </md-button>
                         </div>
                     </form>
-                </div>
 
-            </md-card>
+        </md-card>
         </md-content>
     </div>
+    </div>
+
+
 
 </div>

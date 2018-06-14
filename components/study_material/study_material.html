@@ -1,23 +1,24 @@
 <div layout="row">
-  <sidenav></sidenav>
-  <div layout="column" flex-gt-xs ng-cloak>
-    <md-content layout-padding>
-      <md-list>
-          <md-list-item class="small-font-medium topic" >
-            <div flex="85">
-              <p class="title"><strong> Materiais </strong></p>
-            </div>
-          </md-list-item>
-          <br>
-          <md-divider></md-divider>
-          <br>
-          <md-list-item class="base-font-regular" ng-repeat="studyMaterial in StudyMaterials " layout="row" layout-wrap>
-                <div flex="85">
-                  <p class="title">{{studyMaterial.name}}</p>
-                </div>
-                <md-button class="md-raised md-primary" ng-click="downloadStudyMaterial(studyMaterial.fileName)"> Download </md-button>
-          </md-list-item>
-      </md-list>
-    </md-content>
-  </div>
+    <sidenav></sidenav>
+    <div layout="column" flex-gt-xs ng-cloak>
+            <md-content layout-padding>
+                <md-list>
+                    <md-list-item class="small-font-medium topic" >
+                        <div flex="85">
+                            <p class="title"><strong> Materiais </strong></p>
+                        </div>
+                    </md-list-item>
+                    <br>
+                    <md-divider></md-divider>
+                    <br>
+                    <md-list-item class="base-font-regular" ng-repeat="studyMaterial in StudyMaterials " layout="row">
+                        <div flex="85">
+                            <p class="title">{{studyMaterial.name}}</p>
+                        </div>
+                        <md-button class="md-raised md-primary" ng-click="downloadStudyMaterial(studyMaterial.fileName)"> Download </md-button>
+                    </md-list-item>
+                </md-list>
+            </md-content>
+    </div>
+
 </div>

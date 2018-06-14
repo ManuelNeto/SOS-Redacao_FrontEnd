@@ -5,29 +5,27 @@
                 <md-list>
                     <md-list-item class="small-font-medium topic" >
                         <div flex="30">
-                            <p class="title"><strong> Título </strong></p>
+                            <p class="theme"><strong> Temas </strong></p>
                         </div>
                         <div flex="30">
-                            <p class="theme"><strong> Tema </strong></p>
+                            <p><strong> Autor </strong></p>
                         </div>
                         <div flex="10">
-                            <p class="type"><strong> Tipo </strong></p>
+                            <input type="text" placeholder="Search.." name="search" ng-model="search.theme">
                         </div>
+
                     </md-list-item>
                     <br>
                     <md-divider></md-divider>
                     <br>
-                    <md-list-item class="base-font-regular" ng-repeat="essay in essays " layout="row" layout-wrap>
+                    <md-list-item class="base-font-regular" ng-repeat="theme in themes | filter:search.theme" layout="row" layout-wrap>
                         <div flex="30">
-                            <p class="title">{{essay.title}}</p>
+                            <p class="theme">{{theme.theme}}</p>
                         </div>
                         <div flex="30">
-                            <p class="theme">{{essay.theme}}</p>
+                            <p class="theme">{{theme.proposedBy.name}}</p>
                         </div>
-                        <div flex="10">
-                            <p class="type">{{essay.type}}</p>
-                        </div>
-                        <md-button value="visualizar" class="md-raised md-primary" ng-click="showEssay(essay._id)"> Corrigir redação </md-button>
+                        <md-button value="visualizar" class="md-raised md-primary" ng-click="showTheme(theme._id)"> Ver Tema </md-button>
                     </md-list-item>
                 </md-list>
             </md-content>

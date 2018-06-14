@@ -2,6 +2,8 @@ angular.module('sos-redacao').controller('sidenavController', function($scope, $
 
 	var myScope = $scope;
 
+	$scope.defaultImg = "../../public/img/noimage.png";
+
 	myScope.profile = {};
 
 	myScope.setRoute = function (route) {
@@ -43,7 +45,7 @@ angular.module('sos-redacao').controller('sidenavController', function($scope, $
                     {
                         name: 'Temas',
                         icon: 'list',
-                        link: 'themes'
+                        link: 'list_themes'
                     },
 
                     {
@@ -87,19 +89,19 @@ angular.module('sos-redacao').controller('sidenavController', function($scope, $
                     {
                         name: 'Propor Tema',
                         icon: 'chat',
-                        link: ''
+                        link: 'propose_theme'
                     },
 
                     {
                         name: 'Meus Temas',
                         icon: 'notes',
-                        link: ''
+                        link: 'list_my_themes'
                     },
 
                     {
                         name: 'Temas',
-                        icon: 'format_align_justify',
-                        link: ''
+                        icon: 'list',
+                        link: 'list_themes'
                     },
 
                     {
