@@ -2,6 +2,8 @@ angular.module('sos-redacao').controller('sidenavController', function($scope, $
 
 	var myScope = $scope;
 
+	$scope.defaultImg = "../../public/img/noimage.png";
+
 	myScope.profile = {};
 
 	myScope.setRoute = function (route) {
