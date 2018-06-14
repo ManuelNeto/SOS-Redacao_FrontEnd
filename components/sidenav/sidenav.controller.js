@@ -87,7 +87,7 @@ angular.module('sos-redacao').controller('sidenavController', function($scope, $
                     {
                         name: 'Propor Tema',
                         icon: 'chat',
-                        link: ''
+                        link: 'propose_theme'
                     },
 
                     {

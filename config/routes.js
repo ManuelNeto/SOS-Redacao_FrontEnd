@@ -59,6 +59,12 @@ angular.module('sos-redacao').config(['$stateProvider', '$urlRouterProvider', fu
           url: '/study_materials',
           templateUrl: '../components/study_material/study_material.html',
           controller: 'StudyMaterialController'
-      });
+      })
+
+        .state('propose_theme', {
+            url: '/propose_theme',
+            templateUrl: '../components/theme/propose_theme.html',
+            controller: 'ThemeController'
+        });
 
 }]);
