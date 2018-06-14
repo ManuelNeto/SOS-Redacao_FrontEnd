@@ -69,7 +69,7 @@ angular.module('sos-redacao').config(['$stateProvider', '$urlRouterProvider', fu
 
       .state('list_themes', {
            url: '/list_themes',
-           templateUrl: '../components/theme/list_themes/list_themes.html',
+           templateUrl: '../components/theme/list_themes.html',
            controller: 'ListThemesController'
       });
 
