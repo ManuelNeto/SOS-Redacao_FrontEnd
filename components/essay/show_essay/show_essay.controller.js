@@ -40,7 +40,7 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
                     $mdDialog.hide();
                 }
       }],
-      templateUrl: '/components/essay/abilitys/abilitys.html',
+      templateUrl: '/components/essay/abilitys/abilitys_' + $scope.essay.type + '.html',
       parent: angular.element(document.body),
       targetEvent: ev,
       clickOutsideToClose:true,
@@ -65,7 +65,7 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
 	}
 
 	$scope.saveComment = function(){
-		$scope.essay.corrector = $scope.currentUser.id;
+		$scope.essay.corrector = $scope.currentUser._id;
 		$scope.essay.status = "Corrigida";
 		EssayFactory.editEssay($scope.essay).then(function(result){
 						$scope.essay.comment = {};
@@ -89,7 +89,10 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
 	}
 
 	$scope.sumScores = function(){
-		$scope.essay.scores[5] = $scope.essay.scores[0] + $scope.essay.scores[1] + $scope.essay.scores[2] + $scope.essay.scores[3] + $scope.essay.scores[4];
+		$scope.essay.finalScore = 0;
+		for (var i in $scope.essay.scores) {
+			$scope.essay.finalScore = $scope.essay.finalScore + $scope.essay.scores[i];
+		}
 	}
 
 	init = function(){
