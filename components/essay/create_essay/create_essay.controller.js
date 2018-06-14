@@ -7,6 +7,17 @@ angular.module('sos-redacao').controller('CreateEssayController', function($stat
 
 	$scope.addEssay = function(essay){
 		essay.essayImage = $scope.essayImageUrl;
+
+		if (essay.type === 'Enem') {
+			essay.scores = new Array(5).fill(0);
+		}
+		else if (essay.type === 'Vestibular') {
+			essay.scores = new Array(4).fill(0);
+		}
+		else {
+			essay.scores = new Array(18).fill(0);
+		}
+
 		var concatEssay = Object.assign(essay, {user: authentication.currentUser().id});
 		EssayFactory.addEssay(concatEssay).then(function(result){
 				$state.go('list_my_essays');

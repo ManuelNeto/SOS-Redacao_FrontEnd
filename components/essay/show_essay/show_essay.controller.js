@@ -89,7 +89,10 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
 	}
 
 	$scope.sumScores = function(){
-		$scope.essay.scores[5] = $scope.essay.scores[0] + $scope.essay.scores[1] + $scope.essay.scores[2] + $scope.essay.scores[3] + $scope.essay.scores[4];
+		$scope.essay.finalScore = 0;
+		for (var i in $scope.essay.scores) {
+			$scope.essay.finalScore = $scope.essay.finalScore + $scope.essay.scores[i];
+		}
 	}
 
 	init = function(){

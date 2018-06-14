@@ -42,16 +42,111 @@
                             </tr>
                             <tr>
                                 <td><input type="number" min="0" max="200" name="competencia1" ng-model="essay.scores[0]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                                <td><input type="number" min="0" max="200" name="competencia1" ng-model="essay.scores[1]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                                <td><input type="number" min="0" max="200" name="competencia1" ng-model="essay.scores[2]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                                <td><input type="number" min="0" max="200" name="competencia1" ng-model="essay.scores[3]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                                <td><input type="number" min="0" max="200" name="competencia1" ng-model="essay.scores[4]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                                <td><input type="number" min="0" max="1000" name="competencia1" ng-model="essay.scores[5]" disabled required></td>
+                                <td><input type="number" min="0" max="200" name="competencia2" ng-model="essay.scores[1]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                                <td><input type="number" min="0" max="200" name="competencia3" ng-model="essay.scores[2]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                                <td><input type="number" min="0" max="200" name="competencia4" ng-model="essay.scores[3]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                                <td><input type="number" min="0" max="200" name="competencia5" ng-model="essay.scores[4]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                                <td><input type="number" min="0" max="1000" name="notaFinalE" ng-model="essay.finalScore" disabled required></td>
                             </tr>
                         </table>
                     </div>
 
                     <!--Enem-->
+
+                    <!-- VESTIBULAR -->
+                    <div style="text-align: center" ng-show="enable && essay.type == 'Vestibular'">
+                        <md-button type="submit" ng-show="currentUser.userKind === 'Redator'" class="md-raised md-primary"> Visualizar Quesitos  </md-button>
+                        <md-button ng-if="essay._id"class="md-raised md-primary" ng-click="toggleRight()"> Visualizar Comentários </md-button>
+                        <table style="width:100%">
+                            <tr>
+                                <th>Quesito 1</th>
+                                <th>Quesito 2</th>
+                                <th>Quesito 3</th>
+                                <th>Quesito 4</th>
+                                <th>Nota</th>
+                            </tr>
+                            <tr>
+                                <td><input type="number" min="0.0" max="2.5" name="quesito1" ng-model="essay.scores[0]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                                <td><input type="number" min="0.0" max="2.5" name="quesito2" ng-model="essay.scores[1]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                                <td><input type="number" min="0.0" max="2.5" name="quesito3" ng-model="essay.scores[2]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                                <td><input type="number" min="0.0" max="2.5" name="quesito4" ng-model="essay.scores[3]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                                <td><input type="number" min="0.0" max="10.0" name="notaFinalV" ng-model="essay.finalScore" disabled required></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!--Vestibular-->
+
+                    <!-- CONCURSO -->
+                    <div style="text-align: center" ng-show="enable && essay.type == 'Concurso'">
+                        <md-button type="submit" ng-show="currentUser.userKind === 'Redator'" class="md-raised md-primary"> Visualizar Quesitos  </md-button>
+                        <md-button ng-if="essay._id"class="md-raised md-primary" ng-click="toggleRight()"> Visualizar Comentários </md-button>
+                        <h5 style="text-align: center">Dimensão Conceitual</h5>
+                        <table style="width:100%">
+                            <tr>
+                                <th>Quesito 1</th>
+                                <th>Quesito 2</th>
+                                <th>Quesito 3</th>
+                                <th>Quesito 4</th>
+                                <th>Quesito 5</th>
+                                <th>Quesito 6</th>
+                            </tr>
+                            <tr>
+                                <td><input type="number" min="0" max="5.0" name="quesito1" ng-model="essay.scores[0]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                                <td><input type="number" min="0" max="4.0" name="quesito2" ng-model="essay.scores[1]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                                <td><input type="number" min="0" max="4.0" name="quesito3" ng-model="essay.scores[2]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                                <td><input type="number" min="0" max="4.0" name="quesito4" ng-model="essay.scores[3]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                                <td><input type="number" min="0" max="5.0" name="quesito5" ng-model="essay.scores[4]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                                <td><input type="number" min="0" max="3.0" name="quesito6" ng-model="essay.scores[5]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                            </tr>
+                        </table>
+
+                        <h5 style="text-align: center">Dimensão Formal</h5>
+                        <table style="width:100%">
+                            <p style="text-align: center">Coesão</p>
+                            <tr>
+                                <th>Quesito 1</th>
+                                <th>Quesito 2</th>
+                                <th>Quesito 3</th>
+                                <th>Quesito 4</th>
+                                <th>Quesito 5</th>
+                            </tr>
+                            <tr>
+                                <td><input type="number" min="0" max="1.0" name="quesito1" ng-model="essay.scores[6]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                                <td><input type="number" min="0" max="1.0" name="quesito2" ng-model="essay.scores[7]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                                <td><input type="number" min="0" max="1.0" name="quesito3" ng-model="essay.scores[8]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                                <td><input type="number" min="0" max="1.0" name="quesito4" ng-model="essay.scores[9]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                                <td><input type="number" min="0" max="1.0" name="quesito5" ng-model="essay.scores[10]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                            </tr>
+                        </table>
+                        <table style="width:100%">
+                            <p style="text-align: center">Morfossintaxe</p>
+                            <tr>
+                                <th>Quesito 1</th>
+                                <th>Quesito 2</th>
+                                <th>Quesito 3</th>
+                                <th>Quesito 4</th>
+                                <th>Quesito 5</th>
+                                <th>Quesito 6</th>
+                                <th>Quesito 7</th>
+                            </tr>
+                            <tr>
+                                <td><input type="number" min="0" max="3.0" name="quesito1" ng-model="essay.scores[11]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                                <td><input type="number" min="0" max="3.0" name="quesito2" ng-model="essay.scores[12]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                                <td><input type="number" min="0" max="1.0" name="quesito3" ng-model="essay.scores[13]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                                <td><input type="number" min="0" max="2.0" name="quesito4" ng-model="essay.scores[14]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                                <td><input type="number" min="0" max="1.0" name="quesito5" ng-model="essay.scores[15]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                                <td><input type="number" min="0" max="5.0" name="quesito6" ng-model="essay.scores[16]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                                <td><input type="number" min="0" max="5.0" name="quesito7" ng-model="essay.scores[17]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
+                            </tr>
+                        </table>
+                        <md-input-container class="md-block" required disabled>
+                            <h5 style="text-align: center"> Nota Final </h5>
+                            <input style="text-align: center" type="text" name="notaFinalC" ng-model="essay.finalScore" disabled>
+                        </md-input-container>
+                    </div>
+
+                    <!--Concurso-->
 
                     <md-input-container class="md-block" style="text-align: center">
                         <h5>Título</h5>
