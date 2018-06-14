@@ -1,0 +1,10 @@
+angular.module('sos-redacao').factory('ThemeService', function ($window, $http, $state, consts) {
+
+    return {
+
+        propose_theme: function (data) {
+            return $http.post(consts.api_url + '/theme', data);
+        }
+
+    }
+});
