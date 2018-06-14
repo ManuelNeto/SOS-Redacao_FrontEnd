@@ -8,6 +8,10 @@ angular.module('sos-redacao').factory('ThemeService', function ($window, $http, 
 
         getThemes: function () {
             return $http.get(consts.api_url + '/theme')
+        },
+
+        getThemesProposedBy: function (id) {
+            return $http.get(consts.api_url + '/theme/proposedBy/' + id)
         }
 
     }
