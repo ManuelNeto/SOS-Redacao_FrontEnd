@@ -91,18 +91,6 @@
 
                         </div>
 
-                        <div layout-gt-sm="row">
-                            <md-input-container flex-gt-sm="">
-                                <label>Senha</label>
-                                <input type="password" id="senha" ng-model="profile.pass" ng-disabled="enableForm">
-                            </md-input-container>
-
-                            <md-input-container flex-gt-sm="">
-                                <label>Confirmar Senha</label>
-                                <input type="password" id="confirmar_senha" ng-model="profile.cpass" ng-disabled="enableForm">
-                            </md-input-container>
-                        </div>
-
                         <a ng-style="{
                           'text-decoration' : 'underline',
                           'color' : editPass? 'red' : 'blue'
@@ -111,12 +99,12 @@
                         <div layout-gt-sm="row" ng-show="!enableForm && editPass">
                             <md-input-container flex-gt-sm="">
                                 <label>Nova Senha</label>
-                                <input type="password" id="nova_senha" ng-model="profile.npass">
+                                <input type="password" id="nova_senha" ng-model="profile.pass">
                             </md-input-container>
 
                             <md-input-container flex-gt-sm="">
                                 <label>Confirmar Nova Senha</label>
-                                <input type="password" id="conf_nova_senha" ng-model="profile.cnpass">
+                                <input type="password" id="conf_nova_senha" ng-model="profile.cpass">
                             </md-input-container>
 
                         </div>
