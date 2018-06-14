@@ -65,7 +65,7 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
 	}
 
 	$scope.saveComment = function(){
-		$scope.essay.corrector = $scope.currentUser.id;
+		$scope.essay.corrector = $scope.currentUser._id;
 		$scope.essay.status = "Corrigida";
 		EssayFactory.editEssay($scope.essay).then(function(result){
 						$scope.essay.comment = {};
