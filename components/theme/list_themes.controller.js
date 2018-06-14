@@ -1,4 +1,4 @@
-angular.module('sos-redacao').controller('ListThemesController', function($state, $scope, EssayFactory, toastService, ThemeService, authentication){
+angular.module('sos-redacao').controller('ListThemesController', function($state, $scope, EssayFactory, toastService, ThemeService){
 
     $scope.themes = [];
 
@@ -8,7 +8,6 @@ angular.module('sos-redacao').controller('ListThemesController', function($state
             }, function(result){
               console.log(result);
             });
-          console.log($scope.themes);
     };
 
 
