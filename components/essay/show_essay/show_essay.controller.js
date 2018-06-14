@@ -40,7 +40,7 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
                     $mdDialog.hide();
                 }
       }],
-      templateUrl: '/components/essay/abilitys/abilitys.html',
+      templateUrl: '/components/essay/abilitys/abilitys_' + $scope.essay.type + '.html',
       parent: angular.element(document.body),
       targetEvent: ev,
       clickOutsideToClose:true,

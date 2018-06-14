@@ -79,7 +79,7 @@
 
                     <!-- CONCURSO -->
                     <div style="text-align: center" ng-show="enable && essay.type == 'Concurso'">
-                        <md-button type="submit" ng-show="currentUser.userKind === 'Redator'" class="md-raised md-primary"> Visualizar Quesitos  </md-button>
+                        <md-button type="submit" ng-show="currentUser.userKind === 'Redator'" class="md-raised md-primary" ng-click=showAbilitys($event)> Visualizar Quesitos  </md-button>
                         <md-button ng-if="essay._id"class="md-raised md-primary" ng-click="toggleRight()"> Visualizar Comentários </md-button>
                         <h5 style="text-align: center">Dimensão Conceitual</h5>
                         <table style="width:100%">
