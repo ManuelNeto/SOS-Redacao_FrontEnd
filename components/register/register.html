@@ -24,9 +24,6 @@
                                     <div ng-message="required"> Digite seu nome! </div>
                                 </div>
                             </md-input-container>
-                        </div>
-
-                        <div layout-gt-sm="row">
                             <md-input-container flex-gt-sm="">
                                 <label>Username</label>
                                 <input type="text" class="form-control" name="username" ng-model="credentials.userName" required>
@@ -34,18 +31,7 @@
                                     <div ng-message="required"> Digite seu username! </div>
                                 </div>
                             </md-input-container>
-                            <md-input-container flex="20">
-                                <label>Sexo</label>
-                                <md-select name="sexo" ng-model="credentials.gender" required>
-                                  <md-option value="Masculino">Masculino</md-option>
-                                  <md-option value="Feminino">Feminino</md-option>
-                                </md-select>
-                                <div ng-messages="registerForm.sexo.$error">
-                                    <div ng-message="required"> Escolha seu gênero! </div>
-                                </div>
-                            </md-input-container>
                         </div>
-
                         <div layout-gt-sm="row">
                             <md-input-container flex-gt-sm="">
                                 <label>Data de Nascimento</label>
@@ -65,6 +51,16 @@
                         </div>
 
                         <div layout-gt-sm="row">
+                            <md-input-container flex="">
+                                <label>Sexo</label>
+                                <md-select name="sexo" ng-model="credentials.gender" required>
+                                  <md-option value="Masculino">Masculino</md-option>
+                                  <md-option value="Feminino">Feminino</md-option>
+                                </md-select>
+                                <div ng-messages="registerForm.sexo.$error">
+                                    <div ng-message="required"> Escolha seu gênero! </div>
+                                </div>
+                            </md-input-container>
                             <md-input-container flex-gt-sm="">
                                 <label>Grau de Escolaridade</label>
                                 <md-select name="grauDeEscolaridade" ng-model="credentials.degreeOfSchooling" required>
@@ -77,7 +73,9 @@
                                     <div ng-message="required"> Escolha seu grau de escolaridade! </div>
                                 </div>
                             </md-input-container>
+                        </div>
 
+                        <div layout-gt-sm="row">
                             <md-input-container flex-gt-sm="">
                                 <label>Tipo de Usuário</label>
                                 <md-select name="tipoDeUsuario" ng-model="credentials.userKind" required>
@@ -88,10 +86,7 @@
                                     <div ng-message="required"> Escolha o tipo de usuário! </div>
                                 </div>
                             </md-input-container>
-                        </div>
-
-                        <div layout-gt-sm="row" ng-show="credentials.userKind == 'Corretor'">
-                            <md-input-container flex-gt-sm="">
+                            <md-input-container flex-gt-sm="" ng-show="credentials.userKind == 'Corretor'">
                                 <label>Tipo de Corretor</label>
                                 <md-select name="type" ng-model="credentials.correctorKind" required>
                                    <md-option value="Enem">Enem</md-option>
@@ -112,7 +107,6 @@
                                     <div ng-message="required"> Digite o seu email! </div>
                                 </div>
                             </md-input-container>
-
                         </div>
 
                         <div layout-gt-sm="row">
