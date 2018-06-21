@@ -13,9 +13,9 @@
                     <br>
                     <md-list-item class="base-font-regular" ng-repeat="studyMaterial in StudyMaterials " layout="row">
                         <div flex="85">
-                            <p class="title">{{studyMaterial.name}}</p>
+                            <p class="title">{{studyMaterial.title}}</p>
                         </div>
-                        <md-button class="md-raised md-primary" ng-click="downloadStudyMaterial(studyMaterial.fileName)"> Download </md-button>
+                        <md-button class="md-raised md-primary" ng-click="downloadStudyMaterial(studyMaterial._id, studyMaterial.title)"> Download </md-button>
                     </md-list-item>
                 </md-list>
             </md-content>

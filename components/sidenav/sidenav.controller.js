@@ -51,7 +51,7 @@ angular.module('sos-redacao').controller('sidenavController', function($scope, $
                     {
                         name: 'Material de Estudo',
                         icon: 'folder',
-                        link: 'study_materials'
+                        link: 'study_material'
                     },
 
                     {
@@ -65,6 +65,7 @@ angular.module('sos-redacao').controller('sidenavController', function($scope, $
                         icon: 'person',
                         link: 'my_data'
                     },
+
 
                     {
                          name: 'Sair',
@@ -115,6 +116,19 @@ angular.module('sos-redacao').controller('sidenavController', function($scope, $
                         icon: 'person',
                         link: 'my_data'
                     },
+
+                    {
+                        name: 'Submeter Material',
+                        icon: 'backup',
+                        link: 'upload_study_material'
+                    },
+
+                    {
+                        name: 'Ver materias de apoio',
+                        icon: 'description',
+                        link: 'study_material'
+                    },
+
 
                     {
                         name: 'Sair',

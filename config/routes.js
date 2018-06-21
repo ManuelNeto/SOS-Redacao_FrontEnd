@@ -55,8 +55,8 @@ angular.module('sos-redacao').config(['$stateProvider', '$urlRouterProvider', fu
            controller: 'UserController'
        })
 
-       .state('study_materials', {
-          url: '/study_materials',
+       .state('study_material', {
+          url: '/study_material',
           templateUrl: '../components/study_material/study_material.html',
           controller: 'StudyMaterialController'
       })
@@ -72,6 +72,12 @@ angular.module('sos-redacao').config(['$stateProvider', '$urlRouterProvider', fu
            templateUrl: '../components/theme/list_themes.html',
            controller: 'ListThemesController'
       })
+
+        .state('upload_study_material', {
+            url: '/upload_study_material',
+            templateUrl: '../components/study_material/upload_study_material.html',
+            controller: 'UploadStudyMaterialController'
+        })
 
       .state('list_my_themes', {
            url: '/list_my_themes',
