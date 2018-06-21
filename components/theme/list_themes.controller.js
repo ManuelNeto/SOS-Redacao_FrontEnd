@@ -10,7 +10,10 @@ angular.module('sos-redacao').controller('ListThemesController', function($state
             });
     };
 
-
+    $scope.showTheme = function () {
+        console.log("sjsjjs");
+        $state.go('view_theme');
+    };
 
 
     var getThemesProposedBy = function(){

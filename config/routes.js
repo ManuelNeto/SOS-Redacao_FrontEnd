@@ -79,6 +79,12 @@ angular.module('sos-redacao').config(['$stateProvider', '$urlRouterProvider', fu
             controller: 'UploadStudyMaterialController'
         })
 
+        .state('view_theme', {
+            url: '/view_theme',
+            templateUrl: '../components/theme/propose_theme.html',
+            controller: 'ThemeController'
+        })
+
       .state('list_my_themes', {
            url: '/list_my_themes',
            templateUrl: '../components/theme/list_themes.html',
