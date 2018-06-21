@@ -11,11 +11,15 @@ angular.module('sos-redacao').controller('ThemeController', function($scope, $st
 
 
     $scope.move_st_forward = function () {
-        $scope.current_st += 1;
+        if($scope.current_st < 3){
+            $scope.current_st += 1;
+        }
     };
 
     $scope.move_st_back = function () {
-        $scope.current_st -= 1;
+        if($scope.current_st > 1){
+            $scope.current_st -= 1;
+        }
     };
 
     function filterMotivationalTexts(mt) {

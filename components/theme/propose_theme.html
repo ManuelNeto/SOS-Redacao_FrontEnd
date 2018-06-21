@@ -57,10 +57,10 @@
             </md-input-container>
 
             <div style="width: 100%; align-items: center">
-                <i class="material-icons" ng-click="move_st_back()">
+                <i class="material-icons" ng-disabled="current_st === 1" ng-click="move_st_back()">
                     arrow_back_ios
                 </i>
-                <i class="material-icons" ng-click="move_st_forward()">
+                <i class="material-icons" ng-disabled="current_st === 3" ng-click="move_st_forward()">
                     arrow_forward_ios
                 </i>
             </div>
