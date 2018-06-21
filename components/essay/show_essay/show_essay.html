@@ -30,7 +30,7 @@
                     <!-- ENEM -->
                     <div style="text-align: center" ng-show="enable && essay.type == 'Enem'">
                         <md-button type="submit" ng-show="currentUser.userKind === 'Redator'" class="md-raised md-primary" ng-click=showAbilitys($event)> Visualizar Habilidades  </md-button>
-                        <md-button ng-if="essay._id"class="md-raised md-primary" ng-click="toggleRight()"> Visualizar Comentários </md-button>
+                        <md-button ng-if="essay._id"class="md-raised md-primary" ng-click="toggleRight()"> Visualizar Chat </md-button>
                         <table style="width:100%">
                             <tr>
                                 <th>Competência 1</th>
@@ -148,6 +148,8 @@
 
                     <!--Concurso-->
 
+
+
                     <md-input-container class="md-block" style="text-align: center">
                         <h5>Título</h5>
                         <input type="text" name="title" ng-model="essay.title" disabled>
@@ -157,6 +159,9 @@
                     </md-input-container>
                 </form>
                 <img style="width: 100%" ng-show="essay.essayImage" src="{{essay.essayImage}}">
+                <h5>Comentários do Corretor</h5>
+                <textarea ng-model="essay.comment" ng-disabled="currentUser.userKind === 'Redator'"></textarea>
+                <md-button class="md-primary md-raised" ng-click="saveComment()" ng-hide="currentUser.userKind === 'Redator'">Enviar Correção</md-button>
             </md-content>
         </div>
 
@@ -167,13 +172,13 @@
 
             <md-toolbar class="md-theme-indigo">
                 <div layout="row">
-                    <h1 class="md-toolbar-tools" flex="50">Comentários</h1>
+                    <h1 class="md-toolbar-tools" flex="50">Chat</h1>
                     <i class="material-icons" ng-click="toggleRight()" style="text-align: right" flex="50">clear</i>
                 </div>
             </md-toolbar>
 
             <md-content layout-margin>
-                <md-card>
+<!--                <md-card>
                     <md-input-container class="md-block" >
                         <label>Comentário</label>
                         <textarea type="text" id="comment" ng-disabled="essay.comment && currentUser.userKind == 'Redator'" name="comment" ng-model="essay.comment" ng-minlength="10" ng-maxlength="200"></textarea>
@@ -181,7 +186,7 @@
                     <div class="send-button" style="text-align: right" ng-show="currentUser.userKind == 'Corretor'">
                         <md-button  class="md-raised md-primary" id="saveComment" ng-click="saveComment()"> Salvar Comentário </md-button>
                     </div>
-                </md-card>
+                </md-card>-->
                 <div class="rightbar-itens" ng-disabled="!essay.comment">
                     <md-list>
                         <md-list-item class="contest md-2-line" ng-repeat="message in essay.messages">
@@ -202,7 +207,7 @@
                         <textarea ng-model="essayMessage" id="newMessage" required></textarea>
                     </md-input-container>
                     <div class="send-button" style="text-align: right">
-                        <md-button type="submit" class="md-raised md-primary" id="saveNewMessage" ng-click="sendMessage(essayMessage)">ENVIAR RESPOSTA</md-button>
+                        <md-button type="submit" class="md-raised md-primary" id="saveNewMessage" ng-click="sendMessage(essayMessage)">ENVIAR</md-button>
                     </div>
                 </md-card>
             </md-content>
