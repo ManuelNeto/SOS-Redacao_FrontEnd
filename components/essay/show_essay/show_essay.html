@@ -148,6 +148,8 @@
 
                     <!--Concurso-->
 
+
+
                     <md-input-container class="md-block" style="text-align: center">
                         <h5>Título</h5>
                         <input type="text" name="title" ng-model="essay.title" disabled>
@@ -157,6 +159,9 @@
                     </md-input-container>
                 </form>
                 <img style="width: 100%" ng-show="essay.essayImage" src="{{essay.essayImage}}">
+                <h5>Comentários</h5>
+                <textarea ng-model="essay.comment" ng-disabled="currentUser.userKind === 'Redator'"></textarea>
+                <md-button class="md-primary md-raised" ng-click="saveComment()" ng-hide="currentUser.userKind === 'Redator'">Enviar Correção</md-button>
             </md-content>
         </div>
 

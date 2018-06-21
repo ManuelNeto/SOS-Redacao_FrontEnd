@@ -65,12 +65,13 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
 	}
 
 	$scope.saveComment = function(){
+
 		$scope.essay.corrector = $scope.currentUser._id;
 		$scope.essay.status = "Corrigida";
 		EssayFactory.editEssay($scope.essay).then(function(result){
 						$scope.essay.comment = {};
 						$state.go('list_essays');
-            console.log(result);
+			toastService.showMessage("Correção enviada!");
         }).catch(function(result){
 			toastService.showMessage(result.data.message);
     });
