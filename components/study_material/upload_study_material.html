@@ -1,0 +1,25 @@
+<div layout="row">
+    <sidenav></sidenav>
+    <div layout="column" flex-gt-xs ng-cloak>
+        <div layout-gt-sm="row">
+
+            <div layout-gt-sm="row">
+                <md-input-container flex-gt-sm="">
+                     <label>Título</label>
+                    <input type="text" class="form-control" name="nome" ng-model="input.title" required>
+                    <div ng-messages="registerForm.nome.$error">
+                        <div ng-message="required"> Digite o título! </div>
+                    </div>
+                </md-input-container>
+            </div>
+
+            <md-button class="button md-raised md-primary" ngf-select ng-model="input.pdf" name="file" ngf-pattern="'application/pdf'"
+                       ngf-accept="'application/pdf'" ngf-max-size="20MB" ngf-min-height="100"> Adicionar PDF </md-button>
+        </div>
+
+        <div class="md-block" flex-gt-xs style="text-align: right">
+            <md-button type="submit" value="confirmar" class="md-raised md-primary" ng-click="enviar()"> Confirmar </md-button>
+        </div>
+    </div>
+
+</div>
