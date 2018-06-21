@@ -18,6 +18,10 @@ angular.module('sos-redacao').controller('ThemeController', function($scope, $st
         $scope.current_st -= 1;
     };
 
+    function filterMotivationalTexts(mt) {
+        return mt.image !== '' && mt.text != '';
+    }
+
 
     $scope.propose_theme = function () {
         function success(response) {
@@ -27,8 +31,10 @@ angular.module('sos-redacao').controller('ThemeController', function($scope, $st
 
         function error(response) {
             console.log(response);
+            toastService.showMessage(response.data.message);
         }
 
+        $scope.supporting_texts = $scope.supporting_texts.filter(filterMotivationalTexts);
         $scope.theme.supporting_texts = $scope.supporting_texts;
         $scope.theme.proposedBy = authentication.currentUser().id;
 
