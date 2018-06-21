@@ -6,8 +6,6 @@ angular.module('sos-redacao').controller('ThemeController', function($scope, $st
     $scope.theme =  $stateParams.theme !== null ? $stateParams.theme : JSON.parse($window.sessionStorage.theme);
 
     $scope.theme = $scope.theme !== null ? $scope.theme : {};
-    console.log($scope.theme !== {});
-    console.log($scope.theme);
     $scope.supporting_texts = $scope.theme !== undefined ? $scope.theme.supporting_texts : [{text: '', image: ''}, {text: '', image: ''}, {text: '', image: ''}];
 
     $scope.current_st = 1;
