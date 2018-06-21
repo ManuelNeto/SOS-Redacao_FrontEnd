@@ -1,11 +1,12 @@
-angular.module('sos-redacao').controller('ThemeController', function($scope, $state, ThemeService, authentication, toastService){
+angular.module('sos-redacao').controller('ThemeController', function($scope, $state, ThemeService, authentication, toastService, $stateParams, UserService, $window){
     $scope.$parent.title = "Temas";
-
 
     $scope.defaultImg = "../../public/img/noimage.png";
 
-    $scope.theme = {};
-    $scope.supporting_texts = [{text: '', image: ''}, {text: '', image: ''}, {text: '', image: ''}];
+    $scope.theme =  $stateParams.theme !== null ? $stateParams.theme : JSON.parse($window.sessionStorage.theme);
+
+    $scope.theme = $scope.theme !== null ? $scope.theme : {};
+    $scope.supporting_texts = $scope.theme !== null ? $scope.theme.supporting_texts : [{text: '', image: ''}, {text: '', image: ''}, {text: '', image: ''}];
 
     $scope.current_st = 1;
 
@@ -82,7 +83,14 @@ angular.module('sos-redacao').controller('ThemeController', function($scope, $st
     });
 
 
-    $scope.teste = function () {
-        console.log($scope.supporting_texts);
-    };
+    function init() {
+
+        UserService.getUser(authentication.currentUser().userId).then(function(response){
+            $scope.currentUser = response.data.data;
+        });
+    }
+
+    init();
+
+
 });

@@ -15,11 +15,11 @@
                 <div layout="row" style="height: 100%; width: 100%">
                     <div style="width: 70%">
                         <h5>Texto Motivador 1</h5>
-                        <textarea style="height: 500px" ng-model="supporting_texts[0].text"></textarea>
+                        <textarea ng-disabled="currentUser.userKind === 'Redator'" style="height: 500px" ng-model="supporting_texts[0].text"></textarea>
                     </div>
                     <div layout="column" style="padding-left: 10%; height: 100%">
-                        <img style="padding-left: 3%; width: 70%; height:70%;" src="{{supporting_texts[0].image ? supporting_texts[0].image : defaultImg}}">
-                        <md-button style="width: 70%" class="button md-raised md-primary" ngf-select ng-model="stImage1" name="file" ngf-pattern="'image/*'"
+                        <img  style="padding-left: 3%; width: 70%; height:70%;" src="{{supporting_texts[0].image ? supporting_texts[0].image : defaultImg}}">
+                        <md-button ng-hide="currentUser.userKind === 'Redator'" style="width: 70%" class="button md-raised md-primary" ngf-select ng-model="stImage1" name="file" ngf-pattern="'image/*'"
                                    ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"
                         > Alterar Imagem </md-button>
                     </div>
@@ -30,11 +30,11 @@
                 <div layout="row" style="height: 100%; width: 100%">
                     <div style="width: 70%">
                         <h5>Texto Motivador 2</h5>
-                        <textarea style="height: 500px" ng-model="supporting_texts[1].text"></textarea>
+                        <textarea ng-disabled="currentUser.userKind === 'Redator'" style="height: 500px" ng-model="supporting_texts[1].text"></textarea>
                     </div>
                     <div layout="column" style="padding-left: 10%; height: 100%">
                         <img style="padding-left: 3%; width: 70%; height:70%;" src="{{supporting_texts[1].image ? supporting_texts[1].image : defaultImg}}">
-                        <md-button style="width: 70%" class="button md-raised md-primary" ngf-select ng-model="stImage2" name="file" ngf-pattern="'image/*'"
+                        <md-button ng-hide="currentUser.userKind === 'Redator'" style="width: 70%" class="button md-raised md-primary" ngf-select ng-model="stImage2" name="file" ngf-pattern="'image/*'"
                                    ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"
                         > Alterar Imagem </md-button>
                     </div>
@@ -45,11 +45,11 @@
                 <div layout="row" style="height: 100%; width: 100%">
                     <div style="width: 70%">
                         <h5>Texto Motivador 3</h5>
-                        <textarea style="height: 500px" ng-model="supporting_texts[2].text"></textarea>
+                        <textarea ng-disabled="currentUser.userKind === 'Redator'" style="height: 500px" ng-model="supporting_texts[2].text"></textarea>
                     </div>
                     <div layout="column" style="padding-left: 10%; height: 100%">
                         <img style="padding-left: 3%; width: 70%; height:70%;" src="{{supporting_texts[2].image ? supporting_texts[2].image : defaultImg}}">
-                        <md-button style="width: 70%" class="button md-raised md-primary" ngf-select ng-model="stImage3" name="file" ngf-pattern="'image/*'"
+                        <md-button ng-hide="currentUser.userKind === 'Redator'" style="width: 70%" class="button md-raised md-primary" ngf-select ng-model="stImage3" name="file" ngf-pattern="'image/*'"
                                    ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"
                         > Alterar Imagem </md-button>
                     </div>

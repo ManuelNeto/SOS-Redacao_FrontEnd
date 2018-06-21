@@ -1,4 +1,4 @@
-angular.module('sos-redacao').controller('ListThemesController', function($state, $scope, EssayFactory, toastService, ThemeService){
+angular.module('sos-redacao').controller('ListThemesController', function($state, $scope, EssayFactory, toastService, ThemeService, $window){
 
     $scope.themes = [];
 
@@ -10,9 +10,9 @@ angular.module('sos-redacao').controller('ListThemesController', function($state
             });
     };
 
-    $scope.showTheme = function () {
-        console.log("sjsjjs");
-        $state.go('view_theme');
+    $scope.showTheme = function (theme) {
+        $window.sessionStorage.theme = JSON.stringify(theme);
+        $state.go('view_theme', {theme: theme});
     };
 
 
