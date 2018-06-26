@@ -43,6 +43,12 @@ angular.module('sos-redacao').config(['$stateProvider', '$urlRouterProvider', fu
             controller: 'ListEssaysController'
         })
 
+        .state('my_progress', {
+            url: '/my_progress',
+            templateUrl: '../components/my_progress/my_progress.html',
+            controller: 'MyProgressController'
+        })
+
         .state('list_my_essays', {
             url: '/list_my_essays',
             templateUrl: '../components/essay/list_essays/list_my_essays.html',

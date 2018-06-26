@@ -22,6 +22,10 @@ angular.module('sos-redacao').factory('EssayFactory', function ($window, $http, 
             return $http.get(consts.api_url + '/essay/' + 'toCorect');
         },
 
+        getMyCorrectedEssays: function (id) {
+            return $http.get(consts.api_url + '/essay/' + 'correctedEssays/' + id);
+        },
+
         addEssay: function (essay) {
             return $http.post(consts.api_url + '/essay', essay);
         },

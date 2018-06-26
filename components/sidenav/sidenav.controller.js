@@ -41,7 +41,11 @@ angular.module('sos-redacao').controller('sidenavController', function($scope, $
                         icon: 'description',
                         link: 'list_my_essays'
                     },
-
+										{
+                        name: 'Meu progresso',
+                        icon: 'description',
+                        link: 'my_progress'
+                    },
                     {
                         name: 'Temas',
                         icon: 'list',
