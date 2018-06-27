@@ -17,7 +17,35 @@ angular.module('sos-redacao').controller('MyProgressController', function($state
 
   init = function(){
     getMyCorrectedEssays();
+    console.log(chart);
   }
+
+  var chart = new CanvasJS.Chart("chartContainer", {
+  	animationEnabled: true,
+  	theme: "light2",
+  	axisY:{
+  		includeZero: false
+  	},
+  	data: [{
+  		type: "line",
+      xValueFormatString:"Tema ####",
+  		dataPoints: [
+  			{ y: 900 },
+  			{ y: 850 },
+  			{ y: 950 },
+  			{ y: 460 },
+  			{ y: 450 },
+  			{ y: 500 },
+  			{ y: 480 },
+  			{ y: 480 },
+  			{ y: 410 },
+  			{ y: 500 },
+  			{ y: 150 },
+  			{ y: 0 }
+  		]
+  	}]
+  });
+  chart.render();
 
   init();
 
