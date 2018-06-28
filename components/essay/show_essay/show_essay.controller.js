@@ -7,7 +7,7 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
 	$scope.essay = {};
 
 	$scope.newMessage = '';
-	$scope.themes = ['Tema 1', 'Tema 2', 'Tema 3', 'Tema 4', 'Tema 5', 'Tema 6'];
+	$scope.themes = [];
 
 
 	$scope.customFullscreen = false;
@@ -17,7 +17,6 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
 	getEssay = function(id){
 		EssayFactory.getEssay(id).then(function(result){
             $scope.essay = result.data.data;
-			console.log($scope.essay);
         }).catch(function(result){
 			toastService.showMessage(result.data.message);
     	});

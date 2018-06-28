@@ -6,7 +6,11 @@
             <md-content layout-padding>
                 <form name="esssayForm">
                     <div layout="row">
-                        <md-input-container flex="50">
+                        <md-input-container>
+                            <h5> Tema </h5>
+                            <input type="text" name="theme" disabled ng-model="essay.theme.theme">
+                        </md-input-container>
+                        <md-input-container ng-show="currentUser.userKind === 'Redator'" flex="50">
                             <h5> Tema </h5>
                             <md-select name="type" ng-model="essay.theme" required disabled>
                                 <md-option ng-value="theme" ng-repeat="theme in themes">{{ theme }}</md-option>
