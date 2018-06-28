@@ -8,6 +8,7 @@ angular.module('sos-redacao').controller('ListEssaysController', function($state
   getEssays = function(){
     EssayFactory.getEssays().then(function(result){
             $scope.essays = result.data.data;
+            $scope.essays = $scope.essays.filter(toCorrectEssaysFilter);
         }).catch(function(result){
         toastService.showMessage(result.data.message);
     });
@@ -15,6 +16,11 @@ angular.module('sos-redacao').controller('ListEssaysController', function($state
 
   init = function(){
     getEssays();
+  }
+
+
+  function toCorrectEssaysFilter(essay) {
+      return essay.status === 'Aguardando correção';
   }
 
   $scope.showEssay = function(id){
