@@ -1,6 +1,6 @@
 angular.module('sos-redacao').controller('CreateEssayController', function($state, $scope, EssayFactory, $stateParams, $mdSidenav, $mdDialog, authentication, toastService, ThemeService){
 
-	$scope.themes = ['Tema 1', 'Tema 2', 'Tema 3', 'Tema 4', 'Tema 5', 'Tema 6'];
+	$scope.themes = [];
 	$scope.essay = {};
 
 	$scope.$parent.title = "Enviar Redação";
