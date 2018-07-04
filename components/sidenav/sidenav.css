@@ -1,8 +1,9 @@
 .md-sidenav {
 
-    width: 300px;
+    width: 308px;
     position: fixed;
     z-index: 1000;
+    
 }
 .virtus-logo-place {
     text-align: center;
