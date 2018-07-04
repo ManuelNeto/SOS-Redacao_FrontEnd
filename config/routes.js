@@ -79,6 +79,12 @@ angular.module('sos-redacao').config(['$stateProvider', '$urlRouterProvider', fu
            controller: 'ListThemesController'
       })
 
+      .state('notifications', {
+           url: '/notifications',
+           templateUrl: '../components/notification/notification.html',
+           controller: 'NotificationsController'
+      })
+
         .state('upload_study_material', {
             url: '/upload_study_material',
             templateUrl: '../components/study_material/upload_study_material.html',
