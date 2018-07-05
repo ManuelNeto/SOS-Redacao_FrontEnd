@@ -1,0 +1,18 @@
+<div layout="row">
+    <sidenav></sidenav>
+    <div layout="column" flex ng-cloak>
+            <md-content layout-padding>
+                <md-list>
+                    <md-list-item class="base-font-regular" ng-repeat="notification in notifications " layout="row" layout-wrap>
+                        <div>
+                            <p class="title">{{notification.title}}</p>
+                        </div>
+                        <div>
+                            <p class="theme">{{notification.text}}</p>
+                            <md-button value="visualizar" class="md-raised md-primary" ng-click="deleteNotification(notification._id)"> Deletar Redação </md-button>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </md-content>
+    </div>
+</div>

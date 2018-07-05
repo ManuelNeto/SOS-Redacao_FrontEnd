@@ -1,6 +1,7 @@
-angular.module('sos-redacao').controller('ShowEssayController', function($state, $scope, EssayFactory, $stateParams, $mdSidenav, $mdDialog, authentication, toastService, UserService){
+angular.module('sos-redacao').controller('ShowEssayController', function($state, $scope, EssayFactory, $stateParams, $mdSidenav, $mdDialog, authentication, toastService, UserService, NotificationService){
 	var self = this;
 
+	console.log('aqui');
 
 	$scope.toggleRight = buildToggler('right');
 
@@ -17,6 +18,7 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
 	getEssay = function(id){
 		EssayFactory.getEssay(id).then(function(result){
             $scope.essay = result.data.data;
+			console.log($scope.essay);
         }).catch(function(result){
 			toastService.showMessage(result.data.message);
     	});
@@ -57,6 +59,17 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
 		$scope.essay.messages.push(newMessage);
 		EssayFactory.editEssay($scope.essay).then(function(result){
 						$scope.essayMessage = "";
+			var notification = {
+				text: "Você recebeu uma nova mensagem!",
+				title: "Mensagem",
+				type: "Mensagem",
+				date: new Date(),
+				emitter: $scope.currentUser._id,
+				receiver: $scope.essay.user
+			};
+
+			NotificationService.createNotification(notification);
+
         }).catch(function(result){
 			toastService.showMessage(result.data.message);
     });
@@ -67,9 +80,20 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
 
 		$scope.essay.corrector = $scope.currentUser._id;
 		$scope.essay.status = "Corrigida";
+
 		EssayFactory.editEssay($scope.essay).then(function(result){
 						$scope.essay.comment = {};
 						$state.go('list_essays');
+			var notification = {
+				text: "Sua redação foi corrigida",
+				title: "Correção",
+				type: "Correção",
+				date: new Date(),
+				emitter: $scope.currentUser._id,
+				receiver: $scope.essay.user
+			};
+
+			NotificationService.createNotification(notification);
 			toastService.showMessage("Correção enviada!");
         }).catch(function(result){
 			toastService.showMessage(result.data.message);
@@ -101,6 +125,7 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
 			getEssay($stateParams.id);
 			UserService.getUser(authentication.currentUser().userId).then(function(response){
 				$scope.currentUser = response.data.data;
+				console.log($scope.currentUser);
 			});
 		}else{
 			$scope.enable = false;
