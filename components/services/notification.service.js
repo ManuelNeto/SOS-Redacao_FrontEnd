@@ -8,7 +8,7 @@ angular.module('sos-redacao').factory('NotificationService', function ($window, 
 
 
         createNotification: function (notification) {
-            return $http.post(consts.api_url + '/notification', essay);
+            return $http.post(consts.api_url + '/notification', notification);
         },
 
         deleteNotification: function (id) {
