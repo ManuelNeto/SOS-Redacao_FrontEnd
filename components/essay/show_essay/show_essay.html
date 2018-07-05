@@ -6,11 +6,7 @@
             <md-content layout-padding>
                 <form name="esssayForm">
                     <div layout="row">
-                        <md-input-container>
-                            <h5> Tema </h5>
-                            <input type="text" name="theme" disabled ng-model="essay.theme.theme">
-                        </md-input-container>
-                        <md-input-container ng-show="currentUser.userKind === 'Redator'" flex="50">
+                        <md-input-container flex="50">
                             <h5> Tema </h5>
                             <md-select name="type" ng-model="essay.theme" required disabled>
                                 <md-option ng-value="theme" ng-repeat="theme in themes">{{ theme }}</md-option>
@@ -31,123 +27,548 @@
                         <input type="text" name="status" ng-model="essay.status" disabled>
                     </md-input-container>
 
+                    <style type="text/css">
+                      input[type="number"]::-webkit-outer-spin-button,
+                      input[type="number"]::-webkit-inner-spin-button {
+                        -webkit-appearance: none;
+                        margin: 0;
+                      }
+                      input[type="number"] {
+                        -moz-appearance: textfield;
+                      }
+                    </style>
+
                     <!-- ENEM -->
                     <div style="text-align: center" ng-show="enable && essay.type == 'Enem'">
-                        <md-button type="submit" ng-show="currentUser.userKind === 'Redator'" class="md-raised md-primary" ng-click=showAbilitys($event)> Visualizar Habilidades  </md-button>
                         <md-button ng-if="essay._id"class="md-raised md-primary" ng-click="toggleRight()"> Visualizar Chat </md-button>
-                        <table style="width:100%">
-                            <tr>
-                                <th>Competência 1</th>
-                                <th>Competência 2</th>
-                                <th>Competência 3</th>
-                                <th>Competência 4</th>
-                                <th>Competência 5</th>
-                                <th>Nota</th>
+
+                        <table class="md-api-table">
+                            <thead>
+                                <tr style="background-color: #0174DF">
+                                  <th style="font-size: 1.3rem; text-align: center; color:white">Competência</th>
+                                  <th style="font-size: 1.3rem; text-align: center; color:white">Peso individual</th>
+                                  <th style="font-size: 1.3rem; text-align: center; color:white">Nota recebida</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr style="background-color: #E3ECF5">
+                                  <td>Demonstrar dominío da modalidade escrita formal da Língua Portuguesa.</td>
+                                  <td style="text-align: center">200.0</td>
+
+                                  <td>
+                                    <input type="number" min="0" max="200" name="competencia1" ng-model="essay.scores[0]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+
+                                    <div ng-messages="esssayForm.competencia1.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia1.$dirty">
+                                      <div ng-message="required">This field is required.</div>
+                                      <div ng-message="min">This field must be at least 0.</div>
+                                      <div ng-message="max">This field must be at most 200.</div>
+                                      <div ng-message="number">Not a valid number.</div>
+                                    </div>
+                                  </td>
+                                </tr>
+
+                                <tr style="background-color: #D1DEEC">
+                                  <td>Compreender a proposta de redação e aplicar conceitos das várias áreas de conhecimento
+                                      para desenvolver o tema, dentro dos limites estruturais do texto dissertativo-argumentativo em prosa.</td>
+                                  <td style="text-align: center">200.0</td>
+
+                                  <td>
+                                    <input type="number" min="0" max="200" name="competencia2" ng-model="essay.scores[1]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+
+                                    <div ng-messages="esssayForm.competencia2.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia2.$dirty">
+                                      <div ng-message="required">This field is required.</div>
+                                      <div ng-message="min">This field must be at least 0.</div>
+                                      <div ng-message="max">This field must be at most 200.</div>
+                                      <div ng-message="number">Not a valid number.</div>
+                                    </div>
+                                  </td>
+                                </tr>
+
+                                <tr style="background-color: #E3ECF5">
+                                  <td>Selecionar, relacionar, organizar e interpretar informações, fatos, opiniões e argumentos
+                                      em defesa de um ponto de vista.</td>
+                                  <td style="text-align: center">200.0</td>
+
+                                  <td>
+                                    <input type="number" min="0" max="200" name="competencia3" ng-model="essay.scores[2]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+
+                                    <div ng-messages="esssayForm.competencia3.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia3.$dirty">
+                                      <div ng-message="required">This field is required.</div>
+                                      <div ng-message="min">This field must be at least 0.</div>
+                                      <div ng-message="max">This field must be at most 200.</div>
+                                      <div ng-message="number">Not a valid number.</div>
+                                    </div>
+                                  </td>
+                                </tr>
+
+                                <tr style="background-color: #D1DEEC">
+                                  <td>Demonstrar conhecimento dos mecanismos linguísticos necessários para a construção da argumentação.</td>
+                                  <td style="text-align: center">200.0</td>
+
+                                  <td>
+                                    <input type="number" min="0" max="200" name="competencia4" ng-model="essay.scores[3]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+
+                                    <div ng-messages="esssayForm.competencia4.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia4.$dirty">
+                                      <div ng-message="required">This field is required.</div>
+                                      <div ng-message="min">This field must be at least 0.</div>
+                                      <div ng-message="max">This field must be at most 200.</div>
+                                      <div ng-message="number">Not a valid number.</div>
+                                    </div>
+                                  </td>
+                                </tr>
+
+                                <tr style="background-color: #E3ECF5">
+                                  <td>Elaborar proposta de intervenção para o problema abordado, respeitando os direitos humanos.</td>
+                                  <td style="text-align: center">200.0</td>
+
+                                  <td>
+                                    <input type="number" min="0" max="200" name="competencia5" ng-model="essay.scores[4]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+
+                                    <div ng-messages="esssayForm.competencia5.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia5.$dirty">
+                                      <div ng-message="required">This field is required.</div>
+                                      <div ng-message="min">This field must be at least 0.</div>
+                                      <div ng-message="max">This field must be at most 200.</div>
+                                      <div ng-message="number">Not a valid number.</div>
+                                    </div>
+                                  </td>
+                                </tr>
+                            </tbody>
+
+                            <tr style="background-color: #0174DF">
+                              <th style="font-size: 1.3rem; text-align: center; color:white">Nota Final</th>
+                              <td style="font-size: 1.3rem; text-align: center; color:white">1000</td>
+                              <td><input style="color:white" type="number" min="0" max="1000" name="notaFinalE" ng-model="essay.finalScore" disabled required></td>
                             </tr>
-                            <tr>
-                                <td><input type="number" min="0" max="200" name="competencia1" ng-model="essay.scores[0]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                                <td><input type="number" min="0" max="200" name="competencia2" ng-model="essay.scores[1]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                                <td><input type="number" min="0" max="200" name="competencia3" ng-model="essay.scores[2]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                                <td><input type="number" min="0" max="200" name="competencia4" ng-model="essay.scores[3]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                                <td><input type="number" min="0" max="200" name="competencia5" ng-model="essay.scores[4]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                                <td><input type="number" min="0" max="1000" name="notaFinalE" ng-model="essay.finalScore" disabled required></td>
-                            </tr>
-                        </table>
+                            </table>
                     </div>
 
                     <!--Enem-->
 
                     <!-- VESTIBULAR -->
                     <div style="text-align: center" ng-show="enable && essay.type == 'Vestibular'">
-                        <md-button type="submit" ng-show="currentUser.userKind === 'Redator'" class="md-raised md-primary"> Visualizar Quesitos  </md-button>
                         <md-button ng-if="essay._id"class="md-raised md-primary" ng-click="toggleRight()"> Visualizar Comentários </md-button>
-                        <table style="width:100%">
-                            <tr>
-                                <th>Quesito 1</th>
-                                <th>Quesito 2</th>
-                                <th>Quesito 3</th>
-                                <th>Quesito 4</th>
-                                <th>Nota</th>
+                        <table class="md-api-table">
+                            <thead>
+                                <tr style="background-color: #0174DF">
+                                  <th style="font-size: 1.3rem; text-align: center; color:white">Competência</th>
+                                  <th style="font-size: 1.3rem; text-align: center; color:white">Peso individual</th>
+                                  <th style="font-size: 1.3rem; text-align: center; color:white">Nota recebida</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr style="background-color: #E3ECF5">
+                                  <td>Adequação à proposta.</td>
+                                  <td style="text-align: center">2.5</td>
+
+                                  <td>
+                                    <input type="number" min="0" max="2.5" name="competencia1" ng-model="essay.scores[0]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+
+                                    <div ng-messages="esssayForm.competencia1.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia1.$dirty">
+                                      <div ng-message="required">This field is required.</div>
+                                      <div ng-message="min">This field must be at least 0.</div>
+                                      <div ng-message="max">This field must be at most 2.5.</div>
+                                      <div ng-message="number">Not a valid number.</div>
+                                    </div>
+                                  </td>
+                                </tr>
+
+                                <tr style="background-color: #D1DEEC">
+                                  <td>Modalidade escrita na variedade padrão.</td>
+                                  <td style="text-align: center">2.5</td>
+
+                                  <td>
+                                    <input type="number" min="0" max="2.5" name="competencia2" ng-model="essay.scores[1]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+
+                                    <div ng-messages="esssayForm.competencia2.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia2.$dirty">
+                                      <div ng-message="required">This field is required.</div>
+                                      <div ng-message="min">This field must be at least 0.</div>
+                                      <div ng-message="max">This field must be at most 2.5.</div>
+                                      <div ng-message="number">Not a valid number.</div>
+                                    </div>
+                                  </td>
+                                </tr>
+
+                                <tr style="background-color: #E3ECF5">
+                                  <td>Coerência e coesão.</td>
+                                  <td style="text-align: center">2.5</td>
+
+                                  <td>
+                                    <input type="number" min="0" max="2.5" name="competencia3" ng-model="essay.scores[2]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+
+                                    <div ng-messages="esssayForm.competencia3.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia3.$dirty">
+                                      <div ng-message="required">This field is required.</div>
+                                      <div ng-message="min">This field must be at least 0.</div>
+                                      <div ng-message="max">This field must be at most 2.5.</div>
+                                      <div ng-message="number">Not a valid number.</div>
+                                    </div>
+                                  </td>
+                                </tr>
+
+                                <tr style="background-color: #D1DEEC">
+                                  <td>Nível de informação e de argumentação.</td>
+                                  <td style="text-align: center">2.5</td>
+
+                                  <td>
+                                    <input type="number" min="0" max="2.5" name="competencia4" ng-model="essay.scores[3]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+
+                                    <div ng-messages="esssayForm.competencia4.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia4.$dirty">
+                                      <div ng-message="required">This field is required.</div>
+                                      <div ng-message="min">This field must be at least 0.</div>
+                                      <div ng-message="max">This field must be at most 2.5.</div>
+                                      <div ng-message="number">Not a valid number.</div>
+                                    </div>
+                                  </td>
+                                </tr>
+                            </tbody>
+
+                            <tr style="background-color: #0174DF">
+                              <th style="font-size: 1.3rem; text-align: center; color:white">Nota Final</th>
+                              <td style="font-size: 1.3rem; text-align: center; color:white">10</td>
+                              <td><input style="color:white" type="number" min="0" max="10" name="notaFinalE" ng-model="essay.finalScore" disabled required></td>
                             </tr>
-                            <tr>
-                                <td><input type="number" min="0.0" max="2.5" name="quesito1" ng-model="essay.scores[0]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                                <td><input type="number" min="0.0" max="2.5" name="quesito2" ng-model="essay.scores[1]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                                <td><input type="number" min="0.0" max="2.5" name="quesito3" ng-model="essay.scores[2]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                                <td><input type="number" min="0.0" max="2.5" name="quesito4" ng-model="essay.scores[3]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                                <td><input type="number" min="0.0" max="10.0" name="notaFinalV" ng-model="essay.finalScore" disabled required></td>
-                            </tr>
-                        </table>
+                            </table>
                     </div>
 
                     <!--Vestibular-->
 
                     <!-- CONCURSO -->
                     <div style="text-align: center" ng-show="enable && essay.type == 'Concurso'">
-                        <md-button type="submit" ng-show="currentUser.userKind === 'Redator'" class="md-raised md-primary" ng-click=showAbilitys($event)> Visualizar Quesitos  </md-button>
                         <md-button ng-if="essay._id"class="md-raised md-primary" ng-click="toggleRight()"> Visualizar Comentários </md-button>
-                        <h5 style="text-align: center">Dimensão Conceitual</h5>
-                        <table style="width:100%">
-                            <tr>
-                                <th>Quesito 1</th>
-                                <th>Quesito 2</th>
-                                <th>Quesito 3</th>
-                                <th>Quesito 4</th>
-                                <th>Quesito 5</th>
-                                <th>Quesito 6</th>
-                            </tr>
-                            <tr>
-                                <td><input type="number" min="0" max="5.0" name="quesito1" ng-model="essay.scores[0]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                                <td><input type="number" min="0" max="4.0" name="quesito2" ng-model="essay.scores[1]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                                <td><input type="number" min="0" max="4.0" name="quesito3" ng-model="essay.scores[2]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                                <td><input type="number" min="0" max="4.0" name="quesito4" ng-model="essay.scores[3]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                                <td><input type="number" min="0" max="5.0" name="quesito5" ng-model="essay.scores[4]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                                <td><input type="number" min="0" max="3.0" name="quesito6" ng-model="essay.scores[5]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                            </tr>
+
+                        <table class="md-api-table">
+                          <thead>
+                              <tr style="background-color: #084B8A">
+                                <th style="font-size: 1.6rem; text-align: center; color:white">Dimensão Conceitual</th>
+                              </tr>
+                          </thead>
                         </table>
 
-                        <h5 style="text-align: center">Dimensão Formal</h5>
-                        <table style="width:100%">
-                            <p style="text-align: center">Coesão</p>
-                            <tr>
-                                <th>Quesito 1</th>
-                                <th>Quesito 2</th>
-                                <th>Quesito 3</th>
-                                <th>Quesito 4</th>
-                                <th>Quesito 5</th>
-                            </tr>
-                            <tr>
-                                <td><input type="number" min="0" max="1.0" name="quesito1" ng-model="essay.scores[6]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                                <td><input type="number" min="0" max="1.0" name="quesito2" ng-model="essay.scores[7]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                                <td><input type="number" min="0" max="1.0" name="quesito3" ng-model="essay.scores[8]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                                <td><input type="number" min="0" max="1.0" name="quesito4" ng-model="essay.scores[9]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                                <td><input type="number" min="0" max="1.0" name="quesito5" ng-model="essay.scores[10]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                            </tr>
+                        <table class="md-api-table">
+                          <thead>
+                              <tr style="background-color: #0174DF">
+                                <th style="font-size: 1.3rem; text-align: center; color:white">Competência</th>
+                                <th style="font-size: 1.3rem; text-align: center; color:white">Peso individual</th>
+                                <th style="font-size: 1.3rem; text-align: center; color:white">Nota recebida</th>
+                              </tr>
+                          </thead>
+
+                          <tbody>
+                              <tr style="background-color: #E3ECF5">
+                                <td>Adequação ao tema.</td>
+                                <td style="text-align: center">5.0</td>
+
+                                <td>
+                                  <input type="number" min="0" max="5" name="competencia1" ng-model="essay.scores[0]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+
+                                  <div ng-messages="esssayForm.competencia1.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia1.$dirty">
+                                    <div ng-message="required">This field is required.</div>
+                                    <div ng-message="min">This field must be at least 0.</div>
+                                    <div ng-message="max">This field must be at most 5.</div>
+                                    <div ng-message="number">Not a valid number.</div>
+                                  </div>
+                                </td>
+                              </tr>
+
+                              <tr style="background-color: #D1DEEC">
+                                <td>Continuidade de ideias.</td>
+                                <td style="text-align: center">4.0</td>
+
+                                <td>
+                                  <input type="number" min="0" max="4" name="competencia2" ng-model="essay.scores[1]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+
+                                  <div ng-messages="esssayForm.competencia2.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia2.$dirty">
+                                    <div ng-message="required">This field is required.</div>
+                                    <div ng-message="min">This field must be at least 0.</div>
+                                    <div ng-message="max">This field must be at most 4.</div>
+                                    <div ng-message="number">Not a valid number.</div>
+                                  </div>
+                                </td>
+                              </tr>
+
+                              <tr style="background-color: #E3ECF5">
+                                <td>Articulação de ideias.</td>
+                                <td style="text-align: center">4.0</td>
+
+                                <td>
+                                  <input type="number" min="0" max="4" name="competencia3" ng-model="essay.scores[2]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+
+                                  <div ng-messages="esssayForm.competencia3.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia3.$dirty">
+                                    <div ng-message="required">This field is required.</div>
+                                    <div ng-message="min">This field must be at least 0.</div>
+                                    <div ng-message="max">This field must be at most 4.</div>
+                                    <div ng-message="number">Not a valid number.</div>
+                                  </div>
+                                </td>
+                              </tr>
+
+                              <tr style="background-color: #D1DEEC">
+                                <td>Progressão de ideias.</td>
+                                <td style="text-align: center">4.0</td>
+
+                                <td>
+                                  <input type="number" min="0" max="4" name="competencia4" ng-model="essay.scores[3]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+
+                                  <div ng-messages="esssayForm.competencia4.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia4.$dirty">
+                                    <div ng-message="required">This field is required.</div>
+                                    <div ng-message="min">This field must be at least 0.</div>
+                                    <div ng-message="max">This field must be at most 4.</div>
+                                    <div ng-message="number">Not a valid number.</div>
+                                  </div>
+                                </td>
+                              </tr>
+
+                              <tr style="background-color: #E3ECF5">
+                                <td>Pertinência e relevância argumentativa.</td>
+                                <td style="text-align: center">5.0</td>
+
+                                <td>
+                                  <input type="number" min="0" max="5" name="competencia5" ng-model="essay.scores[4]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+
+                                  <div ng-messages="esssayForm.competencia5.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia5.$dirty">
+                                    <div ng-message="required">This field is required.</div>
+                                    <div ng-message="min">This field must be at least 0.</div>
+                                    <div ng-message="max">This field must be at most 5.</div>
+                                    <div ng-message="number">Not a valid number.</div>
+                                  </div>
+                                </td>
+                              </tr>
+
+                              <tr style="background-color: #D1DEEC">
+                                <td>Suficiência argumentativa.</td>
+                                <td style="text-align: center">3.0</td>
+
+                                <td>
+                                  <input type="number" min="0" max="3" name="competencia6" ng-model="essay.scores[5]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+
+                                  <div ng-messages="esssayForm.competencia6.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia6.$dirty">
+                                    <div ng-message="required">This field is required.</div>
+                                    <div ng-message="min">This field must be at least 0.</div>
+                                    <div ng-message="max">This field must be at most 3.</div>
+                                    <div ng-message="number">Not a valid number.</div>
+                                  </div>
+                                </td>
+                              </tr>
+                            </table>
+
+                            <table class="md-api-table">
+                              <thead>
+                                  <tr style="background-color: #084B8A">
+                                    <th style="font-size: 1.6rem; text-align: center; color:white">Dimensão Formal</th>
+                                  </tr>
+                              </thead>
+                            </table>
+
+                            <table class="md-api-table">
+                              <thead>
+                                  <tr style="background-color: #0174DF">
+                                    <th style="font-size: 1.3rem; text-align: center; color:white">Competência</th>
+                                    <th style="font-size: 1.3rem; text-align: center; color:white">Peso individual</th>
+                                    <th style="font-size: 1.3rem; text-align: center; color:white">Nota recebida</th>
+                                  </tr>
+                              </thead>
+
+                              <tr style="background-color: #E3ECF5">
+                                <td>Uso de anáforas.</td>
+                                <td style="text-align: center">1.0</td>
+
+                                <td>
+                                  <input type="number" min="0" max="1" name="competencia7" ng-model="essay.scores[6]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+
+                                  <div ng-messages="esssayForm.competencia7.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia7.$dirty">
+                                    <div ng-message="required">This field is required.</div>
+                                    <div ng-message="min">This field must be at least 0.</div>
+                                    <div ng-message="max">This field must be at most 1.</div>
+                                    <div ng-message="number">Not a valid number.</div>
+                                  </div>
+                                </td>
+                              </tr>
+
+                              <tr style="background-color: #D1DEEC">
+                                <td>Uso de operadores argumentativos.</td>
+                                <td style="text-align: center">1.0</td>
+
+                                <td>
+                                  <input type="number" min="0" max="1" name="competencia8" ng-model="essay.scores[7]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+
+                                  <div ng-messages="esssayForm.competencia8.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia8.$dirty">
+                                    <div ng-message="required">This field is required.</div>
+                                    <div ng-message="min">This field must be at least 0.</div>
+                                    <div ng-message="max">This field must be at most 1.</div>
+                                    <div ng-message="number">Not a valid number.</div>
+                                  </div>
+                                </td>
+                              </tr>
+
+                              <tr style="background-color: #E3ECF5">
+                                <td>Uso de articuladores.</td>
+                                <td style="text-align: center">1.0</td>
+
+                                <td>
+                                  <input type="number" min="0" max="1" name="competencia9" ng-model="essay.scores[8]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+
+                                  <div ng-messages="esssayForm.competencia9.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia9.$dirty">
+                                    <div ng-message="required">This field is required.</div>
+                                    <div ng-message="min">This field must be at least 0.</div>
+                                    <div ng-message="max">This field must be at most 1.</div>
+                                    <div ng-message="number">Not a valid number.</div>
+                                  </div>
+                                </td>
+                              </tr>
+
+                              <tr style="background-color: #D1DEEC">
+                                <td>Correlação tempo e modo verbais.</td>
+                                <td style="text-align: center">1.0</td>
+
+                                <td>
+                                  <input type="number" min="0" max="1" name="competencia10" ng-model="essay.scores[9]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+
+                                  <div ng-messages="esssayForm.competencia10.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia10.$dirty">
+                                    <div ng-message="required">This field is required.</div>
+                                    <div ng-message="min">This field must be at least 0.</div>
+                                    <div ng-message="max">This field must be at most 1.</div>
+                                    <div ng-message="number">Not a valid number.</div>
+                                  </div>
+                                </td>
+                              </tr>
+
+                              <tr style="background-color: #E3ECF5">
+                                <td>Propriedade vocabular.</td>
+                                <td style="text-align: center">1.0</td>
+
+                                <td>
+                                  <input type="number" min="0" max="1" name="competencia11" ng-model="essay.scores[10]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+
+                                  <div ng-messages="esssayForm.competencia11.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia11.$dirty">
+                                    <div ng-message="required">This field is required.</div>
+                                    <div ng-message="min">This field must be at least 0.</div>
+                                    <div ng-message="max">This field must be at most 1.</div>
+                                    <div ng-message="number">Not a valid number.</div>
+                                  </div>
+                                </td>
+                              </tr>
+
+                              <tr style="background-color: #D1DEEC">
+                                <td>Estruturação de períodos.</td>
+                                <td style="text-align: center">3.0</td>
+
+                                <td>
+                                  <input type="number" min="0" max="3" name="competencia12" ng-model="essay.scores[11]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+
+                                  <div ng-messages="esssayForm.competencia12.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia12.$dirty">
+                                    <div ng-message="required">This field is required.</div>
+                                    <div ng-message="min">This field must be at least 0.</div>
+                                    <div ng-message="max">This field must be at most 3.</div>
+                                    <div ng-message="number">Not a valid number.</div>
+                                  </div>
+                                </td>
+                              </tr>
+
+                              <tr style="background-color: #E3ECF5">
+                                <td>Concordância verbal e concordância nominal.</td>
+                                <td style="text-align: center">3.0</td>
+
+                                <td>
+                                  <input type="number" min="0" max="3" name="competencia13" ng-model="essay.scores[12]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+
+                                  <div ng-messages="esssayForm.competencia13.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia13.$dirty">
+                                    <div ng-message="required">This field is required.</div>
+                                    <div ng-message="min">This field must be at least 0.</div>
+                                    <div ng-message="max">This field must be at most 3.</div>
+                                    <div ng-message="number">Not a valid number.</div>
+                                  </div>
+                                </td>
+                              </tr>
+
+                              <tr style="background-color: #D1DEEC">
+                                <td>Regência.</td>
+                                <td style="text-align: center">1.0</td>
+
+                                <td>
+                                  <input type="number" min="0" max="1" name="competencia14" ng-model="essay.scores[13]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+
+                                  <div ng-messages="esssayForm.competencia14.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia14.$dirty">
+                                    <div ng-message="required">This field is required.</div>
+                                    <div ng-message="min">This field must be at least 0.</div>
+                                    <div ng-message="max">This field must be at most 1.</div>
+                                    <div ng-message="number">Not a valid number.</div>
+                                  </div>
+                                </td>
+                              </tr>
+
+                              <tr style="background-color: #E3ECF5">
+                                <td>Emprego da crase.</td>
+                                <td style="text-align: center">2.0</td>
+
+                                <td>
+                                  <input type="number" min="0" max="2" name="competencia15" ng-model="essay.scores[14]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+
+                                  <div ng-messages="esssayForm.competencia15.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia15.$dirty">
+                                    <div ng-message="required">This field is required.</div>
+                                    <div ng-message="min">This field must be at least 0.</div>
+                                    <div ng-message="max">This field must be at most 2.</div>
+                                    <div ng-message="number">Not a valid number.</div>
+                                  </div>
+                                </td>
+                              </tr>
+
+                              <tr style="background-color: #D1DEEC">
+                                <td>Colocação pronominal.</td>
+                                <td style="text-align: center">1.0</td>
+
+                                <td>
+                                  <input type="number" min="0" max="1" name="competencia16" ng-model="essay.scores[15]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+
+                                  <div ng-messages="esssayForm.competencia16.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia16.$dirty">
+                                    <div ng-message="required">This field is required.</div>
+                                    <div ng-message="min">This field must be at least 0.</div>
+                                    <div ng-message="max">This field must be at most 1.</div>
+                                    <div ng-message="number">Not a valid number.</div>
+                                  </div>
+                                </td>
+                              </tr>
+
+                              <tr style="background-color: #E3ECF5">
+                                <td>Pontuação.</td>
+                                <td style="text-align: center">5.0</td>
+
+                                <td>
+                                  <input type="number" min="0" max="5" name="competencia17" ng-model="essay.scores[16]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+
+                                  <div ng-messages="esssayForm.competencia17.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia17.$dirty">
+                                    <div ng-message="required">This field is required.</div>
+                                    <div ng-message="min">This field must be at least 0.</div>
+                                    <div ng-message="max">This field must be at most 5.</div>
+                                    <div ng-message="number">Not a valid number.</div>
+                                  </div>
+                                </td>
+                              </tr>
+
+                              <tr style="background-color: #D1DEEC">
+                                <td>Ortografia e Acentuação.</td>
+                                <td style="text-align: center">5.0</td>
+
+                                <td>
+                                  <input type="number" min="0" max="5" name="competencia18" ng-model="essay.scores[17]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+
+                                  <div ng-messages="esssayForm.competencia18.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia18.$dirty">
+                                    <div ng-message="required">This field is required.</div>
+                                    <div ng-message="min">This field must be at least 0.</div>
+                                    <div ng-message="max">This field must be at most 5.</div>
+                                    <div ng-message="number">Not a valid number.</div>
+                                  </div>
+                                </td>
+                              </tr>
+                          </tbody>
+
+                          <tr style="background-color: #0174DF">
+                            <th style="font-size: 1.3rem; text-align: center; color:white">Nota Final</th>
+                            <td style="font-size: 1.3rem; text-align: center; color:white">50</td>
+                            <td><input style="color:white" type="number" min="0" max="50" name="notaFinalE" ng-model="essay.finalScore" disabled required></td>
+                          </tr>
                         </table>
-                        <table style="width:100%">
-                            <p style="text-align: center">Morfossintaxe</p>
-                            <tr>
-                                <th>Quesito 1</th>
-                                <th>Quesito 2</th>
-                                <th>Quesito 3</th>
-                                <th>Quesito 4</th>
-                                <th>Quesito 5</th>
-                                <th>Quesito 6</th>
-                                <th>Quesito 7</th>
-                            </tr>
-                            <tr>
-                                <td><input type="number" min="0" max="3.0" name="quesito1" ng-model="essay.scores[11]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                                <td><input type="number" min="0" max="3.0" name="quesito2" ng-model="essay.scores[12]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                                <td><input type="number" min="0" max="1.0" name="quesito3" ng-model="essay.scores[13]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                                <td><input type="number" min="0" max="2.0" name="quesito4" ng-model="essay.scores[14]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                                <td><input type="number" min="0" max="1.0" name="quesito5" ng-model="essay.scores[15]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                                <td><input type="number" min="0" max="5.0" name="quesito6" ng-model="essay.scores[16]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                                <td><input type="number" min="0" max="5.0" name="quesito7" ng-model="essay.scores[17]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required></td>
-                            </tr>
-                        </table>
-                        <md-input-container class="md-block" required disabled>
-                            <h5 style="text-align: center"> Nota Final </h5>
-                            <input style="text-align: center" type="text" name="notaFinalC" ng-model="essay.finalScore" disabled>
-                        </md-input-container>
+
                     </div>
 
                     <!--Concurso-->
