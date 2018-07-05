@@ -1,28 +1,31 @@
-<md-toolbar>
-    <div class="md-toolbar-tools blue">
-        <h2>Logo</h2>
-    </div>
-</md-toolbar>
+<style>
+    body {
+        background-image: url("../../public/img/background.jpg");
+        background-size:     cover;
+        background-repeat:   no-repeat;
+        background-position: center center;
+    }
+
+    .margem{
+        margin-top: 100px;
+    }
+</style>
 
 <div layout="column">
-    <md-content layout="row" layout-align="space-around" layout-padding="layout-padding" ng-cloak="ng-cloak" class="login-form">
-        <md-card flex="flex" flex-gt-sm="50" flex-gt-md="33">
-                <md-toolbar>
-                    <div class="md-toolbar-tools">
-                        <h2>Login</h2>
-                    </div>
-                </md-toolbar>
-                <md-card-content>
+    <div layout="row" layout-align="space-around"  ng-cloak="ng-cloak" class="login-form margem">
+        <md-card flex="flex" flex-gt-sm="50" flex-gt-md="30">
+
+                <md-card-content >
                     <form name="Form" ng-submit="onSubmit()">
                         <md-input-container class="md-block">
-                            <label>Email</label>
-                            <input type="text" name="email" ng-model="credentials.email"/>
+                            <label style="font-size: medium">Email</label>
+                            <input placeholder="Digite seu email" type="text" name="email" ng-model="credentials.email"/>
                         </md-input-container>
                         <md-input-container class="md-block">
-                            <label>Password</label>
-                            <input type="password" name="password" ng-model="credentials.password"/>
+                            <label style="font-size: medium">Senha</label>
+                            <input placeholder="Digite sua senha" type="password" name="password" ng-model="credentials.password"/>
                             <div class="md-block" flex-gt-xs style="text-align: right">
-                                <a class="md-primary" value="registrar-se"> <a href ng-click="goRegister()">Registrar-se</a>
+                                <a class="md-primary" value="registrar-se"> <a href ng-click="goRegister()">Inscreva-se</a>
                                 <md-button type="submit" value="entrar" class="md-raised md-primary"> Entrar </md-button>
                             </div>
 
@@ -31,5 +34,5 @@
                     </form>
                 </md-card-content>
             </md-card>
-        </md-content>
+        </div>
 </div>
