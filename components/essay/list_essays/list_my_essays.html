@@ -1,22 +1,37 @@
+<style>
+    p.status_aguardando {
+        font-style: italic;
+        color: green;
+    }
+
+    p.status_corrigida {
+        color: blue;
+    }
+
+    p.status_recorrecao {
+        color: orange;
+    }
+
+</style>
 <div layout="row">
     <sidenav></sidenav>
     <div layout="column" flex ng-cloak>
             <md-content layout-padding>
                 <md-list>
                     <md-list-item class="small-font-medium topic" >
-                        <div flex="25">
+                        <div id="titulo" flex="25">
                             <p class="title"><strong> Título </strong></p>
                         </div>
-                        <div flex="25">
+                        <div id="tema" flex="25">
                             <p class="theme"><strong> Tema </strong></p>
                         </div>
-                        <div flex="10">
+                        <div id="tipo" flex="10">
                             <p class="type"><strong> Tipo </strong></p>
                         </div>
-                        <div flex="10">
+                        <div id="nota" flex="10">
                             <p class="nota"><strong> Nota </strong></p>
                         </div>
-                        <div flex="25">
+                        <div id="status" flex="25">
                             <p class="status"><strong> Status </strong></p>
                         </div>
                     </md-list-item>
@@ -37,7 +52,10 @@
                             <p class="nota"> {{essay.finalScore}} </p>
                         </div>
                         <div flex="20s">
-                            <p class="status"> {{essay.status}} </p>
+                            <p ng-show="essay.status=='Aguardando correção'" class="status_aguardando"> {{essay.status}} </p>
+                            <p ng-show="essay.status=='Corrigida'" class="status_corrigida"> {{essay.status}} </p>
+                            <p ng-show="essay.status=='Aguardando recorreção'" class="status_corrigida"> {{essay.status}} </p>
+
                         </div>
                         <md-button  ng-show="essay.status==='Corrigida'" value="visualizar" class="md-raised md-primary" ng-click="showEssay(essay._id)"> Visualizar </md-button>
                     </md-list-item>
