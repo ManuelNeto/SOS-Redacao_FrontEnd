@@ -2,8 +2,8 @@ angular.module('sos-redacao').factory('NotificationService', function ($window, 
 
     return {
 
-        getNotifications: function (id) {
-            return $http.get(consts.api_url + '/notification/' + id);
+        getNotifications: function (id, kind) {
+            return $http.get(consts.api_url + '/notification/' + id + '/' + kind);
         },
 
 

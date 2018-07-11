@@ -1,4 +1,4 @@
-angular.module('sos-redacao').controller('ThemeController', function($scope, $state, ThemeService, authentication, toastService, $stateParams, UserService, $window){
+angular.module('sos-redacao').controller('ThemeController', function($scope, $state, ThemeService, authentication, toastService, $stateParams, UserService, $window, NotificationService){
     $scope.$parent.title = "Temas";
 
     $scope.defaultImg = "../../public/img/noimage.png";
@@ -30,6 +30,16 @@ angular.module('sos-redacao').controller('ThemeController', function($scope, $st
 
     $scope.propose_theme = function () {
         function success(response) {
+            var notification = {
+              text: "Um novo tema está disponível!",
+              title: "Tema",
+              type: "Mensagem",
+              date: new Date(),
+              emitter: $scope.currentUser._id,
+              toAll: true
+            };
+            NotificationService.createNotification(notification);
+
             $state.go('home');
             toastService.showMessage('O tema foi proposto!');
         }
