@@ -13,6 +13,60 @@ angular.module('sos-redacao').controller('ListMyEssaysController', function($sta
     });
 	}
 
+  $scope.sortByScore = function(){
+    $scope.essays.sort(function(a, b) {
+        return parseFloat(a.finalScore) - parseFloat(b.finalScore);
+    });
+  }
+
+  $scope.sortByStatus = function(){
+    $scope.essays.sort(compareStatus);
+  }
+
+  $scope.sortByTheme = function(){
+      $scope.essays.sort(compareTheme);
+  }
+
+  $scope.sortByTitle = function(){
+      $scope.essays.sort(compareTitle);
+  }
+
+  $scope.sortByType = function(){
+      $scope.essays.sort(compareType);
+  }
+
+  function compareStatus(a,b) {
+    if (a.status < b.status)
+      return -1;
+    if (a.status > b.status)
+      return 1;
+    return 0;
+  }
+
+  function compareTheme(a,b) {
+    if (a.theme < b.theme)
+      return -1;
+    if (a.theme > b.theme)
+      return 1;
+    return 0;
+  }
+
+  function compareTitle(a,b) {
+    if (a.title < b.title)
+      return -1;
+    if (a.title > b.title)
+      return 1;
+    return 0;
+  }
+
+  function compareType(a,b) {
+    if (a.type < b.type)
+      return -1;
+    if (a.type > b.type)
+      return 1;
+    return 0;
+  }
+
   init = function(){
     getEssays();
   }
