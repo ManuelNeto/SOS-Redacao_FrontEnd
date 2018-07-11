@@ -8,7 +8,7 @@ angular.module('sos-redacao').controller('NotificationsController', function($st
 	};
 
   getNotifications = function(){
-    NotificationService.getNotifications(authentication.currentUser().id).then(function(result){
+    NotificationService.getNotifications(authentication.currentUser().id, authentication.currentUser().userKind).then(function(result){
             $scope.notifications = result.data.data;
         }).catch(function(result){
         toastService.showMessage(result.data.message);
