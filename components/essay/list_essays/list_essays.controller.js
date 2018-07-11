@@ -18,7 +18,6 @@ angular.module('sos-redacao').controller('ListEssaysController', function($state
     getEssays();
   }
 
-
   function toCorrectEssaysFilter(essay) {
       return essay.status === 'Aguardando correção';
   }
