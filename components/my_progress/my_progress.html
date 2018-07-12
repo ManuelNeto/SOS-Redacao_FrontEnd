@@ -1,4 +1,8 @@
-<div layout="row">
+<div class="layout-row" layout="row" flex>
     <sidenav></sidenav>
+    <div class="layout-column" layout="column" flex>
+    <div ng-include="'components/shared/toolbar/toolbar.html'"></div>
+
     <div id="chartContainer" style="height: 500px; width: 80%;"></div>
+  </div>
 </div>

@@ -1,5 +1,8 @@
-<div layout="row">
+<div class="layout-row" layout="row" flex>
     <sidenav></sidenav>
+    <div class="layout-column" layout="column" flex>
+    <div ng-include="'components/shared/toolbar/toolbar.html'"></div>
+
     <div layout="column" flex ng-cloak>
         <div class="container">
             <!--<div></div></di>-->
@@ -70,4 +73,5 @@
             <md-button style="width: 100%; background-color: black" class="md-raised md-primary" ng-click="propose_theme()">Propôr Tema</md-button>
         </div>
     </div>
+  </div>
 </div>

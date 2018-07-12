@@ -1,5 +1,8 @@
-<div layout="row">
+<div class="layout-row" layout="row" flex>
     <sidenav></sidenav>
+    <div class="layout-column" layout="column" flex>
+    <div ng-include="'components/shared/toolbar/toolbar.html'"></div>
+
     <div layout="column" flex ng-cloak>
             <md-content layout-padding>
                 <form name="esssayForm">
@@ -45,5 +48,5 @@
                 <img style="width: 100%" src="{{essayImageUrl}}" ng-show="essayImage">
             </md-content>
     </div>
-
+  </div>
 </div>
