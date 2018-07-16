@@ -1,5 +1,8 @@
-<div layout="row">
+<div class="layout-row" layout="row" flex>
     <sidenav></sidenav>
+    <div class="layout-column" layout="column" flex>
+    <div ng-include="'components/shared/toolbar/toolbar.html'"></div>
+
     <div layout="column" flex ng-cloak>
             <md-content layout-padding>
                 <md-list>
@@ -15,4 +18,5 @@
                 </md-list>
             </md-content>
     </div>
+  </div>
 </div>

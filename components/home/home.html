@@ -1,5 +1,10 @@
-<div class="col-md-6">
-    <toolbar></toolbar>
+<div class="layout-row" layout="row" flex>
     <sidenav></sidenav>
+    <div class="layout-column" layout="column" flex>
+    <div ng-include="'components/shared/toolbar/toolbar.html'"></div>
 
+    <div class="col-md-6">
+
+    </div>
+  </div>
 </div>
