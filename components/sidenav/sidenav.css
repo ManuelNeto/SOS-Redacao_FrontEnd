@@ -14,7 +14,9 @@
       height: 24px;
 }
 
-
+img {
+    border-radius: 8px;
+}
 
 .md-fab-bottom-right{
     position: fixed !important;

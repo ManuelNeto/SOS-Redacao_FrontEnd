@@ -4,6 +4,7 @@
              <img style="width: 60%; height: 60%" src="{{profile.photo ? profile.photo : defaultImg}}">
              <h1> {{ profile.userName }} </h1>
          </div>
+         <md-divider></md-divider>
          <md-list ng-show="profile.userKind == 'Redator'" ng-repeat="action in data.sidenav.redator_actions">
              <md-icon> {{action.icon}} </md-icon>
              <md-button class="md-primary" ng-click="setRoute(action.link)"> {{action.name}} </md-button>

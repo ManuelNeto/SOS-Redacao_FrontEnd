@@ -3,17 +3,24 @@ angular.module('sos-redacao').controller('UserController', function ($state, $sc
 
     self.title = "Perfil";
 
+    $scope.$parent.title = "Meus Dados";
+
     $scope.profile = {};
 
     $scope.enableForm = true;
     $scope.editPass = false;
+    $scope.enablePhoto = true;
 
     $scope.setEnable = function(){
       console.log(!($scope.enableForm));
       $scope.enableForm = !($scope.enableForm);
-        $scope.newImage = undefined;
       $scope.editPass = false;
     };
+
+    $scope.setEnablePhoto = function(){
+          console.log(!($scope.enablePhoto));
+          $scope.enablePhoto = !($scope.enablePhoto);
+        };
 
     $scope.getNewPass = function() {
       $scope.editPass = !($scope.editPass);
