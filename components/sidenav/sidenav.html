@@ -1,20 +1,32 @@
-<md-sidenav class="md-sidenav" role="sidenav" md-component-id="sidenav" md-is-locked-open="$mdMedia('gt-xs')" md-swipe-left="toggleSidenav('sidenav')" flex>
-     <md-content role="navigation" style="height: 100%">
-         <div layout="column" layout-align="center center" style="width:100%; height: 250px">
-             <img style="width: 60%; height: 60%" src="{{profile.photo ? profile.photo : defaultImg}}">
-             <h1> {{ profile.userName }} </h1>
-         </div>
-         <md-divider></md-divider>
-         <md-list ng-show="profile.userKind == 'Redator'" ng-repeat="action in data.sidenav.redator_actions">
-             <md-icon> {{action.icon}} </md-icon>
-             <md-button class="md-primary" ng-click="setRoute(action.link)"> {{action.name}} </md-button>
-             <md-divider></md-divider>
-         </md-list>
+<md-sidenav class="md-sidenav " role="sidenav" md-component-id="sidenav" md-is-locked-open="$mdMedia('gt-xs')" md-swipe-left="toggleSidenav('sidenav')" flex>
 
-         <md-list ng-show="profile.userKind == 'Corretor'" ng-repeat="action in data.sidenav.corretor_actions">
-             <md-icon> {{action.icon}} </md-icon>
-             <md-button class="md-primary" ng-click="setRoute(action.link)"> {{action.name}} </md-button>
+
+    <md-content role="navigation" id="navbar-all">
+
+             <div id="navbar-top">
+                 <div layout="column" layout-align="center center" style="width:100%; height: 200px">
+                     <img src="{{profile.photo ? profile.photo : defaultImg}}">
+                     <h4 style="font-weight: bold; color:white"> {{ profile.userName }} </h4>
+                 </div>
+             </div>
+
+
              <md-divider></md-divider>
-         </md-list>
+             <md-list ng-show="profile.userKind == 'Redator'" ng-repeat="action in data.sidenav.redator_actions" ng-click="setRoute(action.link)">
+                 <div class="names" id="{{action.link}}">
+                 <md-icon> {{action.icon}} </md-icon>
+                 <a ng-click="setRoute(action.link)"> {{action.name}} </a>
+                 </div>
+             </md-list>
+
+             <md-list ng-show="profile.userKind == 'Corretor'" ng-repeat="action in data.sidenav.corretor_actions" ng-click="setRoute(action.link)">
+                 <div class="names" id="{{action.link}}">
+                 <md-icon> {{action.icon}} </md-icon>
+                 <a ng-click="setRoute(action.link)"> {{action.name}} </a>
+                 </div>
+             </md-list>
+
+
      </md-content>
+
  </md-sidenav>

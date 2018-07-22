@@ -78,4 +78,10 @@ angular.module('sos-redacao').controller('ListMyEssaysController', function($sta
 
   init();
 
+    angular.element(document).ready(function () {
+        var id = $state.current.name;
+        document.getElementById(id).style.backgroundColor = "#6ab04c";
+        document.getElementById(id).style.fontWeight = "bold";
+    });
+
 });

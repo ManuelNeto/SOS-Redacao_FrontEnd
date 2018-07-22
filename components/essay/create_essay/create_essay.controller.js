@@ -3,6 +3,8 @@ angular.module('sos-redacao').controller('CreateEssayController', function($stat
 	$scope.themes = [];
 	$scope.essay = {};
 
+	$scope.anexar = false;
+
 	$scope.$parent.title = "Enviar Redação";
 
 	$scope.addEssay = function(essay){
@@ -50,11 +52,19 @@ angular.module('sos-redacao').controller('CreateEssayController', function($stat
 	var init = function () {
 		ThemeService.getThemes().then(function (response) {
 			$scope.themes = response.data.data;
-			console.log(response);
 		}, function (response) {
 			toastService.showMessage(response.data.message);
 		})
+
+
 	};
 
 	init();
+
+    angular.element(document).ready(function () {
+
+	   	var id = $state.current.name;
+        document.getElementById(id).style.backgroundColor = "#6ab04c";
+        document.getElementById(id).style.fontWeight = "bold";
+    });
 });
