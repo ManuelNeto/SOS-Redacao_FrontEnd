@@ -3,7 +3,9 @@
       position: absolute;
       height: 100%;
       z-index: 1000;
+
 }
+
 .virtus-logo-place {
     text-align: center;
     width: 100%;
@@ -14,8 +16,12 @@
       height: 24px;
 }
 
-img {
-    border-radius: 8px;
+#navbar-top>div>img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    padding: 5px;
+
 }
 
 .md-fab-bottom-right{
@@ -25,13 +31,11 @@ img {
 .user-content{
       padding-top: 32px;
       padding-bottom: 32px;
-      //background-color: primary-color;
 }
 
 .user-infos{
       height: 130px;
       padding-top: 10px;
-      //color: general-white;
       text-align: center;
 }
 
@@ -43,3 +47,53 @@ img {
     background-color: #212121;
     color: #FFFFFF;
 }
+
+#navbar-all{
+    min-height: 100%;
+    background-color: #192a56;
+}
+
+#navbar-top{
+    background-color: #192a76;
+
+}
+
+md-icon{
+    color: #f5f6fa;
+}
+
+.names{
+    padding-left: 25px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-weight: lighter;
+    cursor: pointer;
+    margin: 0px !important;
+}
+
+
+md-list{
+    padding: 0px;
+}
+
+.names:hover{
+    font-size: 16px !important;
+    font-weight: bold;
+    background-color: #40739e;
+}
+
+a{
+    color: white !important;
+    font-size: 17px;
+    padding-left: 5px;
+}
+
+.material-icons{
+    font-size: 20px;
+}
+
+.layout-row{
+    min-height: 100%;
+    font-family: Arial;
+}
+

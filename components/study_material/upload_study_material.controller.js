@@ -50,4 +50,10 @@ angular.module('sos-redacao').controller('UploadStudyMaterialController', functi
         $scope.input.data = e.target.result;
     };
 
+    angular.element(document).ready(function () {
+        var id = $state.current.name;
+        document.getElementById(id).style.backgroundColor = "#6ab04c";
+        document.getElementById(id).style.fontWeight = "bold";
+    });
+
 });

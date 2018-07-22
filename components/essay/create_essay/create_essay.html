@@ -1,51 +1,81 @@
+
 <div class="layout-row" layout="row" flex>
     <sidenav></sidenav>
-    <div class="layout-column" layout="column" flex>
+
+    <div class="layout-column" layout="column" flex >
     <div ng-include="'components/shared/toolbar/toolbar.html'"></div>
 
-    <div layout="column" flex ng-cloak>
+    <div layout="column" flex ng-cloak  >
             <md-content layout-padding>
                 <form name="esssayForm">
-                    <div layout="row">
-                        <md-input-container flex="50">
-                            <h5>Tema</h5>
-                            <md-select name="type" ng-model="essay.theme" required>
-                                <md-option ng-value="theme" ng-repeat="theme in themes">{{ theme.theme }}</md-option>
+                    <div layout="row" >
+                        <md-input-container flex="50"  >
+                            <h4>Tema</h4>
+                            <md-select name="type" ng-model="essay.theme" class="input_style" required md-no-asterisk>
+                                <md-option selected ng-value="theme" ng-repeat="theme in themes">{{ theme.theme }}</md-option>
                             </md-select>
                         </md-input-container>
 
-                        <md-input-container flex="50">
-                            <h5>Tipo de redação</h5>
-                            <md-select name="type" ng-model="essay.type" required>
-                                <md-option value="Enem">Enem</md-option>
+                        <md-input-container flex="50" md-no-asterisk >
+                            <h4>Tipo de redação</h4>
+                            <md-select name="type" ng-model="essay.type" required class="input_style" md-no-asterisk>
+                                <md-option value="Enem" selected>Enem</md-option >
                                 <md-option value="Vestibular">Vestibular</md-option>
                                 <md-option value="Concurso">Concurso</md-option>
                             </md-select>
                         </md-input-container>
+
+                        <md-input-container flex="50" md-no-asterisk >
+                            <h4>Modo de escrita</h4>
+                            <md-select name="type" ng-model="escrita" required class="input_style" md-no-asterisk>
+                                <md-option selected value="Vestibular" ng-click="anexar=false">Digital</md-option>
+                                <md-option value="Enem" ng-click="anexar=true">À mão</md-option>
+
+                            </md-select>
+                        </md-input-container>
+
+
                     </div>
 
-                    <div style="text-align: right">
-                        <md-button class="md-raised md-primary" ng-click="downloadEssayModel()"> Download Modelo  </md-button>
-                        <md-button class="button md-raised md-primary" ngf-select ng-model="essayImage" name="file" ngf-pattern="'image/*'"
-                                   ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"
-                                   ngf-resize="{width: 100, height: 100}"> Anexar Redação </md-button>
+                    <h4 style="text-align: center ">Título</h4>
+                    <md-input-group flex="50">
+                        <input style="text-align: center; font-size: 25px" type="text" name="clientEmail" ng-model="essay.title" >
+                    </md-input-group>
+
+                    <div ng-show="anexar === true">
+                        <div style="text-align: right">
+                            <!-- <md-button class="button md-raised md-primary" ngf-select ng-model="essayImage" name="file" ngf-pattern="'image/*'"
+                                        ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"
+                                        ngf-resize="{width: 100, height: 100}"> Anexar Redação </md-button> !-->
+
+                            <md-button class="button md-raised md-primary" ngf-select ng-model="essayImage" name="file" ngf-pattern="'image/*'"
+                                       ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"
+
+                            > Enviar foto da redação </md-button>
+
+                            <md-button class="md-raised md-primary" ng-click="downloadEssayModel()"> Baixar modelo de exemplo </md-button>
+                        </div>
+
                     </div>
 
-                    <md-input-container class="md-block" style="text-align: center">
-                        <h5>Título</h5>
-                        <input type="text" name="clientEmail" ng-model="essay.title">
-                    </md-input-container>
 
-                    <md-input-container class="md-block" style="text-align: center">
-                        <textarea type="text" id="text" name="text" ng-model="essay.text" cols="10" rows="20" ng-show="!essayImage" required></textarea>
-                    </md-input-container>
+                    <div ng-show="anexar === true">
+                        <img style="width: 100%" src="{{essayImageUrl}}" >
+                    </div>
 
+                    <div ng-show="anexar === false">
+
+                        <md-input-container class="md-block" style="text-align: center; margin-top: -30px; margin-bottom: -30px">
+                            <textarea type="text" id="text" name="text" ng-model="essay.text" ng-show="!essayImage" required></textarea>
+                        </md-input-container>
+
+                    </div>
                     <div style="text-align: right">
                         <md-button ng-if="!essay._id" class="md-raised md-primary" ng-click="addEssay(essay)"> Enviar </md-button>
                     </div>
 
                 </form>
-                <img style="width: 100%" src="{{essayImageUrl}}" ng-show="essayImage">
+
             </md-content>
     </div>
   </div>

@@ -35,4 +35,10 @@ angular.module('sos-redacao').controller('StudyMaterialController', function($st
       return new Blob([ia], {type:mimeString});
   }
 
+    angular.element(document).ready(function () {
+        var id = $state.current.name;
+        document.getElementById(id).style.backgroundColor = "#6ab04c";
+        document.getElementById(id).style.fontWeight = "bold";
+    });
+
 });
