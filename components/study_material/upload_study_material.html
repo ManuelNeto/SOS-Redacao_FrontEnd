@@ -1,7 +1,42 @@
 <style>
-    md-card {
-        background-color: #f2f2f2;
-    }
+
+.btn {
+    background: #4B99AD;
+    padding: 8px 15px 8px 15px;
+    border: none;
+    color: #fff;
+}
+
+.btn:hover {
+    background: linear-gradient(to bottom, #2D77A2 5%, #337DA8 100%);
+    background-color: #28739E;
+}
+
+.submit-btn {
+    background: blue;
+    padding: 8px 15px 8px 15px;
+    border-radius: 8px;
+    color: white;
+}
+
+.submit-btn:hover {
+    background: linear-gradient(to bottom, #2D77A2 5%, #337DA8 100%);
+    background-color: #28739E;
+}
+
+.input-style {
+    border: 2px solid rgba(181,181,181,0.66) !important;
+    -webkit-border-radius: 9px !important;
+    border-radius: 9px !important;
+    font: normal normal bold 18px/normal Arial, Helvetica, sans-serif !important;
+    color: gray !important;
+}
+
+h4 {
+    color: blue;
+    font-family: arial;
+    font-weight: bold;
+}
 </style>
 
 <div class="layout-row" layout="row" flex>
@@ -9,29 +44,27 @@
     <div class="layout-column" layout="column" flex>
     <div ng-include="'components/shared/toolbar/toolbar.html'"></div>
 
-    <div layout="column" flex-gt-xs ng-cloak>
+    <div layout-gt-sm="column" flex-gt-xs ng-cloak>
         <div layout-gt-sm="row">
-
-            <div layout-gt-sm="row">
-                <md-card class="md-primary" layout-padding>
-                    <md-card-content class="md-content">
-                        <md-input-container flex-gt-sm="">
-                            <label>Título</label>
-                            <input type="text" class="form-control" name="nome" ng-model="input.title" required>
-                            <div ng-messages="registerForm.nome.$error">
-                                <div ng-message="required"> Digite o título! </div>
-                            </div>
-                        </md-input-container>
-
-                        <md-button class="button md-raised md-primary" ngf-select ng-model="input.pdf" name="file" ngf-pattern="'application/pdf'"
-                                   ngf-accept="'application/pdf'" ngf-max-size="20MB" ngf-min-height="100"> Adicionar PDF </md-button>
-
-                        <div layout="column">
-                            <md-button type="submit" value="confirmar" class="md-raised md-primary" ng-click="enviar()"> Confirmar </md-button>
+            <md-card>
+                <md-card-content>
+                    <md-input-container>
+                        <h4>Título</h4>
+                        <input type="text" class="input-style" name="nome" ng-model="input.title" required>
+                        <div ng-messages="registerForm.nome.$error">
+                            <div ng-message="required"> Digite o título! </div>
                         </div>
-                    </md-card-content>
-                </md-card>
-            </div>
+                    </md-input-container>
+
+                    <md-button class="btn" ngf-select ng-model="input.pdf" name="file" ngf-pattern="'application/pdf'"
+                               ngf-accept="'application/pdf'" ngf-max-size="20MB" ngf-min-height="100"> Adicionar PDF </md-button>
+
+                    <div layout="row">
+                        <md-button value="confirmar" class="submit-btn" ng-click="enviar()"> Confirmar </md-button>
+
+                    </div>
+                </md-card-content>
+            </md-card>
         </div>
     </div>
   </div>
