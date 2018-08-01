@@ -2,20 +2,34 @@
     <sidenav></sidenav>
     <div class="layout-column" layout="column" flex>
     <div ng-include="'components/shared/toolbar/toolbar.html'"></div>
-
+    <md-input-container class="md-block" style="text-align: left">
+        <md-list-item class="small-font-medium topic" >
+            <div flex="85">
+                <p class="title"><strong> Notificações </strong></p>
+            </div>
+        </md-list-item>
+        <input type="text" ng-model="theme.theme">
+    </md-input-container>
     <div layout="column" flex ng-cloak>
             <md-content layout-padding>
                 <md-list>
                     <md-list-item class="base-font-regular" ng-repeat="notification in notifications " layout="row" layout-wrap>
-                        <div>
+                        <div flex="30">
                             <p class="title">{{notification.title}}</p>
                         </div>
-                        <div>
+                        <div flex="30">
                             <p class="theme">{{notification.text}}</p>
-                            <md-button value="visualizar" class="md-raised md-primary" ng-click="deleteNotification(notification._id)"> Deletar Notificação </md-button>
                         </div>
+               
+                        <md-button value="visualizar" class="md-raised md-primary" ng-click="deleteNotification(notification._id)"> Deletar Notificação </md-button>
+                 
                     </md-list-item>
                 </md-list>
+            </md-list-item>
+            <br>
+            <md-divider></md-divider>
+            <br>
+
             </md-content>
     </div>
   </div>
