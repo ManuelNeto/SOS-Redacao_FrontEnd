@@ -1,13 +1,19 @@
-angular.module('sos-redacao').controller('CreateEssayController', function($state, $scope, EssayFactory, $stateParams, $mdSidenav, $mdDialog, authentication, toastService, ThemeService){
+angular.module('sos-redacao').controller('CreateEssayController', function($state, $scope, EssayFactory, $stateParams, $mdSidenav, $window, $mdDialog, authentication, toastService, ThemeService){
 
 	$scope.themes = [];
 	$scope.essay = {};
 
 	$scope.anexar = false;
 
+	if($window.localStorage.theme){
+		$scope.selectedTheme = JSON.parse($window.localStorage.theme);
+	}
+
 	$scope.$parent.title = "Enviar Redação";
 
 	$scope.addEssay = function(essay){
+
+
 		essay.essayImage = $scope.essayImageUrl;
 
 		if (essay.type === 'Enem') {
@@ -21,7 +27,9 @@ angular.module('sos-redacao').controller('CreateEssayController', function($stat
 		}
 
 		var concatEssay = Object.assign(essay, {user: authentication.currentUser().id});
+        console.log(concatEssay);
 		EssayFactory.addEssay(concatEssay).then(function(result){
+				delete $window.localStorage['theme'];
 				$state.go('list_my_essays');
         }).catch(function(result){
 			toastService.showMessage(result.data.message);
@@ -50,12 +58,17 @@ angular.module('sos-redacao').controller('CreateEssayController', function($stat
 	};
 
 	var init = function () {
-		ThemeService.getThemes().then(function (response) {
-			$scope.themes = response.data.data;
-		}, function (response) {
-			toastService.showMessage(response.data.message);
-		})
 
+		if($scope.selectedTheme){
+			$scope.themes.push($scope.selectedTheme);
+		}else{
+            ThemeService.getThemes().then(function (response) {
+                $scope.themes = response.data.data;
+            }, function (response) {
+                toastService.showMessage(response.data.message);
+            })
+
+        }
 
 	};
 

@@ -100,6 +100,13 @@ angular.module('sos-redacao').controller('ThemeController', function($scope, $st
         });
     }
 
+
+    $scope.create_essay = function(){
+        var theme = JSON.stringify($scope.theme);
+        $window.localStorage['theme'] = theme;
+        $state.go('create_essay');
+    }
+
     init();
 
 
