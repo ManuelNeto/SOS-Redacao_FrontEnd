@@ -27,7 +27,6 @@ angular.module('sos-redacao').controller('CreateEssayController', function($stat
 		}
 
 		var concatEssay = Object.assign(essay, {user: authentication.currentUser().id});
-        console.log(concatEssay);
 		EssayFactory.addEssay(concatEssay).then(function(result){
 				delete $window.localStorage['theme'];
 				$state.go('list_my_essays');
