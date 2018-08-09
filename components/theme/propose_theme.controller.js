@@ -12,7 +12,7 @@ angular.module('sos-redacao').controller('ThemeController', function($scope, $st
 
 
     $scope.move_st_forward = function () {
-        if($scope.current_st < 3){
+        if($scope.current_st < 3 && $scope.theme.supporting_texts.length > $scope.current_st){
             $scope.current_st += 1;
         }
     };

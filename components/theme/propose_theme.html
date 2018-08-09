@@ -70,7 +70,10 @@
 
             <!--<md-button ng-click="teste()">odood</md-button>-->
 
-            <md-button style="width: 100%; background-color: black" class="md-raised md-primary" ng-click="propose_theme()">Propôr Tema</md-button>
+            <md-button style="width: 100%; background-color: black" class="md-raised md-primary" ng-hide="currentUser.userKind === 'Redator'" 
+            ng-click="propose_theme()">Propôr Tema</md-button>
+            <md-button style="width: 100%; background-color: black" class="md-raised md-primary" ng-hide="currentUser.userKind === 'Corretor'" 
+            ng-click="propose_theme()">Escrever Redação</md-button>
         </div>
     </div>
   </div>
