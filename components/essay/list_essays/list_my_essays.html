@@ -41,7 +41,7 @@
                     <br>
                     <md-divider></md-divider>
                     <br>
-                    <md-list-item class="base-font-regular" ng-repeat="essay in essays " layout="row" layout-wrap>
+                    <md-list-item class="base-font-regular" ng-repeat="essay in essays" ng-click="showEssay(essay._id)" layout="row" layout-wrap>
                         <div flex="25">
                             <p class="title">{{essay.title}}</p>
                         </div>

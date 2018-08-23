@@ -26,6 +26,11 @@ angular.module('sos-redacao').controller('ListEssaysController', function($state
 		$state.go('show_essay',  { "id": id});
 	}
 
+  $scope.viewEssay = function(id){
+    console.log(id);
+    //$state.go('show_essay',  { "id": id});
+  }
+
 
   init();
 
