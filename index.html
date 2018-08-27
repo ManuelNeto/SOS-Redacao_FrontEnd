@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html>
-	<head>
+<html ng-app="sos-redacao">
+	<head >
 		<title>SOS Redacao</title>
     <link rel="shortcut icon" href="">
 
@@ -39,11 +39,7 @@
 
 	</head>
 
-
-
-
-	</head>
-	<body ng-app="sos-redacao">
+	<body>
 
 		<!-- Bootstrap -->
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -76,7 +72,7 @@
 		<script src="/components/sidenav/sidenav.controller.js"></script>
 		<script src="/components/study_material/study_material.controller.js"></script>
 		<script src="/components/theme/propose_theme.controller.js"></script>
-    <script src="/components/theme/list_themes.controller.js"></script>
+    	<script src="/components/theme/list_themes.controller.js"></script>
 		<script src="/components/study_material/upload_study_material.controller.js"></script>
 		<script src="/components/my_progress/my_progress.controller.js"></script>
 		<script src="/components/notification/notification.controller.js"></script>
@@ -102,5 +98,6 @@
 		<link rel="stylesheet" href="/components/essay/create_essay/create_essay.css">
 
 		<ui-view></ui-view>
+
 	</body>
 </html>

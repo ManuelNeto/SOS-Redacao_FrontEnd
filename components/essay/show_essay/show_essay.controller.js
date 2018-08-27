@@ -9,7 +9,7 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
 
 	$scope.newMessage = '';
 	$scope.themes = [];
-
+	$scope.editEssayMode = false;
 
 	$scope.customFullscreen = false;
 
@@ -18,7 +18,6 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
 	getEssay = function(id){
 		EssayFactory.getEssay(id).then(function(result){
             $scope.essay = result.data.data;
-			console.log($scope.essay);
         }).catch(function(result){
 			toastService.showMessage(result.data.message);
     	});
@@ -74,6 +73,25 @@ angular.module('sos-redacao').controller('ShowEssayController', function($state,
 			toastService.showMessage(result.data.message);
     });
 
+	}
+
+
+	$scope.setToEditMode = function(){
+		$scope.editEssayMode = true;
+	}
+
+	$scope.updateEssay = function(){
+		$scope.essay.status = 'Aguardando recorreção';
+
+		function success(response){
+            $scope.editEssayMode = false;
+		}
+
+		function error(err){
+			console.log(err);
+		}
+
+		EssayFactory.editEssay($scope.essay).then(success, error);
 	}
 
 	$scope.saveComment = function(){
