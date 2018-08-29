@@ -53,9 +53,11 @@
                             <td>Demonstrar dominío da modalidade escrita formal da Língua Portuguesa.</td>
                             <td style="text-align: center">200.0</td>
 
-                            <td>
-                                <input type="number" min="0" max="200" name="competencia1e" ng-model="essay.scores[0]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
-
+                            <td style="font-size: 1.3rem; text-align: center; color:blue" ng-show="currentUser.userKind === 'Redator'">
+                                {{essay.scores[0]}}
+                            </td>
+                            <td ng-show="currentUser.userKind === 'Corretor'">
+                                <input type="number" min="0" max="200" name="competencia1e" ng-model="essay.scores[0]"  ng-change="sumScores()" required>
                                 <div ng-messages="esssayForm.competencia1e.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia1e.$dirty">
                                     <div ng-message="required">This field is required.</div>
                                     <div ng-message="min">This field must be at least 0.</div>
@@ -69,9 +71,11 @@
                             <td>Compreender a proposta de redação e aplicar conceitos das várias áreas de conhecimento
                                 para desenvolver o tema, dentro dos limites estruturais do texto dissertativo-argumentativo em prosa.</td>
                             <td style="text-align: center">200.0</td>
-
-                            <td>
-                                <input type="number" min="0" max="200" name="competencia2e" ng-model="essay.scores[1]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+                            <td style="font-size: 1.3rem; text-align: center; color:blue" ng-show="currentUser.userKind === 'Redator'">
+                                {{essay.scores[1]}}
+                            </td>
+                            <td ng-show="currentUser.userKind === 'Corretor'">
+                                <input type="number" min="0" max="200" name="competencia2e" ng-model="essay.scores[1]"  ng-change="sumScores()" required>
 
                                 <div ng-messages="esssayForm.competencia2e.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia2e.$dirty">
                                     <div ng-message="required">This field is required.</div>
@@ -86,9 +90,12 @@
                             <td>Selecionar, relacionar, organizar e interpretar informações, fatos, opiniões e argumentos
                                 em defesa de um ponto de vista.</td>
                             <td style="text-align: center">200.0</td>
+                            <td style="font-size: 1.3rem; text-align: center; color:blue" ng-show="currentUser.userKind === 'Redator'">
+                                {{essay.scores[2]}}
+                            </td>
 
-                            <td>
-                                <input type="number" min="0" max="200" name="competencia3e" ng-model="essay.scores[2]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+                            <td ng-show="currentUser.userKind === 'Corretor'">
+                                <input type="number" min="0" max="200" name="competencia3e" ng-model="essay.scores[2]"  ng-change="sumScores()" required>
 
                                 <div ng-messages="esssayForm.competencia3e.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia3e.$dirty">
                                     <div ng-message="required">This field is required.</div>
@@ -102,9 +109,12 @@
                         <tr style="background-color: #D1DEEC">
                             <td>Demonstrar conhecimento dos mecanismos linguísticos necessários para a construção da argumentação.</td>
                             <td style="text-align: center">200.0</td>
+                            <td style="font-size: 1.3rem; text-align: center; color:blue" ng-show="currentUser.userKind === 'Redator'">
+                                {{essay.scores[3]}}
+                            </td>
 
-                            <td>
-                                <input type="number" min="0" max="200" name="competencia4e" ng-model="essay.scores[3]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+                            <td ng-show="currentUser.userKind === 'Corretor'">
+                                <input type="number" min="0" max="200" name="competencia4e" ng-model="essay.scores[3]"  ng-change="sumScores()" required>
 
                                 <div ng-messages="esssayForm.competencia4e.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia4e.$dirty">
                                     <div ng-message="required">This field is required.</div>
@@ -118,9 +128,12 @@
                         <tr style="background-color: #E3ECF5">
                             <td>Elaborar proposta de intervenção para o problema abordado, respeitando os direitos humanos.</td>
                             <td style="text-align: center">200.0</td>
+                            <td style="font-size: 1.3rem; text-align: center; color:blue" ng-show="currentUser.userKind === 'Redator'">
+                                {{essay.scores[4]}}
+                            </td>
 
-                            <td>
-                                <input type="number" min="0" max="200" name="competencia5e" ng-model="essay.scores[4]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+                            <td ng-show="currentUser.userKind === 'Corretor'">
+                                <input type="number" min="0" max="200" name="competencia5e" ng-model="essay.scores[4]"  ng-change="sumScores()" required>
 
                                 <div ng-messages="esssayForm.competencia5e.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia5e.$dirty">
                                     <div ng-message="required">This field is required.</div>
@@ -135,7 +148,10 @@
                         <tr style="background-color: #0174DF">
                             <th style="font-size: 1.3rem; text-align: center; color:white">Nota Final</th>
                             <td style="font-size: 1.3rem; text-align: center; color:white">1000</td>
-                            <td><input style="color:white" type="number" min="0" max="1000" name="notaFinalE" ng-model="essay.finalScore" disabled required></td>
+                            <td style="font-size: 1.3rem; text-align: center; color:white" ng-show="currentUser.userKind === 'Redator'">
+                                {{essay.finalScore}}
+                            </td>
+                            <td ng-show="currentUser.userKind === 'Corretor'"><input style="color:white" type="number" min="0" max="1000" name="notaFinalE" ng-model="essay.finalScore" disabled required></td>
                         </tr>
                     </table>
                 </div>
@@ -158,9 +174,12 @@
                         <tr style="background-color: #E3ECF5">
                             <td>Adequação à proposta.</td>
                             <td style="text-align: center">2.5</td>
+                            <td style="font-size: 1.3rem; text-align: center; color:blue" ng-show="currentUser.userKind === 'Redator'">
+                                {{essay.scores[0]}}
+                            </td>
 
-                            <td>
-                                <input type="number" min="0" max="2.5" name="competencia1v" ng-model="essay.scores[0]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+                            <td ng-show="currentUser.userKind === 'Corretor'">
+                                <input type="number" min="0" max="2.5" name="competencia1v" ng-model="essay.scores[0]"  ng-change="sumScores()" required>
 
                                 <div ng-messages="esssayForm.competencia1v.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia1v.$dirty">
                                     <div ng-message="required">This field is required.</div>
@@ -174,9 +193,12 @@
                         <tr style="background-color: #D1DEEC">
                             <td>Modalidade escrita na variedade padrão.</td>
                             <td style="text-align: center">2.5</td>
+                            <td style="font-size: 1.3rem; text-align: center; color:blue" ng-show="currentUser.userKind === 'Redator'">
+                                {{essay.scores[1]}}
+                            </td>
 
-                            <td>
-                                <input type="number" min="0" max="2.5" name="competencia2v" ng-model="essay.scores[1]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+                            <td ng-show="currentUser.userKind === 'Corretor'">
+                                <input type="number" min="0" max="2.5" name="competencia2v" ng-model="essay.scores[1]"  ng-change="sumScores()" required>
 
                                 <div ng-messages="esssayForm.competencia2v.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia2v.$dirty">
                                     <div ng-message="required">This field is required.</div>
@@ -190,9 +212,12 @@
                         <tr style="background-color: #E3ECF5">
                             <td>Coerência e coesão.</td>
                             <td style="text-align: center">2.5</td>
+                            <td style="font-size: 1.3rem; text-align: center; color:blue" ng-show="currentUser.userKind === 'Redator'">
+                                {{essay.scores[2]}}
+                            </td>
 
-                            <td>
-                                <input type="number" min="0" max="2.5" name="competencia3v" ng-model="essay.scores[2]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
+                            <td ng-show="currentUser.userKind === 'Corretor'">
+                                <input type="number" min="0" max="2.5" name="competencia3v" ng-model="essay.scores[2]"  ng-change="sumScores()" required>
 
                                 <div ng-messages="esssayForm.competencia3v.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia3v.$dirty">
                                     <div ng-message="required">This field is required.</div>
@@ -206,8 +231,11 @@
                         <tr style="background-color: #D1DEEC">
                             <td>Nível de informação e de argumentação.</td>
                             <td style="text-align: center">2.5</td>
+                            <td style="font-size: 1.3rem; text-align: center; color:blue" ng-show="currentUser.userKind === 'Redator'">
+                                {{essay.scores[3]}}
+                            </td>
 
-                            <td>
+                            <td ng-show="currentUser.userKind === 'Corretor'">
                                 <input type="number" min="0" max="2.5" name="competencia4v" ng-model="essay.scores[3]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
 
                                 <div ng-messages="esssayForm.competencia4v.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia4v.$dirty">
@@ -223,7 +251,10 @@
                         <tr style="background-color: #0174DF">
                             <th style="font-size: 1.3rem; text-align: center; color:white">Nota Final</th>
                             <td style="font-size: 1.3rem; text-align: center; color:white">10</td>
-                            <td><input style="color:white" type="number" min="0" max="10" name="notaFinalE" ng-model="essay.finalScore" disabled required></td>
+                            <td style="font-size: 1.3rem; text-align: center; color:white" ng-show="currentUser.userKind === 'Redator'">
+                                {{essay.finalScore}}
+                            </td>
+                            <td ng-show="currentUser.userKind === 'Corretor'"><input style="color:white" type="number" min="0" max="10" name="notaFinalE" ng-model="essay.finalScore" disabled required></td>
                         </tr>
                     </table>
                 </div>
@@ -255,8 +286,11 @@
                         <tr style="background-color: #E3ECF5">
                             <td>Adequação ao tema.</td>
                             <td style="text-align: center">5.0</td>
+                            <td style="font-size: 1.3rem; text-align: center; color:blue" ng-show="currentUser.userKind === 'Redator'">
+                                {{essay.scores[0]}}
+                            </td>
 
-                            <td>
+                            <td ng-show="currentUser.userKind === 'Corretor'">
                                 <input type="number" min="0" max="5" name="competencia1" ng-model="essay.scores[0]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
 
                                 <div ng-messages="esssayForm.competencia1.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia1.$dirty">
@@ -271,8 +305,11 @@
                         <tr style="background-color: #D1DEEC">
                             <td>Continuidade de ideias.</td>
                             <td style="text-align: center">4.0</td>
+                            <td style="font-size: 1.3rem; text-align: center; color:blue" ng-show="currentUser.userKind === 'Redator'">
+                                {{essay.scores[1]}}
+                            </td>
 
-                            <td>
+                            <td ng-show="currentUser.userKind === 'Corretor'">
                                 <input type="number" min="0" max="4" name="competencia2" ng-model="essay.scores[1]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
 
                                 <div ng-messages="esssayForm.competencia2.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia2.$dirty">
@@ -287,8 +324,11 @@
                         <tr style="background-color: #E3ECF5">
                             <td>Articulação de ideias.</td>
                             <td style="text-align: center">4.0</td>
+                            <td style="font-size: 1.3rem; text-align: center; color:blue" ng-show="currentUser.userKind === 'Redator'">
+                                {{essay.scores[2]}}
+                            </td>
 
-                            <td>
+                            <td ng-show="currentUser.userKind === 'Corretor'">
                                 <input type="number" min="0" max="4" name="competencia3" ng-model="essay.scores[2]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
 
                                 <div ng-messages="esssayForm.competencia3.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia3.$dirty">
@@ -303,8 +343,11 @@
                         <tr style="background-color: #D1DEEC">
                             <td>Progressão de ideias.</td>
                             <td style="text-align: center">4.0</td>
+                            <td style="font-size: 1.3rem; text-align: center; color:blue" ng-show="currentUser.userKind === 'Redator'">
+                                {{essay.scores[3]}}
+                            </td>
 
-                            <td>
+                            <td ng-show="currentUser.userKind === 'Corretor'">
                                 <input type="number" min="0" max="4" name="competencia4" ng-model="essay.scores[3]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
 
                                 <div ng-messages="esssayForm.competencia4.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia4.$dirty">
@@ -319,8 +362,11 @@
                         <tr style="background-color: #E3ECF5">
                             <td>Pertinência e relevância argumentativa.</td>
                             <td style="text-align: center">5.0</td>
+                            <td style="font-size: 1.3rem; text-align: center; color:blue" ng-show="currentUser.userKind === 'Redator'">
+                                {{essay.scores[4]}}
+                            </td>
 
-                            <td>
+                            <td ng-show="currentUser.userKind === 'Corretor'">
                                 <input type="number" min="0" max="5" name="competencia5" ng-model="essay.scores[4]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
 
                                 <div ng-messages="esssayForm.competencia5.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia5.$dirty">
@@ -335,8 +381,11 @@
                         <tr style="background-color: #D1DEEC">
                             <td>Suficiência argumentativa.</td>
                             <td style="text-align: center">3.0</td>
+                            <td style="font-size: 1.3rem; text-align: center; color:blue" ng-show="currentUser.userKind === 'Redator'">
+                                {{essay.scores[5]}}
+                            </td>
 
-                            <td>
+                            <td ng-show="currentUser.userKind === 'Corretor'">
                                 <input type="number" min="0" max="3" name="competencia6" ng-model="essay.scores[5]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
 
                                 <div ng-messages="esssayForm.competencia6.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia6.$dirty">
@@ -369,8 +418,11 @@
                         <tr style="background-color: #E3ECF5">
                             <td>Uso de anáforas.</td>
                             <td style="text-align: center">1.0</td>
+                            <td style="font-size: 1.3rem; text-align: center; color:blue" ng-show="currentUser.userKind === 'Redator'">
+                                {{essay.scores[6]}}
+                            </td>
 
-                            <td>
+                            <td ng-show="currentUser.userKind === 'Corretor'">
                                 <input type="number" min="0" max="1" name="competencia7" ng-model="essay.scores[6]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
 
                                 <div ng-messages="esssayForm.competencia7.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia7.$dirty">
@@ -385,8 +437,11 @@
                         <tr style="background-color: #D1DEEC">
                             <td>Uso de operadores argumentativos.</td>
                             <td style="text-align: center">1.0</td>
+                            <td style="font-size: 1.3rem; text-align: center; color:blue" ng-show="currentUser.userKind === 'Redator'">
+                                {{essay.scores[7]}}
+                            </td>
 
-                            <td>
+                            <td ng-show="currentUser.userKind === 'Corretor'">
                                 <input type="number" min="0" max="1" name="competencia8" ng-model="essay.scores[7]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
 
                                 <div ng-messages="esssayForm.competencia8.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia8.$dirty">
@@ -401,8 +456,11 @@
                         <tr style="background-color: #E3ECF5">
                             <td>Uso de articuladores.</td>
                             <td style="text-align: center">1.0</td>
+                            <td style="font-size: 1.3rem; text-align: center; color:blue" ng-show="currentUser.userKind === 'Redator'">
+                                {{essay.scores[8]}}
+                            </td>
 
-                            <td>
+                            <td ng-show="currentUser.userKind === 'Corretor'">
                                 <input type="number" min="0" max="1" name="competencia9" ng-model="essay.scores[8]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
 
                                 <div ng-messages="esssayForm.competencia9.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia9.$dirty">
@@ -417,8 +475,11 @@
                         <tr style="background-color: #D1DEEC">
                             <td>Correlação tempo e modo verbais.</td>
                             <td style="text-align: center">1.0</td>
+                            <td style="font-size: 1.3rem; text-align: center; color:blue" ng-show="currentUser.userKind === 'Redator'">
+                                {{essay.scores[9]}}
+                            </td>
 
-                            <td>
+                            <td ng-show="currentUser.userKind === 'Corretor'">
                                 <input type="number" min="0" max="1" name="competencia10" ng-model="essay.scores[9]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
 
                                 <div ng-messages="esssayForm.competencia10.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia10.$dirty">
@@ -433,8 +494,11 @@
                         <tr style="background-color: #E3ECF5">
                             <td>Propriedade vocabular.</td>
                             <td style="text-align: center">1.0</td>
+                            <td style="font-size: 1.3rem; text-align: center; color:blue" ng-show="currentUser.userKind === 'Redator'">
+                                {{essay.scores[10]}}
+                            </td>
 
-                            <td>
+                            <td ng-show="currentUser.userKind === 'Corretor'">
                                 <input type="number" min="0" max="1" name="competencia11" ng-model="essay.scores[10]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
 
                                 <div ng-messages="esssayForm.competencia11.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia11.$dirty">
@@ -449,8 +513,11 @@
                         <tr style="background-color: #D1DEEC">
                             <td>Estruturação de períodos.</td>
                             <td style="text-align: center">3.0</td>
+                            <td style="font-size: 1.3rem; text-align: center; color:blue" ng-show="currentUser.userKind === 'Redator'">
+                                {{essay.scores[11]}}
+                            </td>
 
-                            <td>
+                            <td ng-show="currentUser.userKind === 'Corretor'">
                                 <input type="number" min="0" max="3" name="competencia12" ng-model="essay.scores[11]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
 
                                 <div ng-messages="esssayForm.competencia12.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia12.$dirty">
@@ -465,8 +532,11 @@
                         <tr style="background-color: #E3ECF5">
                             <td>Concordância verbal e concordância nominal.</td>
                             <td style="text-align: center">3.0</td>
+                            <td style="font-size: 1.3rem; text-align: center; color:blue" ng-show="currentUser.userKind === 'Redator'">
+                                {{essay.scores[12]}}
+                            </td>
 
-                            <td>
+                            <td ng-show="currentUser.userKind === 'Corretor'">
                                 <input type="number" min="0" max="3" name="competencia13" ng-model="essay.scores[12]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
 
                                 <div ng-messages="esssayForm.competencia13.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia13.$dirty">
@@ -481,8 +551,11 @@
                         <tr style="background-color: #D1DEEC">
                             <td>Regência.</td>
                             <td style="text-align: center">1.0</td>
+                            <td style="font-size: 1.3rem; text-align: center; color:blue" ng-show="currentUser.userKind === 'Redator'">
+                                {{essay.scores[13]}}
+                            </td>
 
-                            <td>
+                            <td ng-show="currentUser.userKind === 'Corretor'">
                                 <input type="number" min="0" max="1" name="competencia14" ng-model="essay.scores[13]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
 
                                 <div ng-messages="esssayForm.competencia14.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia14.$dirty">
@@ -497,8 +570,11 @@
                         <tr style="background-color: #E3ECF5">
                             <td>Emprego da crase.</td>
                             <td style="text-align: center">2.0</td>
+                            <td style="font-size: 1.3rem; text-align: center; color:blue" ng-show="currentUser.userKind === 'Redator'">
+                                {{essay.scores[14]}}
+                            </td>
 
-                            <td>
+                            <td ng-show="currentUser.userKind === 'Corretor'">
                                 <input type="number" min="0" max="2" name="competencia15" ng-model="essay.scores[14]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
 
                                 <div ng-messages="esssayForm.competencia15.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia15.$dirty">
@@ -513,8 +589,11 @@
                         <tr style="background-color: #D1DEEC">
                             <td>Colocação pronominal.</td>
                             <td style="text-align: center">1.0</td>
+                            <td style="font-size: 1.3rem; text-align: center; color:blue" ng-show="currentUser.userKind === 'Redator'">
+                                {{essay.scores[15]}}
+                            </td>
 
-                            <td>
+                            <td ng-show="currentUser.userKind === 'Corretor'">
                                 <input type="number" min="0" max="1" name="competencia16" ng-model="essay.scores[15]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
 
                                 <div ng-messages="esssayForm.competencia16.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia16.$dirty">
@@ -529,8 +608,11 @@
                         <tr style="background-color: #E3ECF5">
                             <td>Pontuação.</td>
                             <td style="text-align: center">5.0</td>
+                            <td style="font-size: 1.3rem; text-align: center; color:blue" ng-show="currentUser.userKind === 'Redator'">
+                                {{essay.scores[16]}}
+                            </td>
 
-                            <td>
+                            <td ng-show="currentUser.userKind === 'Corretor'">
                                 <input type="number" min="0" max="5" name="competencia17" ng-model="essay.scores[16]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
 
                                 <div ng-messages="esssayForm.competencia17.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia17.$dirty">
@@ -545,8 +627,11 @@
                         <tr style="background-color: #D1DEEC">
                             <td>Ortografia e Acentuação.</td>
                             <td style="text-align: center">5.0</td>
+                            <td style="font-size: 1.3rem; text-align: center; color:blue" ng-show="currentUser.userKind === 'Redator'">
+                                {{essay.scores[17]}}
+                            </td>
 
-                            <td>
+                            <td ng-show="currentUser.userKind === 'Corretor'">
                                 <input type="number" min="0" max="5" name="competencia18" ng-model="essay.scores[17]" ng-disabled="currentUser.userKind === 'Redator'"  ng-change="sumScores()" required>
 
                                 <div ng-messages="esssayForm.competencia18.$error" style="color: #ff0000" role="alert" ng-if="esssayForm.competencia18.$dirty">
@@ -562,7 +647,10 @@
                         <tr style="background-color: #0174DF">
                             <th style="font-size: 1.3rem; text-align: center; color:white">Nota Final</th>
                             <td style="font-size: 1.3rem; text-align: center; color:white">50</td>
-                            <td><input style="color:white" type="number" min="0" max="50" name="notaFinalE" ng-model="essay.finalScore" disabled required></td>
+                            <td style="font-size: 1.3rem; text-align: center; color:white" ng-show="currentUser.userKind === 'Redator'">
+                                {{essay.finalScore}}
+                            </td>
+                            <td ng-show="currentUser.userKind === 'Corretor'"><input style="color:white" type="number" min="0" max="50" name="notaFinalE" ng-model="essay.finalScore" disabled required></td>
                         </tr>
                     </table>
 
