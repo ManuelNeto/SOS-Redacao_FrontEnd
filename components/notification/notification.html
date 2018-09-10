@@ -1,3 +1,5 @@
+
+
 <div class="layout-row" layout="row" flex>
     <sidenav></sidenav>
     <div class="layout-column" layout="column" flex>
@@ -8,11 +10,9 @@
                 <md-list>
                     <md-list-item class="base-font-regular" ng-repeat="notification in notifications " layout="row" layout-wrap>
                         <div>
-                            <p class="title">{{notification.title}}</p>
-                        </div>
-                        <div>
-                            <p class="theme">{{notification.text}}</p>
-                            <md-button value="visualizar" class="md-raised md-primary" ng-click="deleteNotification(notification._id)"> Deletar Notificação </md-button>
+                            <b style="font-size: 22px; margin-right: 20px">{{notification.title}}</b>
+                               {{notification.text}}
+                            <md-button style="margin-left: 400px;" value="visualizar" aria-label="FAB" class="md-raised md-primary" ng-click="deleteNotification(notification._id)"> Deletar Notificação </md-button>
                         </div>
                     </md-list-item>
                 </md-list>
