@@ -668,7 +668,7 @@
                     <input type="text" name="title" ng-model="essay.title" disabled ng-disabled="currentUser.userKind !== 'Redator' || !editEssayMode">
                 </md-input-container>
                 <md-input-container class="md-block" style="text-align: center">
-                    <textarea ng-show="!essay.essayImage" type="text" id="text" name="text" ng-model="essay.text" cols="10" rows="20" required ng-disabled="currentUser.userKind !== 'Redator' || !editEssayMode"></textarea>
+                    <textarea ng-show="!essay.essayImage" type="text" id="text" name="text" ng-model="essay.text" required ng-disabled="currentUser.userKind !== 'Redator' || !editEssayMode"></textarea>
                 </md-input-container>
                 <md-button class="md-primary md-raised" ng-click="updateEssay()" ng-hide="currentUser.userKind !== 'Redator' || !editEssayMode">Salvar Redação</md-button>
             </form>
