@@ -12,7 +12,7 @@
                         <div>
                             <b style="font-size: 22px; margin-right: 20px">{{notification.title}}</b>
                                {{notification.text}}
-                            <md-button style="margin-left: 400px;" value="visualizar" aria-label="FAB" class="md-raised md-primary" ng-click="deleteNotification(notification._id)"> Deletar Notificação </md-button>
+                            <md-button style="margin-left: 400px;" value="visualizar" aria-label="FAB" class="md-raised md-primary" ng-click="deleteNotification(notification._id, $index)"> Deletar Notificação </md-button>
                         </div>
                     </md-list-item>
                 </md-list>

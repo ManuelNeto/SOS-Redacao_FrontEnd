@@ -15,9 +15,10 @@ angular.module('sos-redacao').controller('NotificationsController', function($st
     });
 	}
 
-  $scope.deleteNotification = function(idNotification){
+  $scope.deleteNotification = function(idNotification, index){
     NotificationService.deleteNotification(idNotification).then(function(result){
             toastService.showMessage(result.data.message);
+            $scope.notifications.splice(index, 1);
             $state.go('notification');
         }).catch(function(result){
         toastService.showMessage(result.data.message);
